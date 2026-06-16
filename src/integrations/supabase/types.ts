@@ -14,7 +14,42 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      articles: {
+        Row: {
+          category: Database["public"]["Enums"]["article_category"]
+          created_at: string
+          id: string
+          image_url: string | null
+          published_at: string
+          source_name: string | null
+          source_url: string
+          summary: string | null
+          title: string
+        }
+        Insert: {
+          category: Database["public"]["Enums"]["article_category"]
+          created_at?: string
+          id?: string
+          image_url?: string | null
+          published_at?: string
+          source_name?: string | null
+          source_url: string
+          summary?: string | null
+          title: string
+        }
+        Update: {
+          category?: Database["public"]["Enums"]["article_category"]
+          created_at?: string
+          id?: string
+          image_url?: string | null
+          published_at?: string
+          source_name?: string | null
+          source_url?: string
+          summary?: string | null
+          title?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
@@ -23,7 +58,7 @@ export type Database = {
       [_ in never]: never
     }
     Enums: {
-      [_ in never]: never
+      article_category: "sports" | "politics" | "shopping" | "music"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +185,8 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      article_category: ["sports", "politics", "shopping", "music"],
+    },
   },
 } as const
