@@ -9,38 +9,156 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SportsRouteImport } from './routes/sports'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as ShoppingRouteImport } from './routes/shopping'
+import { Route as PoliticsRouteImport } from './routes/politics'
+import { Route as MusicRouteImport } from './routes/music'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ApiPublicHooksRefreshNewsRouteImport } from './routes/api/public/hooks/refresh-news'
 
+const SportsRoute = SportsRouteImport.update({
+  id: '/sports',
+  path: '/sports',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ShoppingRoute = ShoppingRouteImport.update({
+  id: '/shopping',
+  path: '/shopping',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PoliticsRoute = PoliticsRouteImport.update({
+  id: '/politics',
+  path: '/politics',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MusicRoute = MusicRouteImport.update({
+  id: '/music',
+  path: '/music',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiPublicHooksRefreshNewsRoute =
+  ApiPublicHooksRefreshNewsRouteImport.update({
+    id: '/api/public/hooks/refresh-news',
+    path: '/api/public/hooks/refresh-news',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/music': typeof MusicRoute
+  '/politics': typeof PoliticsRoute
+  '/shopping': typeof ShoppingRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/sports': typeof SportsRoute
+  '/api/public/hooks/refresh-news': typeof ApiPublicHooksRefreshNewsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/music': typeof MusicRoute
+  '/politics': typeof PoliticsRoute
+  '/shopping': typeof ShoppingRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/sports': typeof SportsRoute
+  '/api/public/hooks/refresh-news': typeof ApiPublicHooksRefreshNewsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/music': typeof MusicRoute
+  '/politics': typeof PoliticsRoute
+  '/shopping': typeof ShoppingRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/sports': typeof SportsRoute
+  '/api/public/hooks/refresh-news': typeof ApiPublicHooksRefreshNewsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/music'
+    | '/politics'
+    | '/shopping'
+    | '/sitemap.xml'
+    | '/sports'
+    | '/api/public/hooks/refresh-news'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/music'
+    | '/politics'
+    | '/shopping'
+    | '/sitemap.xml'
+    | '/sports'
+    | '/api/public/hooks/refresh-news'
+  id:
+    | '__root__'
+    | '/'
+    | '/music'
+    | '/politics'
+    | '/shopping'
+    | '/sitemap.xml'
+    | '/sports'
+    | '/api/public/hooks/refresh-news'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  MusicRoute: typeof MusicRoute
+  PoliticsRoute: typeof PoliticsRoute
+  ShoppingRoute: typeof ShoppingRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  SportsRoute: typeof SportsRoute
+  ApiPublicHooksRefreshNewsRoute: typeof ApiPublicHooksRefreshNewsRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/sports': {
+      id: '/sports'
+      path: '/sports'
+      fullPath: '/sports'
+      preLoaderRoute: typeof SportsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/shopping': {
+      id: '/shopping'
+      path: '/shopping'
+      fullPath: '/shopping'
+      preLoaderRoute: typeof ShoppingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/politics': {
+      id: '/politics'
+      path: '/politics'
+      fullPath: '/politics'
+      preLoaderRoute: typeof PoliticsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/music': {
+      id: '/music'
+      path: '/music'
+      fullPath: '/music'
+      preLoaderRoute: typeof MusicRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,11 +166,24 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/public/hooks/refresh-news': {
+      id: '/api/public/hooks/refresh-news'
+      path: '/api/public/hooks/refresh-news'
+      fullPath: '/api/public/hooks/refresh-news'
+      preLoaderRoute: typeof ApiPublicHooksRefreshNewsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  MusicRoute: MusicRoute,
+  PoliticsRoute: PoliticsRoute,
+  ShoppingRoute: ShoppingRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
+  SportsRoute: SportsRoute,
+  ApiPublicHooksRefreshNewsRoute: ApiPublicHooksRefreshNewsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
