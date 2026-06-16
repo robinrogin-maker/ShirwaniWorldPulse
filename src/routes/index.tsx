@@ -8,6 +8,9 @@ import { CATEGORY_LIST, CATEGORIES, type CategoryKey } from "@/lib/categories";
 const allArticlesQuery = queryOptions({
   queryKey: ["articles", "all"],
   queryFn: () => listArticles({ data: { limit: 60 } }),
+  refetchInterval: 2 * 60 * 1000,
+  refetchOnWindowFocus: true,
+  staleTime: 60 * 1000,
 });
 
 export const Route = createFileRoute("/")({

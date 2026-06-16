@@ -8,6 +8,9 @@ export function categoryQuery(key: CategoryKey) {
   return queryOptions({
     queryKey: ["articles", key],
     queryFn: () => listArticles({ data: { category: key, limit: 60 } }),
+    refetchInterval: 2 * 60 * 1000,
+    refetchOnWindowFocus: true,
+    staleTime: 60 * 1000,
   });
 }
 
