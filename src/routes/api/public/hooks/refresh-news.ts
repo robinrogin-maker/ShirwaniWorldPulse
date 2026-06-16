@@ -127,7 +127,14 @@ export const Route = createFileRoute("/api/public/hooks/refresh-news")({
                 })
                 .filter((x): x is NonNullable<typeof x> => x !== null);
 
-              if (rows.length === 0) continue;
+              // dedupe by source_url within batch
+              const seen = new Set<string>();
+              const unique = rows.filter((r) => {
+                if (seen.has(r.source_url)) return false;
+                seen.add(r.source_url);
+                return true;
+              });
+              if (unique.length === 0) continue;
 
               const { error, count } = await supabaseAdmin
                 .from("articles")
