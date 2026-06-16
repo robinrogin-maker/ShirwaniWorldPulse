@@ -19,7 +19,7 @@ export const listArticles = createServerFn({ method: "GET" })
     const { data: rows, error } = await q;
     if (error) {
       console.error("listArticles error", error);
-      return { articles: [] as Article[] };
+      throw new Error(error.message || "تعذّر تحميل الأخبار من قاعدة البيانات");
     }
     return { articles: (rows ?? []) as Article[] };
   });
