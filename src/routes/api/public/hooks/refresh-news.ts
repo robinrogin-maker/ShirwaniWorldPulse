@@ -138,7 +138,7 @@ export const Route = createFileRoute("/api/public/hooks/refresh-news")({
 
               const { error, count } = await supabaseAdmin
                 .from("articles")
-                .upsert(rows, { onConflict: "source_url", count: "exact" });
+                .upsert(unique, { onConflict: "source_url", count: "exact" });
 
               if (error) {
                 errors.push(`${cat.key}: ${error.message}`);
