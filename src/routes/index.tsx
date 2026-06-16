@@ -3,6 +3,7 @@ import { queryOptions, useSuspenseQuery } from "@tanstack/react-query";
 import { listArticles } from "@/lib/articles.functions";
 import { ArticleCard } from "@/components/ArticleCard";
 import { RefreshButton } from "@/components/RefreshButton";
+import { ArticlesError } from "@/components/ArticlesError";
 import { CATEGORY_LIST, CATEGORIES, type CategoryKey } from "@/lib/categories";
 
 const allArticlesQuery = queryOptions({
