@@ -11,15 +11,30 @@ export function RefreshButton() {
     const t = toast.loading("جاري جلب آخر الأخبار...");
     try {
       const res = await fetch("/api/public/hooks/refresh-news", { method: "POST" });
-      const json = (await res.json()) as { ok: boolean; inserted?: number; error?: string };
+      const json = (await res.json().catch(() => ({}))) as {
+        ok?: boolean;
+        inserted?: number;
+        error?: string;
+        errors?: string[];
+      };
       if (json.ok) {
         toast.success(`تم التحديث (${json.inserted ?? 0} عنصر)`, { id: t });
         await router.invalidate();
       } else {
-        toast.error(json.error || "تعذّر التحديث", { id: t });
+        const msg = json.error || json.errors?.join(" • ") || `فشل الجلب (HTTP ${res.status})`;
+        toast.error(msg, {
+          id: t,
+          duration: 8000,
+          action: { label: "إعادة المحاولة", onClick: () => handle() },
+        });
       }
     } catch (e) {
-      toast.error(e instanceof Error ? e.message : "خطأ غير متوقع", { id: t });
+      const msg = e instanceof Error ? e.message : "انقطاع في الاتصال بالإنترنت";
+      toast.error(msg, {
+        id: t,
+        duration: 8000,
+        action: { label: "إعادة المحاولة", onClick: () => handle() },
+      });
     } finally {
       setLoading(false);
     }
