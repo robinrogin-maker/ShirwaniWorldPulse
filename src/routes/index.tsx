@@ -27,6 +27,7 @@ export const Route = createFileRoute("/")({
   }),
   loader: ({ context }) => context.queryClient.ensureQueryData(allArticlesQuery),
   component: HomePage,
+  errorComponent: ArticlesError,
 });
 
 function HomePage() {
