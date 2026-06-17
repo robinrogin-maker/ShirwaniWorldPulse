@@ -82,7 +82,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         content:
           "مزاج: منصة شاملة لأخبار كرة القدم الأوروبية والمنتخبات، أخبار الشرق الأوسط، التسوق المنزلي، والموسيقى العالمية.",
       },
-      { property: "og:title", content: "مزاج — كل ما يهمك في مكان واحد" },
+      { property: "og:title", content: "مزاج — بوابة أخبار الرياضة والسياسة والتسوق والموسيقى" },
       {
         property: "og:description",
         content: "أخبار رياضية، سياسية، تسوق منزلي وموسيقى عالمية بلمسة عربية أنيقة.",
@@ -90,6 +90,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:type", content: "website" },
       { property: "og:locale", content: "ar_AR" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "مزاج — بوابة أخبار الرياضة والسياسة والتسوق والموسيقى" },
+      { name: "description", content: "Global Pulse Hub is a web application delivering curated global news and content." },
+      { property: "og:description", content: "Global Pulse Hub is a web application delivering curated global news and content." },
+      { name: "twitter:description", content: "Global Pulse Hub is a web application delivering curated global news and content." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/986bfe49-eb0c-4f6e-9086-063db826fe4f/id-preview-57439efc--87a94d6d-ca55-40e8-8919-a54280b87d83.lovable.app-1781597524768.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/986bfe49-eb0c-4f6e-9086-063db826fe4f/id-preview-57439efc--87a94d6d-ca55-40e8-8919-a54280b87d83.lovable.app-1781597524768.png" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
