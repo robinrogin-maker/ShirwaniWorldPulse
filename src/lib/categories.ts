@@ -48,11 +48,12 @@ export const CATEGORIES: Record<
   music: {
     key: "music",
     label: "موسيقى",
-    tagline: "موسيقى عالمية",
-    description: "إصدارات جديدة، حفلات، وأخبار من عالم الموسيقى حول الكوكب.",
+    tagline: "أغانٍ عالمية متنوعة",
+    description:
+      "اختيارات من أبرز الأغاني العالمية المتنوعة على يوتيوب، استمع مباشرة بنقرة واحدة.",
     accentClass: "text-[color:var(--color-music)]",
     badgeClass: "bg-[color:var(--color-music)]/15 text-[color:var(--color-music)]",
-    query: "latest world music news album releases 2025",
+    query: "popular international songs 2025 official music video",
     icon: "🎵",
   },
 };
