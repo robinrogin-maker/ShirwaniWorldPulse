@@ -4,11 +4,6 @@ import { ArticlesError } from "@/components/ArticlesError";
 
 const PLAYLISTS = [
   {
-    title: "🎧 قائمة تشغيل مختارة",
-    src: "https://www.youtube.com/embed/Mr5nvzJXaRA?list=RDMr5nvzJXaRA",
-    description: "استمتع بقائمة تشغيل مختارة من يوتيوب مباشرة داخل الموقع.",
-  },
-  {
     title: "🎵 أغانٍ عالمية متنوعة",
     src: "https://www.youtube.com/embed/z35DsBeFZ1E?list=RDz35DsBeFZ1E",
     description: "مزيج من الأغاني العالمية المشهورة.",
@@ -17,6 +12,11 @@ const PLAYLISTS = [
     title: "🎶 قائمة تشغيل أخرى",
     src: "https://www.youtube.com/embed/Av7bF4oEYj8?list=PLaKVUlkPwDym-ZYMPdNs2zwokM53pkhjK",
     description: "قائمة تشغيل يوتيوب إضافية مختارة لك.",
+  },
+  {
+    title: "🎧 قائمة تشغيل مختارة",
+    src: "https://www.youtube.com/embed/Mr5nvzJXaRA?list=RDMr5nvzJXaRA",
+    description: "استمتع بقائمة تشغيل مختارة من يوتيوب مباشرة داخل الموقع.",
   },
 ];
 
