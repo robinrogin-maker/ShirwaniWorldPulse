@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { CategoryPage, categoryQuery, categoryHead } from "@/components/CategoryPage";
 import { ArticlesError } from "@/components/ArticlesError";
 
-const YOUTUBE_PLAYLIST_URL = "https://www.youtube.com/embed/z35DsBeFZ1E?list=RDz35DsBeFZ1E";
+const YOUTUBE_PLAYLIST_URL = "https://www.youtube.com/embed/Mr5nvzJXaRA?list=RDMr5nvzJXaRA";
 
 export const Route = createFileRoute("/music")({
   head: () => categoryHead("music"),
