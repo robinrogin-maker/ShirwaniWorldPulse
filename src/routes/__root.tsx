@@ -76,13 +76,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "مزاج — بوابة أخبار الرياضة والسياسة والتسوق والموسيقى" },
+      { title: "worldbeat — بوابة أخبار الرياضة والسياسة والتسوق والموسيقى" },
       {
         name: "description",
         content:
-          "مزاج: منصة شاملة لأخبار كرة القدم الأوروبية والمنتخبات، أخبار الشرق الأوسط، التسوق المنزلي، والموسيقى العالمية.",
+          "worldbeat: منصة شاملة لأخبار كرة القدم الأوروبية والمنتخبات، أخبار الشرق الأوسط، التسوق المنزلي، والموسيقى العالمية.",
       },
-      { property: "og:title", content: "مزاج — بوابة أخبار الرياضة والسياسة والتسوق والموسيقى" },
+      { property: "og:title", content: "worldbeat — بوابة أخبار الرياضة والسياسة والتسوق والموسيقى" },
       {
         property: "og:description",
         content: "أخبار رياضية، سياسية، تسوق منزلي وموسيقى عالمية بلمسة عربية أنيقة.",
@@ -90,7 +90,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:type", content: "website" },
       { property: "og:locale", content: "ar_AR" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "مزاج — بوابة أخبار الرياضة والسياسة والتسوق والموسيقى" },
+      { name: "twitter:title", content: "worldbeat — بوابة أخبار الرياضة والسياسة والتسوق والموسيقى" },
       { name: "description", content: "Global Pulse Hub is a web application delivering curated global news and content." },
       { property: "og:description", content: "Global Pulse Hub is a web application delivering curated global news and content." },
       { name: "twitter:description", content: "Global Pulse Hub is a web application delivering curated global news and content." },
@@ -148,9 +148,9 @@ function SiteHeader() {
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-4 sm:px-6">
         <Link to="/" className="flex items-center gap-2">
           <span className="grid h-9 w-9 place-items-center rounded-lg bg-primary text-primary-foreground font-black text-lg">
-            م
+            w
           </span>
-          <span className="text-2xl font-black text-gradient-gold tracking-tight">مزاج</span>
+          <span className="text-2xl font-black text-gradient-gold tracking-tight">worldbeat</span>
         </Link>
         <nav className="hidden md:flex items-center gap-1 text-sm font-semibold">
           <NavLink to="/">الرئيسية</NavLink>
@@ -191,8 +191,8 @@ function SiteFooter() {
   return (
     <footer className="mt-20 border-t border-border">
       <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 text-center text-sm text-muted-foreground">
-        <div className="text-2xl font-black text-gradient-gold mb-2">مزاج</div>
-        <p>© {new Date().getFullYear()} مزاج. كل المحتوى يُجلب من مصادره الأصلية.</p>
+        <div className="text-2xl font-black text-gradient-gold mb-2">worldbeat</div>
+        <p>© {new Date().getFullYear()} worldbeat. كل المحتوى يُجلب من مصادره الأصلية.</p>
       </div>
     </footer>
   );
