@@ -17,11 +17,11 @@ const allArticlesQuery = queryOptions({
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "مزاج — كل ما يهمّك في مكان واحد" },
+      { title: "worldbeat — كل ما يهمّك في مكان واحد" },
       {
         name: "description",
         content:
-          "بوابة مزاج: أخبار كرة القدم الأوروبية، السياسة في الشرق الأوسط، التسوق المنزلي والموسيقى العالمية.",
+          "بوابة worldbeat: أخبار كرة القدم الأوروبية، السياسة في الشرق الأوسط، التسوق المنزلي والموسيقى العالمية.",
       },
     ],
   }),
@@ -53,7 +53,7 @@ function HomePage() {
           بوابة محتوى متكاملة • تُحدَّث تلقائياً
         </div>
         <h1 className="text-5xl md:text-7xl font-black tracking-tight">
-          <span className="text-gradient-gold">مزاج</span>
+          <span className="text-gradient-gold">worldbeat</span>
         </h1>
         <p className="mt-4 text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
           رياضة، سياسة، تسوّق وموسيقى — كل ما يصنع يومك في مكان واحد.
