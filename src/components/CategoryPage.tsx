@@ -18,9 +18,9 @@ export function categoryHead(key: CategoryKey) {
   const c = CATEGORIES[key];
   return {
     meta: [
-      { title: `${c.label} — مزاج` },
+      { title: `${c.label} — worldbeat` },
       { name: "description", content: c.description },
-      { property: "og:title", content: `${c.label} على مزاج — ${c.tagline}` },
+      { property: "og:title", content: `${c.label} على worldbeat — ${c.tagline}` },
       { property: "og:description", content: c.description },
     ],
   };
