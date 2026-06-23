@@ -1,27 +1,24 @@
 import { useState } from "react";
 import { useRouter } from "@tanstack/react-router";
+import { useServerFn } from "@tanstack/react-start";
 import { toast } from "sonner";
+import { refreshNewsFn } from "@/lib/refresh-news.functions";
 
 export function RefreshButton() {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
+  const refresh = useServerFn(refreshNewsFn);
 
   async function handle() {
     setLoading(true);
     const t = toast.loading("جاري جلب آخر الأخبار...");
     try {
-      const res = await fetch("/api/public/hooks/refresh-news", { method: "POST" });
-      const json = (await res.json().catch(() => ({}))) as {
-        ok?: boolean;
-        inserted?: number;
-        error?: string;
-        errors?: string[];
-      };
+      const json = await refresh();
       if (json.ok) {
         toast.success(`تم التحديث (${json.inserted ?? 0} عنصر)`, { id: t });
         await router.invalidate();
       } else {
-        const msg = json.error || json.errors?.join(" • ") || `فشل الجلب (HTTP ${res.status})`;
+        const msg = json.errors?.join(" • ") || "فشل الجلب";
         toast.error(msg, {
           id: t,
           duration: 8000,
