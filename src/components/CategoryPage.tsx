@@ -3,6 +3,7 @@ import { listArticles } from "@/lib/articles.functions";
 import { CATEGORIES, type CategoryKey } from "@/lib/categories";
 import { ArticleCard } from "@/components/ArticleCard";
 import { RefreshButton } from "@/components/RefreshButton";
+import { useI18n } from "@/lib/i18n";
 
 export function categoryQuery(key: CategoryKey) {
   return queryOptions({
@@ -18,16 +19,17 @@ export function categoryHead(key: CategoryKey) {
   const c = CATEGORIES[key];
   return {
     meta: [
-      { title: `${c.label} — worldbeat` },
-      { name: "description", content: c.description },
-      { property: "og:title", content: `${c.label} على worldbeat — ${c.tagline}` },
-      { property: "og:description", content: c.description },
+      { title: `${c.label.en} — worldbeat` },
+      { name: "description", content: c.description.en },
+      { property: "og:title", content: `${c.label.en} on worldbeat — ${c.tagline.en}` },
+      { property: "og:description", content: c.description.en },
     ],
   };
 }
 
 export function CategoryPage({ categoryKey }: { categoryKey: CategoryKey }) {
   const c = CATEGORIES[categoryKey];
+  const { lang, t } = useI18n();
   const { data } = useSuspenseQuery(categoryQuery(categoryKey));
   const articles = data.articles;
 
@@ -37,10 +39,10 @@ export function CategoryPage({ categoryKey }: { categoryKey: CategoryKey }) {
         <div>
           <div className={`inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-bold ${c.badgeClass}`}>
             <span>{c.icon}</span>
-            <span>قسم</span>
+            <span>{t("section")}</span>
           </div>
-          <h1 className={`mt-3 text-4xl md:text-5xl font-black ${c.accentClass}`}>{c.label}</h1>
-          <p className="mt-2 text-muted-foreground max-w-xl">{c.description}</p>
+          <h1 className={`mt-3 text-4xl md:text-5xl font-black ${c.accentClass}`}>{c.label[lang]}</h1>
+          <p className="mt-2 text-muted-foreground max-w-xl">{c.description[lang]}</p>
         </div>
         <RefreshButton />
       </header>
@@ -48,7 +50,7 @@ export function CategoryPage({ categoryKey }: { categoryKey: CategoryKey }) {
       {articles.length === 0 ? (
         <div className="rounded-xl border border-border bg-card p-10 text-center">
           <div className="text-4xl mb-3">{c.icon}</div>
-          <p className="text-muted-foreground">لا توجد عناصر بعد في هذا القسم. اضغط "تحديث الأخبار".</p>
+          <p className="text-muted-foreground">{t("noItems")}</p>
         </div>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">

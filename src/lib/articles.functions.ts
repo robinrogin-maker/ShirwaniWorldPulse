@@ -1,7 +1,7 @@
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
 
-const categorySchema = z.enum(["sports", "politics", "shopping", "music"]);
+const categorySchema = z.enum(["sports", "politics", "shopping", "music", "medicine", "tourism"]);
 
 export const listArticles = createServerFn({ method: "GET" })
   .inputValidator((input: { category?: string; limit?: number }) => ({
@@ -19,20 +19,14 @@ export const listArticles = createServerFn({ method: "GET" })
     const { data: rows, error } = await q;
     if (error) {
       console.error("listArticles error", error);
-      throw new Error(error.message || "تعذّر تحميل الأخبار من قاعدة البيانات");
+      throw new Error(error.message || "Failed to load articles");
     }
     return { articles: (rows ?? []) as Article[] };
   });
 
-export const refreshNews = createServerFn({ method: "POST" }).handler(async () => {
-  const res = await fetch("/api/public/hooks/refresh-news", { method: "POST" });
-  const data = await res.json().catch(() => ({}));
-  return data as { ok: boolean; inserted?: number; error?: string };
-});
-
 export type Article = {
   id: string;
-  category: "sports" | "politics" | "shopping" | "music";
+  category: "sports" | "politics" | "shopping" | "music" | "medicine" | "tourism";
   title: string;
   summary: string | null;
   source_url: string;
