@@ -2,21 +2,46 @@ import { createFileRoute } from "@tanstack/react-router";
 import { CategoryPage, categoryQuery, categoryHead } from "@/components/CategoryPage";
 import { ArticlesError } from "@/components/ArticlesError";
 
-const PLAYLISTS = [
+type Tri = { ar: string; en: string; sv: string };
+const PLAYLISTS: { title: Tri; src: string; description: Tri }[] = [
   {
-    title: "🎵 أغانٍ عالمية متنوعة",
+    title: {
+      ar: "🎵 أغانٍ عالمية متنوعة",
+      en: "🎵 Diverse global songs",
+      sv: "🎵 Globala låtar i urval",
+    },
     src: "https://www.youtube.com/embed/z35DsBeFZ1E?list=RDz35DsBeFZ1E",
-    description: "مزيج من الأغاني العالمية المشهورة.",
+    description: {
+      ar: "مزيج من الأغاني العالمية المشهورة.",
+      en: "A mix of popular international songs.",
+      sv: "En blandning av populära internationella låtar.",
+    },
   },
   {
-    title: "🎶 قائمة تشغيل أخرى",
+    title: {
+      ar: "🎶 قائمة تشغيل أخرى",
+      en: "🎶 Another playlist",
+      sv: "🎶 Ytterligare en spellista",
+    },
     src: "https://www.youtube.com/embed/Av7bF4oEYj8?list=PLaKVUlkPwDym-ZYMPdNs2zwokM53pkhjK",
-    description: "قائمة تشغيل يوتيوب إضافية مختارة لك.",
+    description: {
+      ar: "قائمة تشغيل يوتيوب إضافية مختارة لك.",
+      en: "An extra YouTube playlist curated for you.",
+      sv: "En extra YouTube-spellista, utvald åt dig.",
+    },
   },
   {
-    title: "🎧 قائمة تشغيل مختارة",
+    title: {
+      ar: "🎧 قائمة تشغيل مختارة",
+      en: "🎧 Featured playlist",
+      sv: "🎧 Utvald spellista",
+    },
     src: "https://www.youtube.com/embed/Mr5nvzJXaRA?list=RDMr5nvzJXaRA",
-    description: "استمتع بقائمة تشغيل مختارة من يوتيوب مباشرة داخل الموقع.",
+    description: {
+      ar: "استمتع بقائمة تشغيل مختارة من يوتيوب مباشرة داخل الموقع.",
+      en: "Enjoy a featured YouTube playlist directly inside the site.",
+      sv: "Njut av en utvald YouTube-spellista direkt på sajten.",
+    },
   },
 ];
 
