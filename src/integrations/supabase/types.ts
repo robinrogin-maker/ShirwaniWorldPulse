@@ -58,7 +58,13 @@ export type Database = {
       [_ in never]: never
     }
     Enums: {
-      article_category: "sports" | "politics" | "shopping" | "music"
+      article_category:
+        | "sports"
+        | "politics"
+        | "shopping"
+        | "music"
+        | "medicine"
+        | "tourism"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -186,7 +192,14 @@ export type CompositeTypes<
 export const Constants = {
   public: {
     Enums: {
-      article_category: ["sports", "politics", "shopping", "music"],
+      article_category: [
+        "sports",
+        "politics",
+        "shopping",
+        "music",
+        "medicine",
+        "tourism",
+      ],
     },
   },
 } as const
