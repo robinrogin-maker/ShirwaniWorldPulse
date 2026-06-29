@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { CategoryPage, categoryQuery, categoryHead } from "@/components/CategoryPage";
 import { ArticlesError } from "@/components/ArticlesError";
+import { useI18n } from "@/lib/i18n";
 
 type Tri = { ar: string; en: string; sv: string };
 const PLAYLISTS: { title: Tri; src: string; description: Tri }[] = [
@@ -48,7 +49,13 @@ const PLAYLISTS: { title: Tri; src: string; description: Tri }[] = [
 export const Route = createFileRoute("/music")({
   head: () => categoryHead("music"),
   loader: ({ context }) => context.queryClient.ensureQueryData(categoryQuery("music")),
-  component: () => (
+  component: MusicPage,
+  errorComponent: ArticlesError,
+});
+
+function MusicPage() {
+  const { lang } = useI18n();
+  return (
     <div>
       <CategoryPage categoryKey="music" />
 
@@ -60,23 +67,22 @@ export const Route = createFileRoute("/music")({
               className="rounded-2xl border border-border bg-card p-4 sm:p-6"
             >
               <h2 className="mb-4 text-2xl font-bold text-[color:var(--color-music)]">
-                {playlist.title}
+                {playlist.title[lang]}
               </h2>
               <div className="aspect-video w-full overflow-hidden rounded-xl">
                 <iframe
-                  title={playlist.title}
+                  title={playlist.title[lang]}
                   src={playlist.src}
                   className="h-full w-full border-0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                   allowFullScreen
                 />
               </div>
-              <p className="mt-3 text-sm text-muted-foreground">{playlist.description}</p>
+              <p className="mt-3 text-sm text-muted-foreground">{playlist.description[lang]}</p>
             </div>
           ))}
         </div>
       </section>
     </div>
-  ),
-  errorComponent: ArticlesError,
-});
+  );
+}
