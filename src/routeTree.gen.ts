@@ -9,14 +9,21 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TourismRouteImport } from './routes/tourism'
 import { Route as SportsRouteImport } from './routes/sports'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ShoppingRouteImport } from './routes/shopping'
 import { Route as PoliticsRouteImport } from './routes/politics'
 import { Route as MusicRouteImport } from './routes/music'
+import { Route as MedicineRouteImport } from './routes/medicine'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ApiPublicHooksRefreshNewsRouteImport } from './routes/api/public/hooks/refresh-news'
 
+const TourismRoute = TourismRouteImport.update({
+  id: '/tourism',
+  path: '/tourism',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SportsRoute = SportsRouteImport.update({
   id: '/sports',
   path: '/sports',
@@ -42,6 +49,11 @@ const MusicRoute = MusicRouteImport.update({
   path: '/music',
   getParentRoute: () => rootRouteImport,
 } as any)
+const MedicineRoute = MedicineRouteImport.update({
+  id: '/medicine',
+  path: '/medicine',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -56,74 +68,95 @@ const ApiPublicHooksRefreshNewsRoute =
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/medicine': typeof MedicineRoute
   '/music': typeof MusicRoute
   '/politics': typeof PoliticsRoute
   '/shopping': typeof ShoppingRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sports': typeof SportsRoute
+  '/tourism': typeof TourismRoute
   '/api/public/hooks/refresh-news': typeof ApiPublicHooksRefreshNewsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/medicine': typeof MedicineRoute
   '/music': typeof MusicRoute
   '/politics': typeof PoliticsRoute
   '/shopping': typeof ShoppingRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sports': typeof SportsRoute
+  '/tourism': typeof TourismRoute
   '/api/public/hooks/refresh-news': typeof ApiPublicHooksRefreshNewsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/medicine': typeof MedicineRoute
   '/music': typeof MusicRoute
   '/politics': typeof PoliticsRoute
   '/shopping': typeof ShoppingRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sports': typeof SportsRoute
+  '/tourism': typeof TourismRoute
   '/api/public/hooks/refresh-news': typeof ApiPublicHooksRefreshNewsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/medicine'
     | '/music'
     | '/politics'
     | '/shopping'
     | '/sitemap.xml'
     | '/sports'
+    | '/tourism'
     | '/api/public/hooks/refresh-news'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/medicine'
     | '/music'
     | '/politics'
     | '/shopping'
     | '/sitemap.xml'
     | '/sports'
+    | '/tourism'
     | '/api/public/hooks/refresh-news'
   id:
     | '__root__'
     | '/'
+    | '/medicine'
     | '/music'
     | '/politics'
     | '/shopping'
     | '/sitemap.xml'
     | '/sports'
+    | '/tourism'
     | '/api/public/hooks/refresh-news'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  MedicineRoute: typeof MedicineRoute
   MusicRoute: typeof MusicRoute
   PoliticsRoute: typeof PoliticsRoute
   ShoppingRoute: typeof ShoppingRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   SportsRoute: typeof SportsRoute
+  TourismRoute: typeof TourismRoute
   ApiPublicHooksRefreshNewsRoute: typeof ApiPublicHooksRefreshNewsRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/tourism': {
+      id: '/tourism'
+      path: '/tourism'
+      fullPath: '/tourism'
+      preLoaderRoute: typeof TourismRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/sports': {
       id: '/sports'
       path: '/sports'
@@ -159,6 +192,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MusicRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/medicine': {
+      id: '/medicine'
+      path: '/medicine'
+      fullPath: '/medicine'
+      preLoaderRoute: typeof MedicineRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -178,11 +218,13 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  MedicineRoute: MedicineRoute,
   MusicRoute: MusicRoute,
   PoliticsRoute: PoliticsRoute,
   ShoppingRoute: ShoppingRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   SportsRoute: SportsRoute,
+  TourismRoute: TourismRoute,
   ApiPublicHooksRefreshNewsRoute: ApiPublicHooksRefreshNewsRoute,
 }
 export const routeTree = rootRouteImport
