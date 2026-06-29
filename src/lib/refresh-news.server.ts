@@ -15,7 +15,7 @@ type FirecrawlResult = {
 };
 
 type CategoryConfig = {
-  key: "sports" | "politics" | "shopping" | "music";
+  key: "sports" | "politics" | "shopping" | "music" | "medicine" | "tourism";
   query: string;
   tbs: string;
   lang: string;
@@ -57,6 +57,22 @@ const CATEGORIES: CategoryConfig[] = [
     lang: "en",
     scrape: false,
     limit: 12,
+  },
+  {
+    key: "medicine",
+    query: "trusted medical health tips wellness news 2025",
+    tbs: "qdr:w",
+    lang: "en",
+    scrape: true,
+    limit: 8,
+  },
+  {
+    key: "tourism",
+    query: "best travel destinations world favorite places 2025 tourism guide",
+    tbs: "qdr:m",
+    lang: "en",
+    scrape: true,
+    limit: 8,
   },
 ];
 

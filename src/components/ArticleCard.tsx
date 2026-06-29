@@ -1,21 +1,10 @@
 import type { Article } from "@/lib/articles.functions";
 import { CATEGORIES } from "@/lib/categories";
-
-function timeAgo(iso: string) {
-  const d = new Date(iso).getTime();
-  const diff = Date.now() - d;
-  const mins = Math.floor(diff / 60000);
-  if (mins < 1) return "الآن";
-  if (mins < 60) return `قبل ${mins} د`;
-  const hrs = Math.floor(mins / 60);
-  if (hrs < 24) return `قبل ${hrs} س`;
-  const days = Math.floor(hrs / 24);
-  if (days < 7) return `قبل ${days} يوم`;
-  return new Date(iso).toLocaleDateString("ar");
-}
+import { useI18n, timeAgo } from "@/lib/i18n";
 
 export function ArticleCard({ article, featured = false }: { article: Article; featured?: boolean }) {
   const cat = CATEGORIES[article.category];
+  const { lang, t } = useI18n();
   return (
     <a
       href={article.source_url}
@@ -46,9 +35,9 @@ export function ArticleCard({ article, featured = false }: { article: Article; f
           </div>
         )}
         <span
-          className={`absolute top-3 right-3 rounded-full px-3 py-1 text-xs font-bold backdrop-blur ${cat.badgeClass}`}
+          className={`absolute top-3 end-3 rounded-full px-3 py-1 text-xs font-bold backdrop-blur ${cat.badgeClass}`}
         >
-          {cat.label}
+          {cat.label[lang]}
         </span>
       </div>
       <div className="flex flex-1 flex-col gap-2 p-4">
@@ -63,8 +52,8 @@ export function ArticleCard({ article, featured = false }: { article: Article; f
           <p className="text-sm text-muted-foreground line-clamp-3">{article.summary}</p>
         )}
         <div className="mt-auto flex items-center justify-between gap-2 pt-2 text-xs text-muted-foreground">
-          <span>{article.source_name ?? "مصدر خارجي"}</span>
-          <span>{timeAgo(article.published_at)}</span>
+          <span>{article.source_name ?? t("source")}</span>
+          <span>{timeAgo(article.published_at, lang)}</span>
         </div>
       </div>
     </a>
