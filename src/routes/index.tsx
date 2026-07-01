@@ -5,15 +5,17 @@ import { ArticleCard } from "@/components/ArticleCard";
 import { RefreshButton } from "@/components/RefreshButton";
 import { ArticlesError } from "@/components/ArticlesError";
 import { CATEGORY_LIST, type CategoryKey } from "@/lib/categories";
-import { useI18n } from "@/lib/i18n";
+import { useI18n, type Lang } from "@/lib/i18n";
 
-const allArticlesQuery = queryOptions({
-  queryKey: ["articles", "all"],
-  queryFn: () => listArticles({ data: { limit: 80 } }),
-  refetchInterval: 2 * 60 * 1000,
-  refetchOnWindowFocus: true,
-  staleTime: 60 * 1000,
-});
+function allArticlesQuery(language: Lang = "ar") {
+  return queryOptions({
+    queryKey: ["articles", "all", language],
+    queryFn: () => listArticles({ data: { language, limit: 80 } }),
+    refetchInterval: 2 * 60 * 1000,
+    refetchOnWindowFocus: true,
+    staleTime: 60 * 1000,
+  });
+}
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -26,15 +28,15 @@ export const Route = createFileRoute("/")({
       },
     ],
   }),
-  loader: ({ context }) => context.queryClient.ensureQueryData(allArticlesQuery),
+  loader: ({ context }) => context.queryClient.ensureQueryData(allArticlesQuery("ar")),
   component: HomePage,
   errorComponent: ArticlesError,
 });
 
 function HomePage() {
-  const { data } = useSuspenseQuery(allArticlesQuery);
-  const articles = data.articles;
   const { lang, t } = useI18n();
+  const { data } = useSuspenseQuery(allArticlesQuery(lang));
+  const articles = data.articles;
 
   const byCat = {} as Record<CategoryKey, typeof articles>;
   for (const c of CATEGORY_LIST) byCat[c.key] = [];

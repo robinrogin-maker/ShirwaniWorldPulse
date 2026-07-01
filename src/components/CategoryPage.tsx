@@ -3,12 +3,12 @@ import { listArticles } from "@/lib/articles.functions";
 import { CATEGORIES, type CategoryKey } from "@/lib/categories";
 import { ArticleCard } from "@/components/ArticleCard";
 import { RefreshButton } from "@/components/RefreshButton";
-import { useI18n } from "@/lib/i18n";
+import { useI18n, type Lang } from "@/lib/i18n";
 
-export function categoryQuery(key: CategoryKey) {
+export function categoryQuery(key: CategoryKey, language: Lang = "ar") {
   return queryOptions({
-    queryKey: ["articles", key],
-    queryFn: () => listArticles({ data: { category: key, limit: 60 } }),
+    queryKey: ["articles", key, language],
+    queryFn: () => listArticles({ data: { category: key, language, limit: 60 } }),
     refetchInterval: 2 * 60 * 1000,
     refetchOnWindowFocus: true,
     staleTime: 60 * 1000,
@@ -30,7 +30,7 @@ export function categoryHead(key: CategoryKey) {
 export function CategoryPage({ categoryKey }: { categoryKey: CategoryKey }) {
   const c = CATEGORIES[categoryKey];
   const { lang, t } = useI18n();
-  const { data } = useSuspenseQuery(categoryQuery(categoryKey));
+  const { data } = useSuspenseQuery(categoryQuery(categoryKey, lang));
   const articles = data.articles;
 
   return (

@@ -14,76 +14,96 @@ type FirecrawlResult = {
   };
 };
 
-type CategoryConfig = {
-  key: "sports" | "politics" | "shopping" | "music" | "medicine" | "tourism";
-  query: string;
+type CategoryKey = "sports" | "politics" | "shopping" | "music" | "medicine" | "tourism";
+type Lang = "ar" | "en" | "sv";
+
+type CategoryDef = {
+  key: CategoryKey;
   tbs: string;
-  lang: string;
   scrape: boolean;
   limit: number;
+  queries: Record<Lang, string>;
 };
 
-const CATEGORIES: CategoryConfig[] = [
+const CATEGORIES: CategoryDef[] = [
   {
     key: "sports",
-    query:
-      "أخبار كرة القدم الأوروبية الدوري الإنجليزي والإسباني والإيطالي والمنتخبات",
     tbs: "qdr:d",
-    lang: "ar",
     scrape: true,
     limit: 8,
+    queries: {
+      ar: "أخبار كرة القدم الأوروبية الدوري الإنجليزي والإسباني والإيطالي والمنتخبات",
+      en: "European football news Premier League La Liga Serie A national teams",
+      sv: "europeisk fotboll nyheter Premier League La Liga Serie A landslag",
+    },
   },
   {
     key: "politics",
-    query: "أخبار سياسية الشرق الأوسط عاجل",
     tbs: "qdr:d",
-    lang: "ar",
     scrape: true,
     limit: 8,
+    queries: {
+      ar: "أخبار سياسية الشرق الأوسط عاجل",
+      en: "world politics Middle East breaking news",
+      sv: "världspolitik Mellanöstern senaste nyheterna",
+    },
   },
   {
     key: "shopping",
-    query: "best home furniture gourmet food shopping trends 2025",
     tbs: "qdr:w",
-    lang: "en",
     scrape: true,
     limit: 8,
+    queries: {
+      ar: "أفضل أثاث منزلي ومأكولات فاخرة تسوق 2025",
+      en: "best home furniture gourmet food shopping trends 2025",
+      sv: "bästa hemmöbler gourmetmat shopping trender 2025",
+    },
   },
   {
     key: "music",
-    query:
-      "popular international songs 2025 official music video site:youtube.com OR site:youtu.be",
     tbs: "qdr:m",
-    lang: "en",
     scrape: false,
     limit: 12,
+    queries: {
+      ar: "أغاني عالمية مشهورة 2025 فيديو كليب رسمي site:youtube.com OR site:youtu.be",
+      en: "popular international songs 2025 official music video site:youtube.com OR site:youtu.be",
+      sv: "populära internationella låtar 2025 officiell musikvideo site:youtube.com OR site:youtu.be",
+    },
   },
   {
     key: "medicine",
-    query: "trusted medical health tips wellness news 2025",
     tbs: "qdr:w",
-    lang: "en",
     scrape: true,
     limit: 8,
+    queries: {
+      ar: "نصائح طبية صحية موثوقة 2025",
+      en: "trusted medical health tips wellness news 2025",
+      sv: "medicinska hälsotips välmående nyheter 2025",
+    },
   },
   {
     key: "tourism",
-    query: "best travel destinations world favorite places 2025 tourism guide",
     tbs: "qdr:m",
-    lang: "en",
     scrape: true,
     limit: 8,
+    queries: {
+      ar: "أفضل وجهات سياحية في العالم 2025 دليل السفر",
+      en: "best travel destinations world favorite places 2025 tourism guide",
+      sv: "bästa resmål i världen favoritplatser 2025 turism guide",
+    },
   },
 ];
 
-async function firecrawlSearch(cat: CategoryConfig) {
+const LANGS: Lang[] = ["ar", "en", "sv"];
+
+async function firecrawlSearch(cat: CategoryDef, lang: Lang) {
   const apiKey = process.env.FIRECRAWL_API_KEY;
   if (!apiKey) throw new Error("FIRECRAWL_API_KEY is not configured");
 
   const body: Record<string, unknown> = {
-    query: cat.query,
+    query: cat.queries[lang],
     limit: cat.limit,
-    lang: cat.lang,
+    lang,
     tbs: cat.tbs,
     sources: cat.key === "music" ? ["web"] : ["news", "web"],
   };
@@ -162,49 +182,52 @@ export async function runRefreshNews(): Promise<RefreshResult> {
   const errors: string[] = [];
 
   for (const cat of CATEGORIES) {
-    try {
-      const results = await firecrawlSearch(cat);
-      const rows = results
-        .map((r) => {
-          const url = r.url || r.metadata?.sourceURL;
-          if (!url) return null;
-          if (cat.key === "music" && !youtubeId(url)) return null;
-          const title = (r.title || r.metadata?.title || "").trim();
-          if (!title) return null;
-          return {
-            category: cat.key,
-            title: title.slice(0, 300),
-            summary: (r.description || r.metadata?.description || "")
-              .toString()
-              .slice(0, 600),
-            source_url: url,
-            source_name: hostname(url),
-            image_url: extractImage(r, url),
-            published_at: new Date().toISOString(),
-          };
-        })
-        .filter((x): x is NonNullable<typeof x> => x !== null);
+    for (const lang of LANGS) {
+      try {
+        const results = await firecrawlSearch(cat, lang);
+        const rows = results
+          .map((r) => {
+            const url = r.url || r.metadata?.sourceURL;
+            if (!url) return null;
+            if (cat.key === "music" && !youtubeId(url)) return null;
+            const title = (r.title || r.metadata?.title || "").trim();
+            if (!title) return null;
+            return {
+              category: cat.key,
+              language: lang,
+              title: title.slice(0, 300),
+              summary: (r.description || r.metadata?.description || "")
+                .toString()
+                .slice(0, 600),
+              source_url: url,
+              source_name: hostname(url),
+              image_url: extractImage(r, url),
+              published_at: new Date().toISOString(),
+            };
+          })
+          .filter((x): x is NonNullable<typeof x> => x !== null);
 
-      const seen = new Set<string>();
-      const unique = rows.filter((r) => {
-        if (seen.has(r.source_url)) return false;
-        seen.add(r.source_url);
-        return true;
-      });
-      if (unique.length === 0) continue;
+        const seen = new Set<string>();
+        const unique = rows.filter((r) => {
+          if (seen.has(r.source_url)) return false;
+          seen.add(r.source_url);
+          return true;
+        });
+        if (unique.length === 0) continue;
 
-      const { error, count } = await supabaseAdmin
-        .from("articles")
-        .upsert(unique, { onConflict: "source_url", count: "exact" });
+        const { error, count } = await supabaseAdmin
+          .from("articles")
+          .upsert(unique, { onConflict: "source_url,language", count: "exact" });
 
-      if (error) {
-        errors.push(`${cat.key}: ${error.message}`);
-      } else {
-        totalInserted += count ?? rows.length;
+        if (error) {
+          errors.push(`${cat.key}/${lang}: ${error.message}`);
+        } else {
+          totalInserted += count ?? rows.length;
+        }
+      } catch (err) {
+        const msg = err instanceof Error ? err.message : String(err);
+        errors.push(`${cat.key}/${lang}: ${msg}`);
       }
-    } catch (err) {
-      const msg = err instanceof Error ? err.message : String(err);
-      errors.push(`${cat.key}: ${msg}`);
     }
   }
 
