@@ -30,7 +30,7 @@ export function categoryHead(key: CategoryKey) {
 export function CategoryPage({ categoryKey }: { categoryKey: CategoryKey }) {
   const c = CATEGORIES[categoryKey];
   const { lang, t } = useI18n();
-  const { data } = useSuspenseQuery(categoryQuery(categoryKey));
+  const { data } = useSuspenseQuery(categoryQuery(categoryKey, lang));
   const articles = data.articles;
 
   return (
