@@ -86,13 +86,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "worldbeat — sports, politics, shopping, music, medicine & tourism" },
+      { title: "World Spectrum — sports, politics, shopping, music, medicine & tourism" },
       {
         name: "description",
         content:
-          "worldbeat: a trilingual hub (Arabic, English, Swedish) for European football, world politics, home shopping, global music, medical tips and travel destinations.",
+          "World Spectrum: a trilingual hub (Arabic, English, Swedish) for European football, world politics, home shopping, global music, medical tips and travel destinations.",
       },
-      { property: "og:title", content: "worldbeat" },
+      { property: "og:title", content: "World Spectrum" },
       {
         property: "og:description",
         content: "Trilingual global news, shopping, music, medicine & tourism.",
@@ -156,7 +156,7 @@ function SiteHeader() {
           <span className="grid h-9 w-9 place-items-center rounded-lg bg-primary text-primary-foreground font-black text-lg">
             w
           </span>
-          <span className="text-2xl font-black text-gradient-gold tracking-tight">worldbeat</span>
+          <span className="text-2xl font-black text-gradient-gold tracking-tight">World Spectrum</span>
         </Link>
         <nav className="hidden lg:flex items-center gap-1 text-sm font-semibold">
           <NavLink to="/">{t("home")}</NavLink>
@@ -198,8 +198,8 @@ function SiteFooter() {
   return (
     <footer className="mt-20 border-t border-border">
       <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 text-center text-sm text-muted-foreground">
-        <div className="text-2xl font-black text-gradient-gold mb-2">worldbeat</div>
-        <p>© {new Date().getFullYear()} worldbeat. {t("copyrightTail")}</p>
+        <div className="text-2xl font-black text-gradient-gold mb-2">World Spectrum</div>
+        <p>© {new Date().getFullYear()} World Spectrum. {t("copyrightTail")}</p>
       </div>
     </footer>
   );

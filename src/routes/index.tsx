@@ -20,11 +20,11 @@ function allArticlesQuery(language: Lang = "ar") {
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "worldbeat — everything that matters, in one place" },
+      { title: "World Spectrum — everything that matters, in one place" },
       {
         name: "description",
         content:
-          "worldbeat: European football news, Middle East politics, home shopping, world music, medical tips and tourism.",
+          "World Spectrum: European football news, Middle East politics, home shopping, world music, medical tips and tourism.",
       },
     ],
   }),
@@ -54,7 +54,7 @@ function HomePage() {
           {t("heroBadge")}
         </div>
         <h1 className="text-5xl md:text-7xl font-black tracking-tight">
-          <span className="text-gradient-gold">worldbeat</span>
+          <span className="text-gradient-gold">World Spectrum</span>
         </h1>
         <p className="mt-4 text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
           {t("heroSub")}
