@@ -86,11 +86,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "World Spectrum — sports, politics, shopping, music, medicine & tourism" },
+      { title: "World Spectrum — sports, world news, shopping, music, medicine & tourism" },
       {
         name: "description",
         content:
-          "World Spectrum: a trilingual hub (Arabic, English, Swedish) for European football, world politics, home shopping, global music, medical tips and travel destinations.",
+          "World Spectrum: a trilingual hub (Arabic, English, Swedish) for European football, world news, home shopping, global music, medical tips and travel destinations.",
       },
       { property: "og:title", content: "World Spectrum" },
       {

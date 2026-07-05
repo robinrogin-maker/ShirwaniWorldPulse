@@ -24,7 +24,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "World Spectrum: European football news, Middle East politics, home shopping, world music, medical tips and tourism.",
+          "World Spectrum: European football news, world news, home shopping, world music, medical tips and tourism.",
       },
     ],
   }),
