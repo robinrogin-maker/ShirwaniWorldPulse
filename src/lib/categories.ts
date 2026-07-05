@@ -8,6 +8,7 @@ export const CATEGORIES: Record<
   CategoryKey,
   {
     key: CategoryKey;
+    slug: string;
     label: TriString;
     tagline: TriString;
     description: TriString;
@@ -18,6 +19,7 @@ export const CATEGORIES: Record<
 > = {
   sports: {
     key: "sports",
+    slug: "sports",
     label: { ar: "رياضة", en: "Sports", sv: "Sport" },
     tagline: {
       ar: "كرة القدم الأوروبية والمنتخبات",
@@ -35,7 +37,8 @@ export const CATEGORIES: Record<
   },
   politics: {
     key: "politics",
-    label: { ar: "سياسة", en: "Politics", sv: "Politik" },
+    slug: "worldnews",
+    label: { ar: "الأخبار العالمية", en: "World News", sv: "Världsnyheter" },
     tagline: { ar: "الشرق الأوسط والعالم", en: "Middle East & world", sv: "Mellanöstern & världen" },
     description: {
       ar: "أحدث المستجدات السياسية في الشرق الأوسط والعالم، بتغطية متوازنة.",
@@ -48,6 +51,7 @@ export const CATEGORIES: Record<
   },
   shopping: {
     key: "shopping",
+    slug: "shopping",
     label: { ar: "تسوّق", en: "Shopping", sv: "Shopping" },
     tagline: { ar: "مأكولات وأثاث للمنزل", en: "Food & home furniture", sv: "Mat & hemmöbler" },
     description: {
@@ -61,6 +65,7 @@ export const CATEGORIES: Record<
   },
   music: {
     key: "music",
+    slug: "music",
     label: { ar: "موسيقى", en: "Music", sv: "Musik" },
     tagline: { ar: "أغانٍ عالمية متنوعة", en: "Diverse global songs", sv: "Variera globala låtar" },
     description: {
@@ -74,6 +79,7 @@ export const CATEGORIES: Record<
   },
   medicine: {
     key: "medicine",
+    slug: "medicine",
     label: { ar: "طب", en: "Medicine", sv: "Medicin" },
     tagline: { ar: "نصائح طبية", en: "Health & medical tips", sv: "Hälso- & medicinska tips" },
     description: {
@@ -87,6 +93,7 @@ export const CATEGORIES: Record<
   },
   tourism: {
     key: "tourism",
+    slug: "tourism",
     label: { ar: "سياحة", en: "Tourism", sv: "Turism" },
     tagline: {
       ar: "أجمل الأماكن في العالم",

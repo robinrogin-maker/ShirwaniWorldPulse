@@ -86,11 +86,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "World Spectrum — sports, politics, shopping, music, medicine & tourism" },
+      { title: "World Spectrum — sports, world news, shopping, music, medicine & tourism" },
       {
         name: "description",
         content:
-          "World Spectrum: a trilingual hub (Arabic, English, Swedish) for European football, world politics, home shopping, global music, medical tips and travel destinations.",
+          "World Spectrum: a trilingual hub (Arabic, English, Swedish) for European football, world news, home shopping, global music, medical tips and travel destinations.",
       },
       { property: "og:title", content: "World Spectrum" },
       {
@@ -161,7 +161,7 @@ function SiteHeader() {
         <nav className="hidden lg:flex items-center gap-1 text-sm font-semibold">
           <NavLink to="/">{t("home")}</NavLink>
           {CATEGORY_LIST.map((c) => (
-            <NavLink key={c.key} to={`/${c.key}`}>
+            <NavLink key={c.key} to={`/${c.slug}`}>
               {c.label[lang]}
             </NavLink>
           ))}
@@ -171,7 +171,7 @@ function SiteHeader() {
       <nav className="lg:hidden flex items-center gap-1 overflow-x-auto px-4 pb-3 text-sm font-semibold">
         <NavLink to="/">{t("home")}</NavLink>
         {CATEGORY_LIST.map((c) => (
-          <NavLink key={c.key} to={`/${c.key}`}>
+          <NavLink key={c.key} to={`/${c.slug}`}>
             {c.label[lang]}
           </NavLink>
         ))}

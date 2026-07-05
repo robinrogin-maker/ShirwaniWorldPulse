@@ -9,16 +9,21 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as WorldnewsRouteImport } from './routes/worldnews'
 import { Route as TourismRouteImport } from './routes/tourism'
 import { Route as SportsRouteImport } from './routes/sports'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ShoppingRouteImport } from './routes/shopping'
-import { Route as PoliticsRouteImport } from './routes/politics'
 import { Route as MusicRouteImport } from './routes/music'
 import { Route as MedicineRouteImport } from './routes/medicine'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ApiPublicHooksRefreshNewsRouteImport } from './routes/api/public/hooks/refresh-news'
 
+const WorldnewsRoute = WorldnewsRouteImport.update({
+  id: '/worldnews',
+  path: '/worldnews',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TourismRoute = TourismRouteImport.update({
   id: '/tourism',
   path: '/tourism',
@@ -37,11 +42,6 @@ const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
 const ShoppingRoute = ShoppingRouteImport.update({
   id: '/shopping',
   path: '/shopping',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PoliticsRoute = PoliticsRouteImport.update({
-  id: '/politics',
-  path: '/politics',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MusicRoute = MusicRouteImport.update({
@@ -70,22 +70,22 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/medicine': typeof MedicineRoute
   '/music': typeof MusicRoute
-  '/politics': typeof PoliticsRoute
   '/shopping': typeof ShoppingRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sports': typeof SportsRoute
   '/tourism': typeof TourismRoute
+  '/worldnews': typeof WorldnewsRoute
   '/api/public/hooks/refresh-news': typeof ApiPublicHooksRefreshNewsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/medicine': typeof MedicineRoute
   '/music': typeof MusicRoute
-  '/politics': typeof PoliticsRoute
   '/shopping': typeof ShoppingRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sports': typeof SportsRoute
   '/tourism': typeof TourismRoute
+  '/worldnews': typeof WorldnewsRoute
   '/api/public/hooks/refresh-news': typeof ApiPublicHooksRefreshNewsRoute
 }
 export interface FileRoutesById {
@@ -93,11 +93,11 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/medicine': typeof MedicineRoute
   '/music': typeof MusicRoute
-  '/politics': typeof PoliticsRoute
   '/shopping': typeof ShoppingRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sports': typeof SportsRoute
   '/tourism': typeof TourismRoute
+  '/worldnews': typeof WorldnewsRoute
   '/api/public/hooks/refresh-news': typeof ApiPublicHooksRefreshNewsRoute
 }
 export interface FileRouteTypes {
@@ -106,33 +106,33 @@ export interface FileRouteTypes {
     | '/'
     | '/medicine'
     | '/music'
-    | '/politics'
     | '/shopping'
     | '/sitemap.xml'
     | '/sports'
     | '/tourism'
+    | '/worldnews'
     | '/api/public/hooks/refresh-news'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/medicine'
     | '/music'
-    | '/politics'
     | '/shopping'
     | '/sitemap.xml'
     | '/sports'
     | '/tourism'
+    | '/worldnews'
     | '/api/public/hooks/refresh-news'
   id:
     | '__root__'
     | '/'
     | '/medicine'
     | '/music'
-    | '/politics'
     | '/shopping'
     | '/sitemap.xml'
     | '/sports'
     | '/tourism'
+    | '/worldnews'
     | '/api/public/hooks/refresh-news'
   fileRoutesById: FileRoutesById
 }
@@ -140,16 +140,23 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   MedicineRoute: typeof MedicineRoute
   MusicRoute: typeof MusicRoute
-  PoliticsRoute: typeof PoliticsRoute
   ShoppingRoute: typeof ShoppingRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   SportsRoute: typeof SportsRoute
   TourismRoute: typeof TourismRoute
+  WorldnewsRoute: typeof WorldnewsRoute
   ApiPublicHooksRefreshNewsRoute: typeof ApiPublicHooksRefreshNewsRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/worldnews': {
+      id: '/worldnews'
+      path: '/worldnews'
+      fullPath: '/worldnews'
+      preLoaderRoute: typeof WorldnewsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/tourism': {
       id: '/tourism'
       path: '/tourism'
@@ -176,13 +183,6 @@ declare module '@tanstack/react-router' {
       path: '/shopping'
       fullPath: '/shopping'
       preLoaderRoute: typeof ShoppingRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/politics': {
-      id: '/politics'
-      path: '/politics'
-      fullPath: '/politics'
-      preLoaderRoute: typeof PoliticsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/music': {
@@ -220,23 +220,13 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   MedicineRoute: MedicineRoute,
   MusicRoute: MusicRoute,
-  PoliticsRoute: PoliticsRoute,
   ShoppingRoute: ShoppingRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   SportsRoute: SportsRoute,
   TourismRoute: TourismRoute,
+  WorldnewsRoute: WorldnewsRoute,
   ApiPublicHooksRefreshNewsRoute: ApiPublicHooksRefreshNewsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}

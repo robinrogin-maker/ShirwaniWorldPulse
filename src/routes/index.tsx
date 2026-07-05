@@ -24,7 +24,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "World Spectrum: European football news, Middle East politics, home shopping, world music, medical tips and tourism.",
+          "World Spectrum: European football news, world news, home shopping, world music, medical tips and tourism.",
       },
     ],
   }),
@@ -74,7 +74,7 @@ function HomePage() {
         {CATEGORY_LIST.map((c) => (
           <Link
             key={c.key}
-            to={`/${c.key}`}
+            to={`/${c.slug}`}
             className="card-hover group rounded-xl border border-border bg-card p-5"
           >
             <div className="text-3xl mb-2">{c.icon}</div>
@@ -102,7 +102,7 @@ function HomePage() {
                     <p className="text-sm text-muted-foreground mt-1">{c.tagline[lang]}</p>
                   </div>
                   <Link
-                    to={`/${c.key}`}
+                    to={`/${c.slug}`}
                     className="text-sm font-semibold text-primary hover:underline whitespace-nowrap"
                   >
                     {t("more")} →

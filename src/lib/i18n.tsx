@@ -18,7 +18,7 @@ export const T: Dict = {
   },
   home: { ar: "الرئيسية", en: "Home", sv: "Hem" },
   sports: { ar: "رياضة", en: "Sports", sv: "Sport" },
-  politics: { ar: "سياسة", en: "Politics", sv: "Politik" },
+  politics: { ar: "الأخبار العالمية", en: "World News", sv: "Världsnyheter" },
   shopping: { ar: "تسوّق", en: "Shopping", sv: "Shopping" },
   music: { ar: "موسيقى", en: "Music", sv: "Musik" },
   medicine: { ar: "طب", en: "Medicine", sv: "Medicin" },
@@ -33,7 +33,7 @@ export const T: Dict = {
   offline: { ar: "انقطاع في الاتصال بالإنترنت", en: "Connection lost", sv: "Anslutningen bröts" },
   heroSub: {
     ar: "رياضة، سياسة، تسوّق، موسيقى، طب وسياحة — كل ما يصنع يومك في مكان واحد.",
-    en: "Sports, politics, shopping, music, medicine and tourism — all in one place.",
+    en: "Sports, world news, shopping, music, medicine and tourism — all in one place.",
     sv: "Sport, politik, shopping, musik, medicin och turism — allt på en plats.",
   },
   heroBadge: {
