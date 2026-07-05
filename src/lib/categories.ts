@@ -111,4 +111,14 @@ export const CATEGORIES: Record<
   },
 };
 
-export const CATEGORY_LIST = Object.values(CATEGORIES);
+export const CATEGORY_ORDER: CategoryKey[] = [
+  "politics",
+  "sports",
+  "medicine",
+  "music",
+  "tourism",
+  "shopping",
+];
+
+export const CATEGORY_LIST = CATEGORY_ORDER.map((k) => CATEGORIES[k]);
+
