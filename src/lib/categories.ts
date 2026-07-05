@@ -8,6 +8,7 @@ export const CATEGORIES: Record<
   CategoryKey,
   {
     key: CategoryKey;
+    slug: string;
     label: TriString;
     tagline: TriString;
     description: TriString;
