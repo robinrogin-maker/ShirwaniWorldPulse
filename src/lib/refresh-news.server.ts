@@ -44,7 +44,7 @@ const CATEGORIES: CategoryDef[] = [
     limit: 8,
     queries: {
       ar: "أخبار سياسية الشرق الأوسط عاجل",
-      en: "world politics Middle East breaking news",
+      en: "world news Middle East breaking news",
       sv: "världspolitik Mellanöstern senaste nyheterna",
     },
   },

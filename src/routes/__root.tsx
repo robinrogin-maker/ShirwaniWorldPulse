@@ -161,7 +161,7 @@ function SiteHeader() {
         <nav className="hidden lg:flex items-center gap-1 text-sm font-semibold">
           <NavLink to="/">{t("home")}</NavLink>
           {CATEGORY_LIST.map((c) => (
-            <NavLink key={c.key} to={`/${c.key}`}>
+            <NavLink key={c.key} to={`/${c.slug}`}>
               {c.label[lang]}
             </NavLink>
           ))}
@@ -171,7 +171,7 @@ function SiteHeader() {
       <nav className="lg:hidden flex items-center gap-1 overflow-x-auto px-4 pb-3 text-sm font-semibold">
         <NavLink to="/">{t("home")}</NavLink>
         {CATEGORY_LIST.map((c) => (
-          <NavLink key={c.key} to={`/${c.key}`}>
+          <NavLink key={c.key} to={`/${c.slug}`}>
             {c.label[lang]}
           </NavLink>
         ))}
