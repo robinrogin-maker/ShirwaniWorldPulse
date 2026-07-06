@@ -49,6 +49,17 @@ const CATEGORIES: CategoryDef[] = [
     },
   },
   {
+    key: "economy",
+    tbs: "qdr:d",
+    scrape: true,
+    limit: 8,
+    queries: {
+      ar: "أخبار اقتصادية عالمية أسواق البورصة أسعار العملات صرف بيع وشراء",
+      en: "global economy news stock markets currency exchange rates forex buy sell",
+      sv: "global ekonomi nyheter aktiemarknader valutakurser forex köp sälj",
+    },
+  },
+  {
     key: "shopping",
     tbs: "qdr:w",
     scrape: true,
