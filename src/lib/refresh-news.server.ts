@@ -14,7 +14,7 @@ type FirecrawlResult = {
   };
 };
 
-type CategoryKey = "sports" | "politics" | "shopping" | "music" | "medicine" | "tourism";
+type CategoryKey = "sports" | "politics" | "shopping" | "music" | "medicine" | "tourism" | "economy";
 type Lang = "ar" | "en" | "sv";
 
 type CategoryDef = {
