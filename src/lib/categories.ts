@@ -131,6 +131,7 @@ export const CATEGORIES: Record<
 
 export const CATEGORY_ORDER: CategoryKey[] = [
   "politics",
+  "economy",
   "sports",
   "medicine",
   "music",
