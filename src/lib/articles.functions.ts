@@ -1,7 +1,7 @@
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
 
-const categorySchema = z.enum(["sports", "politics", "shopping", "music", "medicine", "tourism"]);
+const categorySchema = z.enum(["sports", "politics", "shopping", "music", "medicine", "tourism", "economy"]);
 const languageSchema = z.enum(["ar", "en", "sv"]);
 
 export const listArticles = createServerFn({ method: "GET" })
@@ -29,7 +29,7 @@ export const listArticles = createServerFn({ method: "GET" })
 
 export type Article = {
   id: string;
-  category: "sports" | "politics" | "shopping" | "music" | "medicine" | "tourism";
+  category: "sports" | "politics" | "shopping" | "music" | "medicine" | "tourism" | "economy";
   language: "ar" | "en" | "sv";
   title: string;
   summary: string | null;

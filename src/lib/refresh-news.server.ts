@@ -14,7 +14,7 @@ type FirecrawlResult = {
   };
 };
 
-type CategoryKey = "sports" | "politics" | "shopping" | "music" | "medicine" | "tourism";
+type CategoryKey = "sports" | "politics" | "shopping" | "music" | "medicine" | "tourism" | "economy";
 type Lang = "ar" | "en" | "sv";
 
 type CategoryDef = {
@@ -46,6 +46,17 @@ const CATEGORIES: CategoryDef[] = [
       ar: "أخبار سياسية الشرق الأوسط عاجل",
       en: "world news Middle East breaking news",
       sv: "världspolitik Mellanöstern senaste nyheterna",
+    },
+  },
+  {
+    key: "economy",
+    tbs: "qdr:d",
+    scrape: true,
+    limit: 8,
+    queries: {
+      ar: "أخبار اقتصادية عالمية أسواق البورصة أسعار العملات صرف بيع وشراء",
+      en: "global economy news stock markets currency exchange rates forex buy sell",
+      sv: "global ekonomi nyheter aktiemarknader valutakurser forex köp sälj",
     },
   },
   {
