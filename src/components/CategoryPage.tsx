@@ -38,7 +38,7 @@ export function CategoryPage({ categoryKey }: { categoryKey: CategoryKey }) {
       <header className="mb-8 flex flex-wrap items-end justify-between gap-4 border-b border-border pb-6">
         <div>
           <div className={`inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-bold ${c.badgeClass}`}>
-            <span>{c.icon}</span>
+            <span className="text-sm">{c.icon}</span>
             <span>{t("section")}</span>
           </div>
           <h1 className={`mt-3 text-4xl md:text-5xl font-black ${c.accentClass}`}>{c.label[lang]}</h1>
@@ -49,7 +49,7 @@ export function CategoryPage({ categoryKey }: { categoryKey: CategoryKey }) {
 
       {articles.length === 0 ? (
         <div className="rounded-xl border border-border bg-card p-10 text-center">
-          <div className="text-4xl mb-3">{c.icon}</div>
+          <div className="text-2xl mb-2">{c.icon}</div>
           <p className="text-muted-foreground">{t("noItems")}</p>
         </div>
       ) : (
