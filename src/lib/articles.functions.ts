@@ -1,7 +1,7 @@
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
 
-const categorySchema = z.enum(["sports", "politics", "shopping", "music", "medicine", "tourism"]);
+const categorySchema = z.enum(["sports", "politics", "shopping", "music", "medicine", "tourism", "economy"]);
 const languageSchema = z.enum(["ar", "en", "sv"]);
 
 export const listArticles = createServerFn({ method: "GET" })
