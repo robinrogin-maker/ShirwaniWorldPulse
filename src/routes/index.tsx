@@ -77,7 +77,7 @@ function HomePage() {
             to={`/${c.slug}`}
             className="card-hover group rounded-xl border border-border bg-card p-5"
           >
-            <div className="text-3xl mb-2">{c.icon}</div>
+            <div className="text-xl mb-1">{c.icon}</div>
             <div className={`text-lg font-bold ${c.accentClass}`}>{c.label[lang]}</div>
             <div className="text-xs text-muted-foreground mt-1">{c.tagline[lang]}</div>
           </Link>
@@ -96,7 +96,7 @@ function HomePage() {
                 <div className="flex items-end justify-between mb-5 border-b border-border pb-3">
                   <div>
                     <h2 className="text-2xl md:text-3xl font-black flex items-center gap-2">
-                      <span>{c.icon}</span>
+                      <span className="text-lg">{c.icon}</span>
                       <span className={c.accentClass}>{c.label[lang]}</span>
                     </h2>
                     <p className="text-sm text-muted-foreground mt-1">{c.tagline[lang]}</p>
@@ -132,7 +132,7 @@ function EmptyState() {
       <div className="grid grid-cols-2 md:grid-cols-3 gap-3 max-w-2xl mx-auto">
         {CATEGORY_LIST.map((c) => (
           <div key={c.key} className="rounded-lg border border-border bg-background/50 p-4">
-            <div className="text-2xl mb-1">{c.icon}</div>
+            <div className="text-lg mb-1">{c.icon}</div>
             <div className={`font-bold ${c.accentClass}`}>{c.label[lang]}</div>
             <div className="text-xs text-muted-foreground">{c.tagline[lang]}</div>
           </div>
