@@ -15,7 +15,7 @@ import { Route as SportsRouteImport } from './routes/sports'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ShoppingRouteImport } from './routes/shopping'
 import { Route as MusicRouteImport } from './routes/music'
-import { Route as MedicineRouteImport } from './routes/medicine'
+import { Route as HealthRouteImport } from './routes/health'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ApiPublicHooksRefreshNewsRouteImport } from './routes/api/public/hooks/refresh-news'
 
@@ -49,9 +49,9 @@ const MusicRoute = MusicRouteImport.update({
   path: '/music',
   getParentRoute: () => rootRouteImport,
 } as any)
-const MedicineRoute = MedicineRouteImport.update({
-  id: '/medicine',
-  path: '/medicine',
+const HealthRoute = HealthRouteImport.update({
+  id: '/health',
+  path: '/health',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -68,7 +68,7 @@ const ApiPublicHooksRefreshNewsRoute =
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/medicine': typeof MedicineRoute
+  '/health': typeof HealthRoute
   '/music': typeof MusicRoute
   '/shopping': typeof ShoppingRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -79,7 +79,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/medicine': typeof MedicineRoute
+  '/health': typeof HealthRoute
   '/music': typeof MusicRoute
   '/shopping': typeof ShoppingRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -91,7 +91,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/medicine': typeof MedicineRoute
+  '/health': typeof HealthRoute
   '/music': typeof MusicRoute
   '/shopping': typeof ShoppingRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -104,7 +104,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
-    | '/medicine'
+    | '/health'
     | '/music'
     | '/shopping'
     | '/sitemap.xml'
@@ -115,7 +115,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/medicine'
+    | '/health'
     | '/music'
     | '/shopping'
     | '/sitemap.xml'
@@ -126,7 +126,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
-    | '/medicine'
+    | '/health'
     | '/music'
     | '/shopping'
     | '/sitemap.xml'
@@ -138,7 +138,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  MedicineRoute: typeof MedicineRoute
+  HealthRoute: typeof HealthRoute
   MusicRoute: typeof MusicRoute
   ShoppingRoute: typeof ShoppingRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
@@ -192,11 +192,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MusicRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/medicine': {
-      id: '/medicine'
-      path: '/medicine'
-      fullPath: '/medicine'
-      preLoaderRoute: typeof MedicineRouteImport
+    '/health': {
+      id: '/health'
+      path: '/health'
+      fullPath: '/health'
+      preLoaderRoute: typeof HealthRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -218,7 +218,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  MedicineRoute: MedicineRoute,
+  HealthRoute: HealthRoute,
   MusicRoute: MusicRoute,
   ShoppingRoute: ShoppingRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
