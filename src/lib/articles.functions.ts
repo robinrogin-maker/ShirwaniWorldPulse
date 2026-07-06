@@ -29,7 +29,7 @@ export const listArticles = createServerFn({ method: "GET" })
 
 export type Article = {
   id: string;
-  category: "sports" | "politics" | "shopping" | "music" | "medicine" | "tourism";
+  category: "sports" | "politics" | "shopping" | "music" | "medicine" | "tourism" | "economy";
   language: "ar" | "en" | "sv";
   title: string;
   summary: string | null;
