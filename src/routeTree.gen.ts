@@ -19,6 +19,7 @@ import { Route as OnthisdayRouteImport } from './routes/onthisday'
 import { Route as MusicRouteImport } from './routes/music'
 import { Route as HealthRouteImport } from './routes/health'
 import { Route as EconomyRouteImport } from './routes/economy'
+import { Route as CarsRouteImport } from './routes/cars'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ApiPublicHooksRefreshNewsRouteImport } from './routes/api/public/hooks/refresh-news'
 
@@ -72,6 +73,11 @@ const EconomyRoute = EconomyRouteImport.update({
   path: '/economy',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CarsRoute = CarsRouteImport.update({
+  id: '/cars',
+  path: '/cars',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -86,6 +92,7 @@ const ApiPublicHooksRefreshNewsRoute =
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/cars': typeof CarsRoute
   '/economy': typeof EconomyRoute
   '/health': typeof HealthRoute
   '/music': typeof MusicRoute
@@ -100,6 +107,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/cars': typeof CarsRoute
   '/economy': typeof EconomyRoute
   '/health': typeof HealthRoute
   '/music': typeof MusicRoute
@@ -115,6 +123,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/cars': typeof CarsRoute
   '/economy': typeof EconomyRoute
   '/health': typeof HealthRoute
   '/music': typeof MusicRoute
@@ -131,6 +140,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/cars'
     | '/economy'
     | '/health'
     | '/music'
@@ -145,6 +155,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/cars'
     | '/economy'
     | '/health'
     | '/music'
@@ -159,6 +170,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/cars'
     | '/economy'
     | '/health'
     | '/music'
@@ -174,6 +186,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CarsRoute: typeof CarsRoute
   EconomyRoute: typeof EconomyRoute
   HealthRoute: typeof HealthRoute
   MusicRoute: typeof MusicRoute
@@ -259,6 +272,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EconomyRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/cars': {
+      id: '/cars'
+      path: '/cars'
+      fullPath: '/cars'
+      preLoaderRoute: typeof CarsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -278,6 +298,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CarsRoute: CarsRoute,
   EconomyRoute: EconomyRoute,
   HealthRoute: HealthRoute,
   MusicRoute: MusicRoute,
