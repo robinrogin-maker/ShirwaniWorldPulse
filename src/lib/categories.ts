@@ -1,6 +1,16 @@
 import type { Lang } from "./i18n";
 
-export type CategoryKey = "sports" | "politics" | "shopping" | "music" | "medicine" | "tourism" | "economy";
+export type CategoryKey =
+  | "sports"
+  | "politics"
+  | "shopping"
+  | "music"
+  | "medicine"
+  | "tourism"
+  | "economy"
+  | "weather"
+  | "onthisday"
+  | "cars";
 
 type TriString = Record<Lang, string>;
 
