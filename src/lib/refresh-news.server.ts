@@ -103,6 +103,39 @@ const CATEGORIES: CategoryDef[] = [
       sv: "bästa resmål i världen favoritplatser 2025 turism guide",
     },
   },
+  {
+    key: "weather",
+    tbs: "qdr:d",
+    scrape: true,
+    limit: 8,
+    queries: {
+      ar: "توقعات الطقس اليوم السويد العراق ودرجات الحرارة في المدن الكبرى أوروبا الشرق الأوسط",
+      en: "today weather forecast Sweden Iraq temperatures major cities Europe Middle East",
+      sv: "väderprognos idag Sverige Irak temperaturer storstäder Europa Mellanöstern",
+    },
+  },
+  {
+    key: "onthisday",
+    tbs: "qdr:w",
+    scrape: true,
+    limit: 8,
+    queries: {
+      ar: "حدث في مثل هذا اليوم من التاريخ أحداث تاريخية عالمية سياسة حروب علوم رياضة أديان طب كوارث",
+      en: "on this day in history major world events politics wars science sports religion medicine disasters",
+      sv: "denna dag i historien viktiga världshändelser politik krig vetenskap sport religion medicin katastrofer",
+    },
+  },
+  {
+    key: "cars",
+    tbs: "qdr:m",
+    scrape: true,
+    limit: 8,
+    queries: {
+      ar: "أكثر السيارات مبيعاً وشراءً في العالم 2025 مواصفات وميزات أفضل السيارات",
+      en: "most desired best selling cars worldwide 2025 specs features top rated vehicles",
+      sv: "mest eftertraktade bästsäljande bilar världen 2025 specifikationer egenskaper",
+    },
+  },
 ];
 
 const LANGS: Lang[] = ["ar", "en", "sv"];
