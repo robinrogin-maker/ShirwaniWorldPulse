@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as WorldnewsRouteImport } from './routes/worldnews'
+import { Route as WeatherRouteImport } from './routes/weather'
 import { Route as TourismRouteImport } from './routes/tourism'
 import { Route as SportsRouteImport } from './routes/sports'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
@@ -23,6 +24,11 @@ import { Route as ApiPublicHooksRefreshNewsRouteImport } from './routes/api/publ
 const WorldnewsRoute = WorldnewsRouteImport.update({
   id: '/worldnews',
   path: '/worldnews',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WeatherRoute = WeatherRouteImport.update({
+  id: '/weather',
+  path: '/weather',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TourismRoute = TourismRouteImport.update({
@@ -81,6 +87,7 @@ export interface FileRoutesByFullPath {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sports': typeof SportsRoute
   '/tourism': typeof TourismRoute
+  '/weather': typeof WeatherRoute
   '/worldnews': typeof WorldnewsRoute
   '/api/public/hooks/refresh-news': typeof ApiPublicHooksRefreshNewsRoute
 }
@@ -93,6 +100,7 @@ export interface FileRoutesByTo {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sports': typeof SportsRoute
   '/tourism': typeof TourismRoute
+  '/weather': typeof WeatherRoute
   '/worldnews': typeof WorldnewsRoute
   '/api/public/hooks/refresh-news': typeof ApiPublicHooksRefreshNewsRoute
 }
@@ -106,6 +114,7 @@ export interface FileRoutesById {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sports': typeof SportsRoute
   '/tourism': typeof TourismRoute
+  '/weather': typeof WeatherRoute
   '/worldnews': typeof WorldnewsRoute
   '/api/public/hooks/refresh-news': typeof ApiPublicHooksRefreshNewsRoute
 }
@@ -120,6 +129,7 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/sports'
     | '/tourism'
+    | '/weather'
     | '/worldnews'
     | '/api/public/hooks/refresh-news'
   fileRoutesByTo: FileRoutesByTo
@@ -132,6 +142,7 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/sports'
     | '/tourism'
+    | '/weather'
     | '/worldnews'
     | '/api/public/hooks/refresh-news'
   id:
@@ -144,6 +155,7 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/sports'
     | '/tourism'
+    | '/weather'
     | '/worldnews'
     | '/api/public/hooks/refresh-news'
   fileRoutesById: FileRoutesById
@@ -157,6 +169,7 @@ export interface RootRouteChildren {
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   SportsRoute: typeof SportsRoute
   TourismRoute: typeof TourismRoute
+  WeatherRoute: typeof WeatherRoute
   WorldnewsRoute: typeof WorldnewsRoute
   ApiPublicHooksRefreshNewsRoute: typeof ApiPublicHooksRefreshNewsRoute
 }
@@ -168,6 +181,13 @@ declare module '@tanstack/react-router' {
       path: '/worldnews'
       fullPath: '/worldnews'
       preLoaderRoute: typeof WorldnewsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/weather': {
+      id: '/weather'
+      path: '/weather'
+      fullPath: '/weather'
+      preLoaderRoute: typeof WeatherRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/tourism': {
@@ -245,6 +265,7 @@ const rootRouteChildren: RootRouteChildren = {
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   SportsRoute: SportsRoute,
   TourismRoute: TourismRoute,
+  WeatherRoute: WeatherRoute,
   WorldnewsRoute: WorldnewsRoute,
   ApiPublicHooksRefreshNewsRoute: ApiPublicHooksRefreshNewsRoute,
 }
