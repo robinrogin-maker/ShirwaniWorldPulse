@@ -70,15 +70,15 @@ function HomePage() {
         </div>
       </section>
 
-      <section className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 md:gap-4 mb-12">
+      <section className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-4 mb-12">
         {CATEGORY_LIST.map((c) => (
           <Link
             key={c.key}
             to={`/${c.slug}`}
-            className="card-hover group rounded-xl border border-border bg-card p-5"
+            className="card-hover group rounded-xl border border-border bg-card p-4 flex flex-col items-center text-center"
           >
-            <div className="text-xl mb-1">{c.icon}</div>
-            <div className={`text-lg font-bold ${c.accentClass}`}>{c.label[lang]}</div>
+            <div className="text-base mb-1">{c.icon}</div>
+            <div className={`text-base font-bold ${c.accentClass}`}>{c.label[lang]}</div>
             <div className="text-xs text-muted-foreground mt-1">{c.tagline[lang]}</div>
           </Link>
         ))}
