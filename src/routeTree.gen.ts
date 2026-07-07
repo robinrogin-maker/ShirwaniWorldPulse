@@ -15,6 +15,7 @@ import { Route as TourismRouteImport } from './routes/tourism'
 import { Route as SportsRouteImport } from './routes/sports'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ShoppingRouteImport } from './routes/shopping'
+import { Route as OnthisdayRouteImport } from './routes/onthisday'
 import { Route as MusicRouteImport } from './routes/music'
 import { Route as HealthRouteImport } from './routes/health'
 import { Route as EconomyRouteImport } from './routes/economy'
@@ -51,6 +52,11 @@ const ShoppingRoute = ShoppingRouteImport.update({
   path: '/shopping',
   getParentRoute: () => rootRouteImport,
 } as any)
+const OnthisdayRoute = OnthisdayRouteImport.update({
+  id: '/onthisday',
+  path: '/onthisday',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const MusicRoute = MusicRouteImport.update({
   id: '/music',
   path: '/music',
@@ -83,6 +89,7 @@ export interface FileRoutesByFullPath {
   '/economy': typeof EconomyRoute
   '/health': typeof HealthRoute
   '/music': typeof MusicRoute
+  '/onthisday': typeof OnthisdayRoute
   '/shopping': typeof ShoppingRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sports': typeof SportsRoute
@@ -96,6 +103,7 @@ export interface FileRoutesByTo {
   '/economy': typeof EconomyRoute
   '/health': typeof HealthRoute
   '/music': typeof MusicRoute
+  '/onthisday': typeof OnthisdayRoute
   '/shopping': typeof ShoppingRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sports': typeof SportsRoute
@@ -110,6 +118,7 @@ export interface FileRoutesById {
   '/economy': typeof EconomyRoute
   '/health': typeof HealthRoute
   '/music': typeof MusicRoute
+  '/onthisday': typeof OnthisdayRoute
   '/shopping': typeof ShoppingRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sports': typeof SportsRoute
@@ -125,6 +134,7 @@ export interface FileRouteTypes {
     | '/economy'
     | '/health'
     | '/music'
+    | '/onthisday'
     | '/shopping'
     | '/sitemap.xml'
     | '/sports'
@@ -138,6 +148,7 @@ export interface FileRouteTypes {
     | '/economy'
     | '/health'
     | '/music'
+    | '/onthisday'
     | '/shopping'
     | '/sitemap.xml'
     | '/sports'
@@ -151,6 +162,7 @@ export interface FileRouteTypes {
     | '/economy'
     | '/health'
     | '/music'
+    | '/onthisday'
     | '/shopping'
     | '/sitemap.xml'
     | '/sports'
@@ -165,6 +177,7 @@ export interface RootRouteChildren {
   EconomyRoute: typeof EconomyRoute
   HealthRoute: typeof HealthRoute
   MusicRoute: typeof MusicRoute
+  OnthisdayRoute: typeof OnthisdayRoute
   ShoppingRoute: typeof ShoppingRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   SportsRoute: typeof SportsRoute
@@ -218,6 +231,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ShoppingRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/onthisday': {
+      id: '/onthisday'
+      path: '/onthisday'
+      fullPath: '/onthisday'
+      preLoaderRoute: typeof OnthisdayRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/music': {
       id: '/music'
       path: '/music'
@@ -261,6 +281,7 @@ const rootRouteChildren: RootRouteChildren = {
   EconomyRoute: EconomyRoute,
   HealthRoute: HealthRoute,
   MusicRoute: MusicRoute,
+  OnthisdayRoute: OnthisdayRoute,
   ShoppingRoute: ShoppingRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   SportsRoute: SportsRoute,
