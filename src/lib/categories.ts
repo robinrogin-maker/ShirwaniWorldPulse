@@ -137,17 +137,75 @@ export const CATEGORIES: Record<
     badgeClass: "bg-[color:var(--color-tourism,#06b6d4)]/15 text-[color:var(--color-tourism,#06b6d4)]",
     icon: "🏝️",
   },
+  weather: {
+    key: "weather",
+    slug: "weather",
+    label: { ar: "الطقس", en: "Weather", sv: "Väder" },
+    tagline: {
+      ar: "توقعات السويد والعراق ومدن كبرى",
+      en: "Sweden, Iraq & major cities forecasts",
+      sv: "Prognoser för Sverige, Irak & storstäder",
+    },
+    description: {
+      ar: "توقعات الطقس اليومية للسويد والعراق، ودرجات الحرارة في المدن الكبرى في أوروبا والشرق الأوسط.",
+      en: "Daily weather forecasts for Sweden and Iraq, plus temperatures for major European and Middle Eastern cities.",
+      sv: "Dagliga väderprognoser för Sverige och Irak, samt temperaturer för storstäder i Europa och Mellanöstern.",
+    },
+    accentClass: "text-[color:var(--color-weather,#38bdf8)]",
+    badgeClass: "bg-[color:var(--color-weather,#38bdf8)]/15 text-[color:var(--color-weather,#38bdf8)]",
+    icon: "⛅",
+  },
+  onthisday: {
+    key: "onthisday",
+    slug: "onthisday",
+    label: { ar: "حدث في مثل هذا اليوم", en: "On This Day", sv: "Denna dag i historien" },
+    tagline: {
+      ar: "أحداث تاريخية مؤثرة",
+      en: "Impactful historical events",
+      sv: "Betydelsefulla historiska händelser",
+    },
+    description: {
+      ar: "أبرز الأحداث المؤثرة تاريخياً وعالمياً: سياسة، حروب، علوم، رياضة، أديان، طب وكوارث طبيعية.",
+      en: "Notable historical world events: politics, wars, science, sports, religion, medicine and natural disasters.",
+      sv: "Viktiga historiska världshändelser: politik, krig, vetenskap, sport, religion, medicin och naturkatastrofer.",
+    },
+    accentClass: "text-[color:var(--color-onthisday,#a78bfa)]",
+    badgeClass: "bg-[color:var(--color-onthisday,#a78bfa)]/15 text-[color:var(--color-onthisday,#a78bfa)]",
+    icon: "📜",
+  },
+  cars: {
+    key: "cars",
+    slug: "cars",
+    label: { ar: "عالم السيارات", en: "Cars", sv: "Bilvärlden" },
+    tagline: {
+      ar: "أكثر السيارات مرغوبة عالمياً",
+      en: "Most desired cars worldwide",
+      sv: "Världens mest eftertraktade bilar",
+    },
+    description: {
+      ar: "تعريف بأكثر السيارات مرغوباً في شرائها حول العالم، مع مواصفاتها وميزاتها التي تميّزها.",
+      en: "The world's most desired cars — specs and standout features that set them apart.",
+      sv: "Världens mest eftertraktade bilar — specifikationer och egenskaper som utmärker dem.",
+    },
+    accentClass: "text-[color:var(--color-cars,#ef4444)]",
+    badgeClass: "bg-[color:var(--color-cars,#ef4444)]/15 text-[color:var(--color-cars,#ef4444)]",
+    icon: "🚗",
+  },
 };
 
 export const CATEGORY_ORDER: CategoryKey[] = [
   "politics",
   "economy",
+  "weather",
+  "onthisday",
   "sports",
   "medicine",
+  "cars",
   "music",
   "tourism",
   "shopping",
 ];
 
 export const CATEGORY_LIST = CATEGORY_ORDER.map((k) => CATEGORIES[k]);
+
 
