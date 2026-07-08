@@ -190,6 +190,17 @@ function hostname(u: string) {
   }
 }
 
+function safeHttpUrl(u: string | null | undefined): string | null {
+  if (!u) return null;
+  try {
+    const parsed = new URL(u);
+    if (parsed.protocol !== "http:" && parsed.protocol !== "https:") return null;
+    return parsed.toString();
+  } catch {
+    return null;
+  }
+}
+
 function youtubeId(url: string): string | null {
   const m = url.match(/(?:v=|youtu\.be\/|\/shorts\/|\/embed\/)([\w-]{11})/);
   return m ? m[1] : null;
