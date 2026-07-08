@@ -70,7 +70,7 @@ function HomePage() {
         </div>
       </section>
 
-      <section className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-4 mb-12">
+      <section className="grid grid-cols-3 gap-3 md:gap-4 mb-12 max-w-3xl mx-auto">
         {CATEGORY_LIST.map((c) => (
           <Link
             key={c.key}
