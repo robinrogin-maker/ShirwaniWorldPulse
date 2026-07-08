@@ -5,11 +5,11 @@ import { runRefreshNews, type RefreshResult } from "./refresh-news.server";
 export const refreshNewsFn = createServerFn({ method: "POST" })
   .middleware([requireSupabaseAuth])
   .handler(async ({ context }): Promise<RefreshResult> => {
-    const { data: isAdmin, error } = await context.supabase.rpc("has_role", {
-      _user_id: context.userId,
-      _role: "admin",
-    });
-    if (error || !isAdmin) {
+    const adminIds = (process.env.ADMIN_USER_IDS ?? "")
+      .split(",")
+      .map((s) => s.trim())
+      .filter(Boolean);
+    if (adminIds.length === 0 || !adminIds.includes(context.userId)) {
       throw new Response("Forbidden", { status: 403 });
     }
     return runRefreshNews();
