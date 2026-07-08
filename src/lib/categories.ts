@@ -30,7 +30,7 @@ export const CATEGORIES: Record<
   sports: {
     key: "sports",
     slug: "sports",
-    label: { ar: "رياضة", en: "Sports", sv: "Sport" },
+    label: { ar: "الرياضة", en: "Sports", sv: "Sport" },
     tagline: {
       ar: "كرة القدم الأوروبية والمنتخبات",
       en: "European football & national teams",
@@ -76,7 +76,7 @@ export const CATEGORIES: Record<
   music: {
     key: "music",
     slug: "music",
-    label: { ar: "موسيقى", en: "Music", sv: "Musik" },
+    label: { ar: "الموسيقى", en: "Music", sv: "Musik" },
     tagline: { ar: "أغانٍ عالمية متنوعة", en: "Diverse global songs", sv: "Variera globala låtar" },
     description: {
       ar: "اختيارات من أبرز الأغاني العالمية المتنوعة على يوتيوب، استمع مباشرة بنقرة واحدة.",
@@ -104,7 +104,7 @@ export const CATEGORIES: Record<
   economy: {
     key: "economy",
     slug: "economy",
-    label: { ar: "اقتصاد", en: "Economy", sv: "Ekonomi" },
+    label: { ar: "الأقتصاد", en: "Economy", sv: "Ekonomi" },
     tagline: {
       ar: "أخبار الأسواق والعملات العالمية",
       en: "Global markets & currency exchange",
@@ -122,7 +122,7 @@ export const CATEGORIES: Record<
   tourism: {
     key: "tourism",
     slug: "tourism",
-    label: { ar: "سياحة", en: "Tourism", sv: "Turism" },
+    label: { ar: "السياحة", en: "Tourism", sv: "Turism" },
     tagline: {
       ar: "أجمل الأماكن في العالم",
       en: "The world's favorite places",
