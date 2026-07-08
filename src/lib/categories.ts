@@ -196,16 +196,13 @@ export const CATEGORIES: Record<
 export const CATEGORY_ORDER: CategoryKey[] = [
   "politics",
   "economy",
-  "weather",
-  "onthisday",
   "sports",
   "medicine",
-  "cars",
   "music",
   "tourism",
-  "shopping",
 ];
 
 export const CATEGORY_LIST = CATEGORY_ORDER.map((k) => CATEGORIES[k]);
+
 
 
