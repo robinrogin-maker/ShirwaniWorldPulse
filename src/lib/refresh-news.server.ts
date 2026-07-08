@@ -242,11 +242,13 @@ export async function runRefreshNews(): Promise<RefreshResult> {
         const results = await firecrawlSearch(cat, lang);
         const rows = results
           .map((r) => {
-            const url = r.url || r.metadata?.sourceURL;
+            const rawUrl = r.url || r.metadata?.sourceURL;
+            const url = safeHttpUrl(rawUrl);
             if (!url) return null;
             if (cat.key === "music" && !youtubeId(url)) return null;
             const title = (r.title || r.metadata?.title || "").trim();
             if (!title) return null;
+            const rawImage = extractImage(r, url);
             return {
               category: cat.key,
               language: lang,
@@ -256,7 +258,7 @@ export async function runRefreshNews(): Promise<RefreshResult> {
                 .slice(0, 600),
               source_url: url,
               source_name: hostname(url),
-              image_url: extractImage(r, url),
+              image_url: safeHttpUrl(rawImage),
               published_at: new Date().toISOString(),
             };
           })
