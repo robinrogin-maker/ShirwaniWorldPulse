@@ -10,27 +10,18 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as WorldnewsRouteImport } from './routes/worldnews'
-import { Route as WeatherRouteImport } from './routes/weather'
 import { Route as TourismRouteImport } from './routes/tourism'
 import { Route as SportsRouteImport } from './routes/sports'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
-import { Route as ShoppingRouteImport } from './routes/shopping'
-import { Route as OnthisdayRouteImport } from './routes/onthisday'
 import { Route as MusicRouteImport } from './routes/music'
 import { Route as HealthRouteImport } from './routes/health'
 import { Route as EconomyRouteImport } from './routes/economy'
-import { Route as CarsRouteImport } from './routes/cars'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ApiPublicHooksRefreshNewsRouteImport } from './routes/api/public/hooks/refresh-news'
 
 const WorldnewsRoute = WorldnewsRouteImport.update({
   id: '/worldnews',
   path: '/worldnews',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const WeatherRoute = WeatherRouteImport.update({
-  id: '/weather',
-  path: '/weather',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TourismRoute = TourismRouteImport.update({
@@ -48,16 +39,6 @@ const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ShoppingRoute = ShoppingRouteImport.update({
-  id: '/shopping',
-  path: '/shopping',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const OnthisdayRoute = OnthisdayRouteImport.update({
-  id: '/onthisday',
-  path: '/onthisday',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const MusicRoute = MusicRouteImport.update({
   id: '/music',
   path: '/music',
@@ -71,11 +52,6 @@ const HealthRoute = HealthRouteImport.update({
 const EconomyRoute = EconomyRouteImport.update({
   id: '/economy',
   path: '/economy',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const CarsRoute = CarsRouteImport.update({
-  id: '/cars',
-  path: '/cars',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -92,47 +68,35 @@ const ApiPublicHooksRefreshNewsRoute =
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/cars': typeof CarsRoute
   '/economy': typeof EconomyRoute
   '/health': typeof HealthRoute
   '/music': typeof MusicRoute
-  '/onthisday': typeof OnthisdayRoute
-  '/shopping': typeof ShoppingRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sports': typeof SportsRoute
   '/tourism': typeof TourismRoute
-  '/weather': typeof WeatherRoute
   '/worldnews': typeof WorldnewsRoute
   '/api/public/hooks/refresh-news': typeof ApiPublicHooksRefreshNewsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/cars': typeof CarsRoute
   '/economy': typeof EconomyRoute
   '/health': typeof HealthRoute
   '/music': typeof MusicRoute
-  '/onthisday': typeof OnthisdayRoute
-  '/shopping': typeof ShoppingRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sports': typeof SportsRoute
   '/tourism': typeof TourismRoute
-  '/weather': typeof WeatherRoute
   '/worldnews': typeof WorldnewsRoute
   '/api/public/hooks/refresh-news': typeof ApiPublicHooksRefreshNewsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/cars': typeof CarsRoute
   '/economy': typeof EconomyRoute
   '/health': typeof HealthRoute
   '/music': typeof MusicRoute
-  '/onthisday': typeof OnthisdayRoute
-  '/shopping': typeof ShoppingRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sports': typeof SportsRoute
   '/tourism': typeof TourismRoute
-  '/weather': typeof WeatherRoute
   '/worldnews': typeof WorldnewsRoute
   '/api/public/hooks/refresh-news': typeof ApiPublicHooksRefreshNewsRoute
 }
@@ -140,62 +104,46 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
-    | '/cars'
     | '/economy'
     | '/health'
     | '/music'
-    | '/onthisday'
-    | '/shopping'
     | '/sitemap.xml'
     | '/sports'
     | '/tourism'
-    | '/weather'
     | '/worldnews'
     | '/api/public/hooks/refresh-news'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/cars'
     | '/economy'
     | '/health'
     | '/music'
-    | '/onthisday'
-    | '/shopping'
     | '/sitemap.xml'
     | '/sports'
     | '/tourism'
-    | '/weather'
     | '/worldnews'
     | '/api/public/hooks/refresh-news'
   id:
     | '__root__'
     | '/'
-    | '/cars'
     | '/economy'
     | '/health'
     | '/music'
-    | '/onthisday'
-    | '/shopping'
     | '/sitemap.xml'
     | '/sports'
     | '/tourism'
-    | '/weather'
     | '/worldnews'
     | '/api/public/hooks/refresh-news'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  CarsRoute: typeof CarsRoute
   EconomyRoute: typeof EconomyRoute
   HealthRoute: typeof HealthRoute
   MusicRoute: typeof MusicRoute
-  OnthisdayRoute: typeof OnthisdayRoute
-  ShoppingRoute: typeof ShoppingRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   SportsRoute: typeof SportsRoute
   TourismRoute: typeof TourismRoute
-  WeatherRoute: typeof WeatherRoute
   WorldnewsRoute: typeof WorldnewsRoute
   ApiPublicHooksRefreshNewsRoute: typeof ApiPublicHooksRefreshNewsRoute
 }
@@ -207,13 +155,6 @@ declare module '@tanstack/react-router' {
       path: '/worldnews'
       fullPath: '/worldnews'
       preLoaderRoute: typeof WorldnewsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/weather': {
-      id: '/weather'
-      path: '/weather'
-      fullPath: '/weather'
-      preLoaderRoute: typeof WeatherRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/tourism': {
@@ -237,20 +178,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/shopping': {
-      id: '/shopping'
-      path: '/shopping'
-      fullPath: '/shopping'
-      preLoaderRoute: typeof ShoppingRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/onthisday': {
-      id: '/onthisday'
-      path: '/onthisday'
-      fullPath: '/onthisday'
-      preLoaderRoute: typeof OnthisdayRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/music': {
       id: '/music'
       path: '/music'
@@ -272,13 +199,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EconomyRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/cars': {
-      id: '/cars'
-      path: '/cars'
-      fullPath: '/cars'
-      preLoaderRoute: typeof CarsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/': {
       id: '/'
       path: '/'
@@ -298,16 +218,12 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  CarsRoute: CarsRoute,
   EconomyRoute: EconomyRoute,
   HealthRoute: HealthRoute,
   MusicRoute: MusicRoute,
-  OnthisdayRoute: OnthisdayRoute,
-  ShoppingRoute: ShoppingRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   SportsRoute: SportsRoute,
   TourismRoute: TourismRoute,
-  WeatherRoute: WeatherRoute,
   WorldnewsRoute: WorldnewsRoute,
   ApiPublicHooksRefreshNewsRoute: ApiPublicHooksRefreshNewsRoute,
 }
