@@ -1,15 +1,25 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
 import { toast } from "sonner";
 import { refreshNewsFn } from "@/lib/refresh-news.functions";
 import { useI18n } from "@/lib/i18n";
+import { supabase } from "@/integrations/supabase/client";
 
 export function RefreshButton() {
   const [loading, setLoading] = useState(false);
+  const [authed, setAuthed] = useState(false);
   const router = useRouter();
   const refresh = useServerFn(refreshNewsFn);
   const { t } = useI18n();
+
+  useEffect(() => {
+    supabase.auth.getSession().then(({ data }) => setAuthed(!!data.session));
+    const { data: sub } = supabase.auth.onAuthStateChange((_e, session) => {
+      setAuthed(!!session);
+    });
+    return () => sub.subscription.unsubscribe();
+  }, []);
 
   async function handle() {
     setLoading(true);
@@ -38,6 +48,8 @@ export function RefreshButton() {
       setLoading(false);
     }
   }
+
+  if (!authed) return null;
 
   return (
     <button
