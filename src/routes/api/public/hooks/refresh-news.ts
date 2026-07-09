@@ -14,9 +14,11 @@ export const Route = createFileRoute("/api/public/hooks/refresh-news")({
   server: {
     handlers: {
       POST: async ({ request }) => {
-        const expected = process.env.REFRESH_SECRET;
-        if (!expected) {
-          console.error("refresh-news: REFRESH_SECRET is not configured");
+        const expected = [process.env.REFRESH_SECRET, process.env.REFRESH_CRON_TOKEN].filter(
+          (v): v is string => typeof v === "string" && v.length > 0,
+        );
+        if (expected.length === 0) {
+          console.error("refresh-news: no refresh secret configured");
           return new Response("Not found", { status: 404 });
         }
 
@@ -26,7 +28,7 @@ export const Route = createFileRoute("/api/public/hooks/refresh-news")({
             ? request.headers.get("authorization")!.slice(7)
             : null);
 
-        if (!provided || !timingSafeEqual(provided, expected)) {
+        if (!provided || !expected.some((e) => timingSafeEqual(provided, e))) {
           return new Response("Not found", { status: 404 });
         }
 
