@@ -49,6 +49,8 @@ export function RefreshButton() {
     }
   }
 
+  if (!authed) return null;
+
   return (
     <button
       onClick={handle}
