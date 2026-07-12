@@ -38,6 +38,14 @@ header p {
 
 
 /* القائمة */
+nav {
+
+    text-align:center;
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+
+}
 
 nav a {
 
@@ -116,9 +124,9 @@ nav a:hover {
 
 .card h2 {
 
-    color: #bae6fd;
-    font-size: 19px;
-    margin: 8px 0;
+    color:#7dd3fc;
+    font-size:19px;
+    margin:8px 0;
 
 }
 
