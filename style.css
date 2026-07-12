@@ -103,15 +103,8 @@ nav a:hover {
 
 
 .card {
-
-    background:#003b66;
-    padding:10px;
-    border-radius:12px;
-    text-align:center;
-    box-shadow:0 4px 10px #000;
-    min-height:125px;
-    transition:0.3s;
-
+    padding: 20px;
+    text-align: center;
 }
 
 .card:hover {
@@ -123,28 +116,21 @@ nav a:hover {
 
 
 .icon {
-    font-size: 28px;
-    margin-bottom: 8px;
+    font-size: 40px;
     line-height: 1;
+    margin-bottom: 10px;
 }
 
 
 .card h2 {
-
-    color:#7dd3fc;
-    font-size:18px;
-    margin:5px 0;
-
+    font-size: 22px;
+    margin: 10px 0;
 }
 
 
 .card p {
-
-    color:#e0f2fe;
-    line-height:1.4;
-    font-size:13px;
-    margin:4px;
-
+    font-size: 15px;
+    line-height: 1.6;
 }
 
 
