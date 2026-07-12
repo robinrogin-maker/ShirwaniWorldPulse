@@ -135,19 +135,15 @@ nav a:hover {
 
 
 .icon {
-
-    font-size:32px;
-    margin-bottom:5px;
-
+    font-size: 45px !important;
+    line-height: 1;
 }
 
 
 .card h2 {
-
-    color:#38bdf8;
-    font-size:19px;
-    margin:8px 0;
-
+    font-size: 24px;
+    margin: 12px 0;
+    font-weight: bold;
 }
 
 
