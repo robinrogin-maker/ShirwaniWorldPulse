@@ -40,20 +40,28 @@ header p {
 /* القائمة */
 nav {
 
+    background:#1e293b;
+    padding:20px;
     text-align:center;
     display:flex;
     justify-content:center;
     flex-wrap:wrap;
+    gap:8px;
 
 }
 
 nav a {
 
-    display:inline-block;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
     background:#003b66;
     color:white;
-    padding:10px 18px;
-    margin:6px;
+
+    width:120px;
+    height:45px;
+
     border-radius:10px;
     text-decoration:none;
     font-weight:bold;
