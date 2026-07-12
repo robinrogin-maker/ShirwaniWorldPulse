@@ -90,13 +90,48 @@ nav a:hover {
 
 .card {
 
-    background:#1e293b;
-    padding:12px;
-    border-radius:12px;
-    text-align:center;
-    box-shadow:0 4px 12px #000;
+    background: #172554;
+    padding: 20px;
+    border-radius: 18px;
+    text-align: center;
+    box-shadow: 0 8px 20px #000;
+    min-height: 190px;
+    transition: 0.3s;
+    border: 1px solid #1e40af;
 
-    min-height:150px;
+}
+
+.card:hover {
+
+    transform: translateY(-8px);
+    background: #1e3a8a;
+
+}
+
+
+.icon {
+
+    font-size: 42px;
+    margin-bottom: 12px;
+
+}
+
+
+.card h2 {
+
+    color: #7dd3fc;
+    font-size: 22px;
+    margin: 10px 0;
+
+}
+
+
+.card p {
+
+    color: #e0f2fe;
+    line-height: 1.6;
+    font-size: 15px;
+    margin: 8px;
 
 }
 
