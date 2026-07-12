@@ -124,8 +124,8 @@ nav a:hover {
 
 .icon {
 
-    font-size: 34px;
-    margin-bottom: 8px;
+    font-size:30px;
+    margin-bottom:5px;
 
 }
 
@@ -133,18 +133,18 @@ nav a:hover {
 .card h2 {
 
     color:#7dd3fc;
-    font-size:19px;
-    margin:8px 0;
+    font-size:18px;
+    margin:5px 0;
 
 }
 
 
 .card p {
 
-    color: #e0f2fe;
-    line-height: 1.5;
-    font-size: 14px;
-    margin: 5px;
+    color:#e0f2fe;
+    line-height:1.4;
+    font-size:13px;
+    margin:4px;
 
 }
 
