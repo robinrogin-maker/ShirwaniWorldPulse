@@ -1,205 +1,308 @@
+افتح index.html → اختر كل الكود الموجود → احذفه → ضع هذا الكود:
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ShirwaniWorldPulse</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
-        body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    background: #c9d6e8;
-    color: #222;
+<title>ShirwaniWorldPulse</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
 }
 
-        .container {
-            width: 90%;
-            max-width: 1100px;
-            margin: auto;
-        }
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #111827;
+    color: white;
+}
 
-        header {
-            background: #0b3d91;
-            color: white;
-            padding: 25px 0;
-            text-align: center;
-        }
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: auto;
+}
 
-        header h1 {
-            margin: 0;
-            font-size: 36px;
-        }
 
-        header p {
-            font-size: 18px;
-        }
+/* رأس الموقع */
 
-        nav {
-    background: #d8e3f2;
-    padding: 15px;
+header {
+    background: linear-gradient(135deg,#003b66,#001b33);
+    padding: 35px 0;
     text-align: center;
-    box-shadow: 0 2px 5px #9aaec7;
+}
+
+header h1 {
+    margin:0;
+    font-size:40px;
+}
+
+header p {
+    font-size:20px;
+    color:#dbeafe;
+}
+
+
+
+/* القائمة */
+
+nav {
+    background:#1e293b;
+    padding:15px;
+    text-align:center;
 }
 
 nav a {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    background: #003b66;
-    color: white;
-    margin: 8px;
-    padding: 12px 22px;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: bold;
-    text-align: center;
+    display:inline-block;
+    background:#064e78;
+    color:white;
+    padding:12px 20px;
+    margin:6px;
+    border-radius:10px;
+    text-decoration:none;
+    font-weight:bold;
 }
 
 nav a:hover {
-    background: #002844;
+    background:#0284c7;
 }
 
-        .news-bar {
-            background: #222;
-            color: white;
-            padding: 12px;
-            margin-top: 20px;
-            overflow: hidden;
-        }
 
-        .cards {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 25px;
-    margin: 30px 0;
+
+/* شريط الأخبار */
+
+.news-bar {
+
+    margin-top:25px;
+    background:#020617;
+    padding:15px;
+    border-radius:10px;
+    text-align:center;
 }
 
-        .card {
-    background: #f4f8ff;
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0 3px 10px #9aaec7;
-    border-top: 4px solid #002b55;
-    text-align: center;
+
+
+/* الأقسام */
+
+.cards {
+
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:25px;
+    margin:35px 0;
+
 }
+
+
+.card {
+
+    background:#1e293b;
+    padding:25px;
+    border-radius:15px;
+    text-align:center;
+    box-shadow:0 5px 15px #000;
+
+}
+
+
+.icon {
+
+    font-size:45px;
+    margin-bottom:10px;
+
+}
+
 
 .card h2 {
-    color: #003b66;
-    text-align: center;
-    margin-top: 10px;
+
+    color:#38bdf8;
+
 }
+
 
 .card p {
-    text-align: center;
-    line-height: 1.8;
+
+    color:#e2e8f0;
+    line-height:1.8;
+
 }
 
-        footer {
-            background: #0b3d91;
-            color: white;
-            text-align: center;
-            padding: 15px;
-        }
-    </style> 
-        <style>
-/* تصميم أزرار الأقسام */
-button {
-    background-color: #003b66;
-    color: white;
-    border: none;
-    padding: 12px 25px;
-    border-radius: 8px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
+
+
+/* الفوتر */
+
+footer {
+
+    background:#003b66;
+    text-align:center;
+    padding:20px;
+
 }
 
-/* عند مرور الماوس */
-button:hover {
-    background-color: #002844;
+
+
+/* الهاتف */
+
+@media(max-width:800px){
+
+.cards {
+
+grid-template-columns:1fr;
+
 }
+
+header h1 {
+
+font-size:30px;
+
+}
+
+}
+
+
 </style>
+
 </head>
+
 
 <body>
 
+
 <header>
-    <div class="container">
-        <h1>🌍 ShirwaniWorldPulse</h1>
-        <p>نبض العالم... بوضوح ومصداقية</p>
-    </div>
+
+<div class="container">
+
+<h1>🌍 ShirwaniWorldPulse</h1>
+
+<p>نبض العالم... بوضوح ومصداقية</p>
+
+</div>
+
 </header>
 
 
+
 <nav>
-    <a href="#">الرئيسية</a>
-    <a href="#">أخبار العالم</a>
-    <a href="#">الشؤون الكردية</a>
-    <a href="#">الاقتصاد</a>
-    <a href="#">الرياضة</a>
-    <a href="#">الصحة</a>
-    <a href="#">السياحة</a>
-    <a href="#">الموسيقى</a>
+
+<a href="#">الرئيسية</a>
+<a href="#">أخبار العالم</a>
+<a href="#">الشؤون الكردية</a>
+<a href="#">الاقتصاد</a>
+<a href="#">الرياضة</a>
+<a href="#">الصحة</a>
+<a href="#">السياحة</a>
+<a href="#">الموسيقى</a>
+
 </nav>
+
 
 
 <div class="container">
 
-    <div class="news-bar">
-        📰 آخر الأخبار ستكون هنا قريباً...
-    </div>
 
+<div class="news-bar">
 
-    <div class="cards">
-
-        <div class="card">
-            <div class="icon">🌍</div>
-        <h2>أخبار العالم</h2>
-        <p>متابعة أهم الأحداث العالمية بوضوح ومصداقية.</p>
-        </div>
-
-        <div class="card">
-            <div class="icon">🌍</div>
-            <h2>🟢 الشؤون الكردية</h2>
-            <p>قسم خاص بتاريخ وثقافة وقضايا الشعب الكردي.</p>
-        </div>
-
-        <div class="card">
-            <div class="icon">🌍</div>
-            <h2>⚽ الرياضة</h2>
-            <p>أخبار كرة القدم والنتائج العالمية.</p>
-        </div>
-
-        <div class="card">
-            <div class="icon">🌍</div>
-            <h2>💰 الاقتصاد</h2>
-            <p>أخبار الاقتصاد والأسواق العالمية.</p>
-        </div>
-        <div class="card">
-            <div class="icon">🌍</div>
-            <h2>🩺 الصحة</h2>
-            <p>معلومات ونصائح صحية مفيدة.</p>
-        </div>
-        <div class="card">
-            <div class="icon">🌍</div>
-            <h2>✈️ السياحة</h2>
-            <p>اكتشف أجمل الأماكن حول العالم.</p>
-        </div>
-
-    </div>
+📰 آخر الأخبار ستكون هنا قريباً...
 
 </div>
 
 
+
+<div class="cards">
+
+
+<div class="card">
+
+<div class="icon">🌍</div>
+
+<h2>أخبار العالم</h2>
+
+<p>متابعة أهم الأحداث العالمية بوضوح ومصداقية.</p>
+
+</div>
+
+
+
+<div class="card">
+
+<div class="icon">🟢</div>
+
+<h2>الشؤون الكردية</h2>
+
+<p>قسم خاص بتاريخ وثقافة وقضايا الشعب الكردي.</p>
+
+</div>
+
+
+
+<div class="card">
+
+<div class="icon">⚽</div>
+
+<h2>الرياضة</h2>
+
+<p>أخبار كرة القدم والنتائج العالمية.</p>
+
+</div>
+
+
+
+
+<div class="card">
+
+<div class="icon">💰</div>
+
+<h2>الاقتصاد</h2>
+
+<p>أخبار الاقتصاد والأسواق العالمية.</p>
+
+</div>
+
+
+
+<div class="card">
+
+<div class="icon">🩺</div>
+
+<h2>الصحة</h2>
+
+<p>معلومات ونصائح صحية مفيدة.</p>
+
+</div>
+
+
+
+<div class="card">
+
+<div class="icon">✈️</div>
+
+<h2>السياحة</h2>
+
+<p>اكتشف أجمل الأماكن حول العالم.</p>
+
+</div>
+
+
+
+</div>
+
+
+</div>
+
+
+
 <footer>
-    © 2026 ShirwaniWorldPulse
+
+© 2026 ShirwaniWorldPulse
+
 </footer>
 
+
 </body>
+
 </html>
