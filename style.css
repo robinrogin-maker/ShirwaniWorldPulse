@@ -39,25 +39,23 @@ header p {
 
 /* القائمة */
 
-nav {
-    background:#1e293b;
-    padding:15px;
-    text-align:center;
-}
-
 nav a {
+
     display:inline-block;
-    background:#064e78;
+    background:#003b66;
     color:white;
-    padding:12px 20px;
+    padding:10px 18px;
     margin:6px;
     border-radius:10px;
     text-decoration:none;
     font-weight:bold;
+
 }
 
 nav a:hover {
-    background:#0284c7;
+
+    background:#005f8f;
+
 }
 
 
@@ -90,21 +88,20 @@ nav a:hover {
 
 .card {
 
-    background: #064e78;
-    padding: 14px;
-    border-radius: 12px;
-    text-align: center;
-    box-shadow: 0 4px 12px #000;
-    min-height: 150px;
-    transition: 0.3s;
-    border: 1px solid #0284c7;
+    background:#003b66;
+    padding:14px;
+    border-radius:12px;
+    text-align:center;
+    box-shadow:0 4px 12px #000;
+    min-height:150px;
+    transition:0.3s;
 
 }
 
 .card:hover {
 
-    transform: translateY(-5px);
-    background: #075985;
+    background:#005f8f;
+    transform:translateY(-5px);
 
 }
 
