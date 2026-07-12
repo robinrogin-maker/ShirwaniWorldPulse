@@ -95,9 +95,9 @@ nav a:hover {
 
     display:grid;
     grid-template-columns:repeat(3, 1fr);
-    gap:45px;
-    margin:35px auto;
-    max-width:950px;
+    gap:25px;
+    margin:30px auto;
+    max-width:850px;
 
 }
 
@@ -105,11 +105,11 @@ nav a:hover {
 .card {
 
     background:#003b66;
-    padding:14px;
+    padding:10px;
     border-radius:12px;
     text-align:center;
-    box-shadow:0 4px 12px #000;
-    min-height:150px;
+    box-shadow:0 4px 10px #000;
+    min-height:125px;
     transition:0.3s;
 
 }
