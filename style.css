@@ -167,3 +167,8 @@ font-size:30px;
 
 }
 
+.top-logo {
+    display: block;
+    width: 180px;
+    margin: 20px auto;
+}
