@@ -92,51 +92,50 @@ nav a:hover {
 /* الأقسام */
 
 .cards {
-
     display:grid;
     grid-template-columns:repeat(3, 1fr);
-    gap:25px;
-    margin:30px auto;
-    max-width:850px;
-
+    gap:18px;
+    margin:25px auto;
+    max-width:750px;
 }
 
 
 .card {
-    padding: 20px;
-    text-align: center;
+    padding:15px;
+    text-align:center;
+    background:#0f2438;
+    border-radius:12px;
+    transition:0.3s;
 }
 
-.card:hover {
 
+.card:hover {
     background:#005f8f;
     transform:translateY(-5px);
-
 }
 
 
 .icon {
-    font-size: 45px;
-    line-height: 1;
-    margin-bottom: 10px;
+    font-size:32px;
+    line-height:1;
+    margin-bottom:8px;
 }
+
 
 .card h2 {
-    background: transparent;
-    font-size: 24px;
-    font-weight: bold;
-    color: #8FDBFF;
-    margin: 12px 0;
+    font-size:18px;
+    font-weight:bold;
+    color:#8FDBFF;
+    margin:8px 0;
 }
+
 
 .card p {
-    background: transparent;
-    color: #D0D0D0;
-    line-height: 1.5;
-    font-size: 14px;
-    margin: 5px;
+    color:#d0d0d0;
+    line-height:1.5;
+    font-size:13px;
+    margin:5px;
 }
-
 
 /* الفوتر */
 
