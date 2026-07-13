@@ -116,49 +116,25 @@ nav a:hover {
 
 
 .icon {
-    font-size: 40px;
+    font-size: 45px;
     line-height: 1;
     margin-bottom: 10px;
 }
 
-
 .card h2 {
     background: transparent;
-    font-size: 22px;
+    font-size: 24px;
     font-weight: bold;
     color: #8FDBFF;
-    margin: 10px 0;
+    margin: 12px 0;
 }
-
 
 .card p {
     background: transparent;
-    font-size: 15px;
     color: #D0D0D0;
-    line-height: 1.6;
-}
-
-
-.icon {
-    font-size: 45px !important;
-    line-height: 1;
-}
-
-
-.card h2 {
-    font-size: 24px;
-    margin: 12px 0;
-    font-weight: bold;
-}
-
-
-.card p {
-
-    color:#e2e8f0;
-    line-height:1.5;
-    font-size:14px;
-    margin:5px;
-
+    line-height: 1.5;
+    font-size: 14px;
+    margin: 5px;
 }
 
 
