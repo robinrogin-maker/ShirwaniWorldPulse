@@ -20,7 +20,7 @@ body {
 /* رأس الموقع */
 
 header {
-    background: linear-gradient(135deg,#003b66,#001b33);
+    background: #003b66;
     padding: 35px 0;
     text-align: center;
 }
