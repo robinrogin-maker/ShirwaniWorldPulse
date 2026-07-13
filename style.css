@@ -26,18 +26,11 @@ header {
 
     text-align: center;
 
-    padding: 30px 15px;
-
-}
-
-
-header {
-
-    background: #0b3a5b;
-
-    text-align: center;
-
     padding: 18px 15px;
+
+    box-shadow: 0 6px 15px rgba(0,0,0,0.45);
+
+    border-bottom: 2px solid #1d6085;
 
 }
 
