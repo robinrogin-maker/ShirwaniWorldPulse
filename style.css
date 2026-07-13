@@ -26,9 +26,9 @@ header {
 
     text-align: center;
 
-    padding: 18px 15px;
+    padding: 12px 15px;
 
-    box-shadow: 0 6px 15px rgba(0,0,0,0.45);
+    box-shadow: 0 5px 12px rgba(0,0,0,0.4);
 
     border-bottom: 2px solid #1d6085;
 
@@ -39,20 +39,16 @@ header h1 {
 
     margin: 0;
 
-    font-size: 32px;
-
-    color: #ffffff;
+    font-size: 30px;
 
 }
 
 
 header p {
 
-    margin-top: 8px;
+    margin: 5px 0 0;
 
-    font-size: 17px;
-
-    color: #8FDBFF;
+    font-size: 16px;
 
 }
 
@@ -65,9 +61,11 @@ nav {
 
     justify-content: center;
 
-    gap: 15px;
+    gap: 12px;
 
-    padding: 18px;
+    padding: 25px 15px;
+
+    flex-wrap: wrap;
 
 }
 
