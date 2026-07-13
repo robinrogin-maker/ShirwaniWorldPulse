@@ -26,11 +26,11 @@ header {
 
     text-align: center;
 
-    padding: 6px 10px;
+    padding: 2px 5px;
 
-    box-shadow: 0 4px 10px rgba(0,0,0,0.35);
+    box-shadow: 0 3px 8px rgba(0,0,0,0.35);
 
-    border-bottom: 2px solid #1d6085;
+    border-bottom: 1px solid #1d6085;
 
 }
 
@@ -91,9 +91,9 @@ nav {
 
     align-items: center;
 
-    gap: 10px;
+    gap: 8px;
 
-    padding: 6px 10px;
+    padding: 2px 5px;
 
     flex-wrap: wrap;
 
@@ -106,9 +106,9 @@ nav a {
 
     text-decoration: none;
 
-    padding: 5px 12px;
+    padding: 3px 10px;
 
-    font-size: 15px;
+    font-size: 14px;
 
     transition: 0.3s;
 
