@@ -31,11 +31,22 @@ header {
 }
 
 
+header {
+
+    background: #0b3a5b;
+
+    text-align: center;
+
+    padding: 18px 15px;
+
+}
+
+
 header h1 {
 
     margin: 0;
 
-    font-size: 38px;
+    font-size: 32px;
 
     color: #ffffff;
 
@@ -44,14 +55,13 @@ header h1 {
 
 header p {
 
-    margin-top: 12px;
+    margin-top: 8px;
 
-    font-size: 20px;
+    font-size: 17px;
 
     color: #8FDBFF;
 
 }
-
 
 
 /* Navigation */
