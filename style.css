@@ -124,12 +124,14 @@ nav a:hover {
 
 .card h2 {
     font-size: 22px;
+    color: #8FDBFF;
     margin: 10px 0;
 }
 
 
 .card p {
     font-size: 15px;
+    color: #D0D0D0;
     line-height: 1.6;
 }
 
