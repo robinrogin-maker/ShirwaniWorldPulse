@@ -24,13 +24,9 @@ header {
 
     background: #0b3a5b;
 
-    text-align: center;
+    padding: 8px 10px;
 
-    padding: 2px 5px;
-
-    box-shadow: 0 3px 8px rgba(0,0,0,0.35);
-
-    border-bottom: 1px solid #1d6085;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.35);
 
 }
 
@@ -102,13 +98,13 @@ nav {
 
 nav a {
 
-    color: #ffffff;
+    color: #B8B8B8;
 
     text-decoration: none;
 
-    padding: 3px 10px;
+    padding: 6px 12px;
 
-    font-size: 14px;
+    font-size: 15px;
 
     transition: 0.3s;
 
@@ -117,12 +113,13 @@ nav a {
 
 nav a:hover {
 
-    border: 1px solid #8FDBFF;
+    color: #ffffff;
+
+    border: 1px solid #1d6085;
 
     border-radius: 8px;
 
 }
-
 
 
 /* News Bar */
