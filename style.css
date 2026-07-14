@@ -45,17 +45,11 @@ header {
 }
 
 .top-header {
-
     display: flex;
-
     justify-content: space-between;
-
     align-items: center;
-
-    padding: 3px 15px;
-
-    direction: ltr;
-
+    min-height: 90px;
+    padding: 10px 30px;
 }
 
 
