@@ -26,62 +26,57 @@ body {
 
 header {
     background: #0b1f3a;
-    width: 100%;
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
-/* الجزء العلوي */
+
 .top-header {
-    background: #0b1f3a;
-    height: 70px;
+    height: 65px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 30px;
+    padding: 0 25px;
+    background: #0b1f3a;
 }
 
-/* المعلومات */
+
 .header-info {
-    background: transparent;
     display: flex;
-    gap: 40px;
     align-items: center;
+    gap: 35px;
 }
 
-/* التاريخ واللغات */
+
 .date-time,
 .languages {
-    background: transparent;
     color: white;
-    font-size: 18px;
+    font-size: 16px;
 }
 
 
-/* اسم الموقع */
 .site-title {
-    background: transparent;
-    color: white;
-    font-size: 26px;
-    font-weight: bold;
+    display: none;
 }
 
 
-/* شريط الأزرار */
 nav {
-    background: #102a4c;
+    height: 45px;
     display: flex;
     justify-content: center;
-    gap: 15px;
-    padding: 12px;
+    align-items: center;
+    gap: 18px;
+    background: #102a4c;
 }
 
 
 nav a {
-    background: transparent;
     color: white;
     text-decoration: none;
     font-weight: bold;
 }
-
 
 nav a:hover {
 
