@@ -19,70 +19,34 @@ body {
 
 /* ===== Header ===== */
 
-/* توحيد شكل الـ Header */
-
 header {
-    background: #0b1f3a;
-    color: white;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+...
 }
-
 
 .top-header {
-    height: 65px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 25px;
-    background: #0b1f3a;
+...
 }
-
 
 .header-info {
-    display: flex;
-    align-items: center;
-    gap: 35px;
+...
 }
-
 
 .date-time,
 .languages {
-    color: white;
-    font-size: 16px;
+...
 }
-
 
 .site-title {
-    display: none;
+...
 }
-
 
 nav {
-    height: 45px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 18px;
-    background: #0b1f3a;
+...
 }
-
 
 nav a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
+...
 }
-
-nav a:hover {
-
-    color: #8FDBFF;
-
-    border: 1px solid #1d6085;
-
-}
-
 
 
 /* ===== News Bar ===== */
