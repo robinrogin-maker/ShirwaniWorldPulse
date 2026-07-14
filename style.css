@@ -22,126 +22,65 @@ body {
 
 /* ===== Header ===== */
 
+/* توحيد شكل الـ Header */
+
 header {
-
-    position: fixed;
-
-    top: 0;
-    left: 0;
-
-    width: 100%;
-
     background: #0b1f3a;
-
-    z-index: 1000;
-
-    box-shadow: 0 4px 10px rgba(0,0,0,0.35);
-
-    border-bottom: 1px solid #1d6085;
-
+    width: 100%;
 }
 
-
-/* Top information */
-
+/* الجزء العلوي */
 .top-header {
-    height: 65px;
+    background: #0b1f3a;
+    height: 70px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0 30px;
-    background: transparent;
 }
 
-
+/* المعلومات */
 .header-info {
-
-    width: 100%;
-
     background: transparent;
-    
     display: flex;
-
-    justify-content: space-between;
-
+    gap: 40px;
     align-items: center;
-   
-
 }
 
-
-.date-time {
-
-    order: 2;
-
-    font-size: 18px;
-
-    font-weight: bold;
-
-    color: #ffffff;
-
-}
-
-
+/* التاريخ واللغات */
+.date-time,
 .languages {
-
-    order: 1;
-
+    background: transparent;
+    color: white;
     font-size: 18px;
-
-    font-weight: bold;
-
-    color: #8FDBFF;
-
 }
 
 
+/* اسم الموقع */
 .site-title {
-    display: block;
-    font-size: 28px;
+    background: transparent;
+    color: white;
+    font-size: 26px;
     font-weight: bold;
-    color: #ffffff;
 }
 
 
-
-/* ===== Navigation ===== */
-
-
+/* شريط الأزرار */
 nav {
-
-    height: 55px;
-
+    background: #102a4c;
     display: flex;
-
     justify-content: center;
-
-    align-items: center;
-
-    gap: 14px;
-
-    background: #121826;
-
+    gap: 15px;
+    padding: 12px;
 }
-
 
 
 nav a {
-
-    font-size: 16px;
-
-    font-weight: bold;
-
-    color: #ffffff;
-
+    background: transparent;
+    color: white;
     text-decoration: none;
-
-    padding: 8px 10px;
-
-    border-radius: 8px;
-
+    font-weight: bold;
 }
-
 
 
 nav a:hover {
