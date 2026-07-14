@@ -21,7 +21,7 @@ body {
 
 header {
 background: #0b1f3a;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.35);
+box-shadow: 0 4px 15px rgba(0,0,0,0.35);
 }
 
 .top-header {
