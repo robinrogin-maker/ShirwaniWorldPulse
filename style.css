@@ -44,6 +44,53 @@ header {
 
 }
 
+.top-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding: 3px 15px;
+
+    direction: ltr;
+
+}
+
+
+.languages {
+
+    direction: rtl;
+
+    font-size: 14px;
+
+    color: #8FDBFF;
+
+}
+
+
+.site-title {
+
+    font-size: 24px;
+
+    font-weight: bold;
+
+    color: #8FDBFF;
+
+}
+
+
+.date-time {
+
+    direction: ltr;
+
+    font-size: 14px;
+
+    color: #D0D0D0;
+
+}
+
 
 .brand {
 
