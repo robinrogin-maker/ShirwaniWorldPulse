@@ -4,48 +4,31 @@
 
 
 body {
-
     margin: 0;
     padding: 0;
-
-    padding-top: 95px;
-
+    padding-top: 130px;
     font-family: Arial, Tahoma, sans-serif;
-
     background: #121826;
     color: #ffffff;
-
     direction: rtl;
-
 }
 
 
 /* Header */
 
 header {
-
     position: fixed;
-
     top: 0;
-
     left: 0;
-
     width: 100%;
-
     background: #0b3a5b;
-
     z-index: 1000;
-
-    padding: 5px 10px;
-
     box-shadow: 0 4px 10px rgba(0,0,0,0.35);
-
     border-bottom: 1px solid #1d6085;
-
 }
 
 .top-header {
-    height: 75px;
+    height: 65px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -54,15 +37,15 @@ header {
 }
 
 .header-info {
+    width: 100%;
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    gap: 35px;
 }
 
 
 .site-title {
-    font-size: 30px;
-    font-weight: bold;
+    display: none;
 }
 
 
@@ -73,13 +56,6 @@ header {
     font-size: 14px;
 
     color: #8FDBFF;
-
-}
-
-
-.site-title {
-    display: none;
-}
 
 
 .date-time,
@@ -142,16 +118,17 @@ nav {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 18px;
+    gap: 14px;
     background: #121826;
 }
 
 
 nav a {
-    font-size: 17px;
+    font-size: 16px;
     font-weight: bold;
     color: white;
     text-decoration: none;
+    padding: 8px 10px;
 }
 
 
@@ -175,7 +152,7 @@ nav a:hover {
     padding: 0 20px;
     background: #1b263b;
     color: white;
-    font-size: 18px;
+    font-size: 17px;
     font-weight: bold;
 }
 
