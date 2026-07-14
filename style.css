@@ -31,7 +31,7 @@ header {
 
     width: 100%;
 
-    background: #0b3a5b;
+    background: #0b1f3a;
 
     z-index: 1000;
 
@@ -50,7 +50,7 @@ header {
     align-items: center;
     justify-content: space-between;
     padding: 0 30px;
-    background: #0b3a5b;
+    background: transparent;
 }
 
 
@@ -58,11 +58,14 @@ header {
 
     width: 100%;
 
+    background: transparent;
+    
     display: flex;
 
     justify-content: space-between;
 
     align-items: center;
+   
 
 }
 
@@ -164,9 +167,9 @@ nav a:hover {
 
     padding: 0 20px;
 
-    background: #1b263b;
+    background: #162b4d;
 
-    color: #ffffff;
+    color: white;
 
     font-size: 17px;
 
