@@ -8,7 +8,7 @@ body {
     margin: 0;
     padding: 0;
 
-    padding-top: 60px;
+    padding-top: 95px;
 
     font-family: Arial, Tahoma, sans-serif;
 
@@ -36,7 +36,7 @@ header {
 
     z-index: 1000;
 
-    padding: 8px 10px;
+    padding: 5px 10px;
 
     box-shadow: 0 4px 10px rgba(0,0,0,0.35);
 
