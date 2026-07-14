@@ -45,17 +45,12 @@ header {
 /* Top information */
 
 .top-header {
-
     height: 65px;
-
     display: flex;
-
     align-items: center;
-
-    background: #1b263b;
-
+    justify-content: space-between;
     padding: 0 30px;
-
+    background: #0b3a5b;
 }
 
 
