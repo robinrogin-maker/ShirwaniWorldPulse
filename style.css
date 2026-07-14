@@ -240,9 +240,19 @@ header {
 
 /* اسم الموقع */
 .site-title {
+
     text-align: right;
-    font-size: 30px;
+
+    font-size: 28px;
+
     font-weight: bold;
+
+    white-space: nowrap;
+
+    align-self: center;
+
+    text-shadow: 0 2px 8px rgba(0,0,0,0.35);
+
 }
 
 
