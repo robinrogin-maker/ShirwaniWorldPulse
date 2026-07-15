@@ -91,18 +91,21 @@ nav a {
 
 
 .news-bar {
+
     width: 92%;
     max-width: 1250px;
-    margin: 10px auto;
+
+    margin: 0 auto 10px auto;
+
     height: 42px;
 
     display: flex;
     align-items: center;
 
-    background: transparent;   /* إزالة الخلفية */
-    overflow: hidden;
+    background: #1b2435;
+    color: white;
 
-    border-bottom: 1px solid rgba(79,163,255,0.8);
+    overflow: hidden;
 }
 
 
