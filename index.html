@@ -194,9 +194,10 @@ function updateDateTime() {
         hour: '2-digit',
         minute: '2-digit'
     });
+document.getElementById("date").textContent = date;
 
-    document.getElementById("dateTime").innerHTML =
-        date + "<br>" + time;
+document.getElementById("time").textContent = time;
+
 }
 
 updateDateTime();
