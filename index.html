@@ -160,6 +160,34 @@
 
 </footer>
 
+    <script>
+function updateDateTime() {
+
+    const now = new Date();
+
+    const options = {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+    };
+
+    const date = now.toLocaleDateString('ar-EG', options);
+
+    const time = now.toLocaleTimeString('ar-EG', {
+        hour: '2-digit',
+        minute: '2-digit'
+    });
+
+    document.getElementById("dateTime").textContent =
+        date + " | " + time;
+}
+
+updateDateTime();
+
+setInterval(updateDateTime, 1000);
+</script>
+
 
 </body>
 
