@@ -35,11 +35,15 @@ box-shadow: 0 4px 15px rgba(0,0,0,0.35);
 
 .header-info {
 
-    text-align: left;
+    display: flex;
 
-    align-self: center;
+    flex-direction: column;
 
-    line-height: 1.6;
+    justify-content: center;
+
+    align-items: flex-start;
+
+    gap: 5px;
 
 }
 
