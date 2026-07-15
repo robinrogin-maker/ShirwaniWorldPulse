@@ -50,6 +50,8 @@ box-shadow: 0 4px 15px rgba(0,0,0,0.35);
 .date-time,
 .languages {
 
+    text-align: center;
+    
     color: #d8d8d8;
 
     font-size: 16px;
