@@ -116,20 +116,32 @@ nav a {
     overflow: hidden;
 
     border-radius: 5px;
+
+    direction: rtl;
 }
 
 .news-label {
 
     padding: 0 15px;
+
     font-weight: bold;
+
     white-space: nowrap;
+
+    background: #26344d;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
 }
 
 
 .news-text {
 
     flex: 1;
-    text-align: right;
+
+    overflow: hidden;
+
     padding-right: 15px;
 }
 
