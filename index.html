@@ -195,8 +195,8 @@ function updateDateTime() {
         minute: '2-digit'
     });
 
-    document.getElementById("dateTime").textContent =
-        date + " | " + time;
+    document.getElementById("dateTime").innerHTML =
+        date + "<br>" + time;
 }
 
 updateDateTime();
