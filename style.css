@@ -115,14 +115,28 @@ nav a {
 
 
 .news-label {
-    background: linear-gradient(to bottom, #25334b, #1b2435);
-    border: 1px solid #4f6c93;
-    min-width: 150px;
-    box-shadow:
-        0 4px 8px rgba(0,0,0,.35),
-        inset 0 1px 1px rgba(255,255,255,.15);
+    background: #1b2435;
+    color: #fff;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 50px;          /* زيادة الارتفاع */
+    min-width: 170px;      /* زيادة العرض */
+    padding: 0 24px;
+
+    font-size: 16px;
+    font-weight: bold;
+    white-space: nowrap;
 
     border-radius: 6px;
+
+    /* التأثير ثلاثي الأبعاد */
+    border: 1px solid #3b4f6e;
+    box-shadow:
+        0 3px 6px rgba(0,0,0,0.35),
+        inset 0 1px 0 rgba(255,255,255,0.12);
 }
 
 
