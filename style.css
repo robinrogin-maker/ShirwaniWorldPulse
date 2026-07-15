@@ -115,20 +115,14 @@ nav a {
 
 
 .news-label {
-    background: #1b2435;   /* نفس لون الـ Header */
+    background: linear-gradient(to bottom, #25334b, #1b2435);
+    border: 1px solid #4f6c93;
 
-    color: #ffffff;
+    box-shadow:
+        0 4px 8px rgba(0,0,0,.35),
+        inset 0 1px 1px rgba(255,255,255,.15);
 
-    height: 42px;
-
-    display: flex;
-    align-items: center;
-
-    padding: 0 18px;
-
-    font-weight: bold;
-
-    white-space: nowrap;
+    border-radius: 6px;
 }
 
 
