@@ -34,12 +34,25 @@ box-shadow: 0 4px 15px rgba(0,0,0,0.35);
 }
 
 .header-info {
-...
+
+    text-align: left;
+
+    align-self: center;
+
+    line-height: 1.6;
+
 }
 
 .date-time,
 .languages {
-...
+
+    color: #d8d8d8;
+
+    font-size: 15px;
+
+    line-height: 1.8;
+
+    margin-top: 3px;
 }
 
 .site-title {
