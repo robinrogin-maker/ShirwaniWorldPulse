@@ -188,12 +188,12 @@ function updateDateTime() {
         day: 'numeric'
     };
 
-    const date = now.toLocaleDateString('ar-EG', options);
+    const date = now.toLocaleDateString('en-GB', options);
 
-    const time = now.toLocaleTimeString('ar-EG', {
-        hour: '2-digit',
-        minute: '2-digit'
-    });
+    const time = now.toLocaleTimeString('en-GB', {
+    hour: '2-digit',
+    minute: '2-digit'
+});
 document.getElementById("date").textContent = date;
 
 document.getElementById("time").textContent = time;
