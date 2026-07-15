@@ -99,10 +99,38 @@ nav a {
 
 
 .news-bar {
+
+    width: 92%;
+    max-width: 1250px;
+
+    margin: 10px auto;
+
+    height: 42px;
+
     display: flex;
     align-items: center;
+
+    background: #1b2435;
+    color: white;
+
     overflow: hidden;
-    direction: rtl;
+
+    border-radius: 5px;
+}
+
+.news-label {
+
+    padding: 0 15px;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+
+.news-text {
+
+    flex: 1;
+    text-align: right;
+    padding-right: 15px;
 }
 
 .news-content {
