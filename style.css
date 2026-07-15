@@ -37,27 +37,25 @@ box-shadow: 0 4px 15px rgba(0,0,0,0.35);
     display: flex;
     flex-direction: column;
     align-items: flex-end;
+    justify-content: center;
+    height: 100%;
 }
 
 .languages {
-    color: #d8d8d8;
-    font-size: 12px;
-    margin-bottom: 5px;
-}
-
-.date-time,
-.languages {
-    color: #d8d8d8;
+    text-align: right;
     font-size: 11px;
-    line-height: 1.3;
     white-space: nowrap;
+    color: #d8d8d8;
 }
 
-.header-info {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
+.date-time {
+    text-align: right;
+    font-size: 11px;
+    line-height: 1.2;
+    white-space: nowrap;
+    margin-bottom: 4px;
 }
+
 .site-title {
     text-align: center;
     font-size: 28px;
