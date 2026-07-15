@@ -116,7 +116,7 @@ nav a {
 
 .news-label {
     background: #1b2435;
-
+    min-width: 150px;
     color: #fff;
 
     height: 48px;          /* كان 42px */
