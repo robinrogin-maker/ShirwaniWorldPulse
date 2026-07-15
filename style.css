@@ -35,24 +35,22 @@ box-shadow: 0 4px 15px rgba(0,0,0,0.35);
 
 .header-info {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-}
-
-.date-time {
-    display: flex;
     flex-direction: column;
-    text-align: left;
-    color: #d8d8d8;
-    font-size: 12px;
-    line-height: 1.8;
+    align-items: flex-end;
 }
 
 .languages {
     color: #d8d8d8;
     font-size: 12px;
-    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.date-time {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    color: #d8d8d8;
+    font-size: 12px;
 }
 
 .site-title {
