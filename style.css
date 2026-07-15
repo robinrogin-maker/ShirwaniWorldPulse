@@ -99,25 +99,24 @@ nav a {
 
 
 .news-bar {
-
-    width: 100%;
+    width: 92%;
     max-width: 1250px;
-
     margin: 10px auto;
-
     height: 42px;
 
     display: flex;
     align-items: center;
 
     background: #1b2435;
-    color: white;
+    color: #fff;
 
     overflow: hidden;
 
-    border-radius: 5px;
+    border-radius: 6px;
 
-    direction: rtl;
+    /* خط فاصل لامع */
+    border-bottom: 1px solid rgba(79, 163, 255, 0.8);
+    box-shadow: 0 3px 10px rgba(79, 163, 255, 0.35);
 }
 
 
