@@ -34,31 +34,29 @@ box-shadow: 0 4px 15px rgba(0,0,0,0.35);
 }
 
 .header-info {
-
     display: flex;
+    align-items: center;
+    justify-content: space-between;
 
-    flex-direction: column;
-
-    justify-content: center;
-
-    align-items: left;
-
-    gap: 5px;
-
+    width: 100%;
 }
+
+
 
 .date-time,
 .languages {
-    
     color: #d8d8d8;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.8;
+}
 
-    font-size: 13px;
+.date-time {
+    margin-right: 40px;
+}
 
-    font-weight: normal;
-
-    line-height: 1.6;
-
-    margin-top: 3px;
+.languages {
+    margin-left: 40px;
 }
 
 .site-title {
