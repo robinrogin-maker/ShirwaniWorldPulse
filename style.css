@@ -102,11 +102,35 @@ nav a {
     display: flex;
     align-items: center;
 
-    background: #1b2435;
+    background: transparent;
+
     color: white;
 
     overflow: hidden;
+
+    position: relative;
 }
+
+
+.news-bar::after {
+
+    content: "";
+
+    position: absolute;
+
+    bottom: 0;
+    left: 0;
+
+    width: 100%;
+    height: 2px;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        #00c6ff,
+        transparent
+    );
+
 
 
 .news-label {
