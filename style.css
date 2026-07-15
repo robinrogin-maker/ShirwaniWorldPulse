@@ -107,16 +107,10 @@ nav a {
     display: flex;
     align-items: center;
 
-    background: #1b2435;
-    color: #fff;
-
+    background: transparent;
     overflow: hidden;
 
-    border-radius: 6px;
-
-    /* خط فاصل لامع */
-    border-bottom: 1px solid rgba(79, 163, 255, 0.8);
-    box-shadow: 0 3px 10px rgba(79, 163, 255, 0.35);
+    border-bottom: 1px solid rgba(79,163,255,.7);
 }
 
 
