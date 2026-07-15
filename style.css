@@ -43,7 +43,7 @@ box-shadow: 0 4px 15px rgba(0,0,0,0.35);
 }
 
 .site-title {
-    text-align: right;
+    text-align: center;
     font-size: 28px;
     font-weight: bold;
     white-space: nowrap;
