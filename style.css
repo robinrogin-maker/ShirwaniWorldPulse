@@ -100,7 +100,7 @@ nav a {
 
 .news-bar {
 
-    width: 92%;
+    width: 100%;
     max-width: 1250px;
 
     margin: 10px auto;
@@ -120,15 +120,17 @@ nav a {
     direction: rtl;
 }
 
+
 .news-label {
 
-    padding: 0 15px;
+    padding: 0 18px;
 
     font-weight: bold;
 
     white-space: nowrap;
 
     background: #26344d;
+
     height: 100%;
 
     display: flex;
@@ -142,15 +144,23 @@ nav a {
 
     overflow: hidden;
 
-    padding-right: 15px;
+    position: relative;
 }
+
 
 .news-content {
+
     white-space: nowrap;
+
+    display: inline-block;
+
     animation: newsMove 15s linear infinite;
+
 }
 
+
 @keyframes newsMove {
+
     from {
         transform: translateX(-100%);
     }
@@ -158,6 +168,7 @@ nav a {
     to {
         transform: translateX(100%);
     }
+
 }
 
 
