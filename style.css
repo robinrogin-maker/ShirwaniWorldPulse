@@ -29,7 +29,7 @@ box-shadow: 0 4px 15px rgba(0,0,0,0.35);
     display: grid;
     grid-template-columns: 22% 56% 22%;
     align-items: center;
-    padding: 0 30px;
+    padding: 0 35px;
     background: #151f33;
 }
 
