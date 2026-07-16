@@ -180,7 +180,11 @@ nav a {
 
     display: inline-block;
 
+    position: relative;
+
     animation: newsMove 15s linear infinite;
+
+    padding-left: 100%;
 
 }
 
@@ -188,11 +192,11 @@ nav a {
 @keyframes newsMove {
 
     from {
-        transform: translateX(-100%);
+        transform: translateX(0);
     }
 
     to {
-        transform: translateX(100%);
+        transform: translateX(-100%);
     }
 
 }
