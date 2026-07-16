@@ -417,53 +417,28 @@ nav a:hover {
 
 /* التاريخ واللغات */
 
-.header-info {
-
-    display: flex;
-    flex-direction: column;
-
-    align-items: flex-start;
-    justify-content: center;
-
-    gap: 6px;
-
+.top-header {
+    position: relative;
 }
 
 .header-info {
+    position: absolute;
+    left: 25px;
+    top: 50%;
+    transform: translateY(-50%);
 
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-
+    display: block;
 }
 
 .languages {
-
     color: #d8d8d8;
     font-size: 12px;
     white-space: nowrap;
-
-}
-
-.date-time {
-
-    color: #d8d8d8;
-
-    font-size: 12px;
-
-    line-height: 1.4;
-
-    white-space: nowrap;
-
 }
 
 
-.languages {
 
-    color: #d8d8d8;
 
-    font-size: 12px;
 
-    white-space: nowrap;
 
-}
+
