@@ -169,6 +169,8 @@ nav a {
     overflow: hidden;
 
     position: relative;
+
+    direction: ltr;
 }
 
 
@@ -179,8 +181,6 @@ nav a {
     display: inline-block;
 
     animation: newsMove 15s linear infinite;
-
-    position: relative;
 
 }
 
