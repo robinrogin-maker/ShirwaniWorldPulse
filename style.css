@@ -44,17 +44,27 @@ box-shadow: 0 4px 15px rgba(0,0,0,0.35);
 }
 
 .languages {
-    text-align: left;
-    font-size: 13px;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+
+    color: #d8d8d8;
+    font-size: 15px;
+    font-weight: 700;
 }
 
-.date-time {
-    text-align: right;
-    font-size: 11px;
-    line-height: 1.2;
-    white-space: nowrap;
-    margin-bottom: 4px;
+.languages span {
+    padding: 5px 8px;
+    border-radius: 5px;
+    transition: 0.3s ease;
+    cursor: pointer;
 }
+
+.languages span:hover {
+    color: #f5c542;
+    background: rgba(255,255,255,0.08);
+}
+
 
 .site-title {
     text-align: center;
