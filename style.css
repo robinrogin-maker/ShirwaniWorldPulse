@@ -180,6 +180,8 @@ nav a {
 
     animation: newsMove 15s linear infinite;
 
+    position: relative;
+
 }
 
 
