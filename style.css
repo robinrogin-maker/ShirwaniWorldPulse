@@ -344,27 +344,6 @@ footer {
 }
 
 
-    /* إصلاح Header الجديد */
-
-header {
-    background: #0b1f3a;
-    color: #d8d8d8;
-}
-
-
-.top-header {
-    direction: ltr;
-}
-
-.header-info {
-    direction: ltr;
-    justify-self: start;
-    align-items: flex-start;
-}
-
-.languages {
-    text-align: left;
-}
 
 
 /* اسم الموقع */
@@ -416,22 +395,28 @@ nav a:hover {
 
 
 /* التاريخ واللغات */
-
 .top-header {
-    position: relative;
+    direction: ltr;
+}
+
+.site-title {
+    grid-column: 3;
+    text-align: right;
+}
+
+nav {
+    grid-column: 2;
 }
 
 .header-info {
-    position: absolute;
-    left: 25px;
-    top: 50%;
-    transform: translateY(-50%);
-    display: flex;
-    align-items: center;
+    grid-column: 1;
+    justify-self: start;
+    align-items: flex-start;
+    direction: ltr;
 }
 
 .languages {
-    color: #d8d8d8;
+    text-align: left;
     font-size: 12px;
     white-space: nowrap;
 }
