@@ -422,6 +422,52 @@ nav {
 }
 
 
+.languages {
+    color: #d8d8d8;
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+
+/* ضبط نهائي للـ Header */
+
+.top-header {
+    height: 95px;
+    display: grid;
+    grid-template-columns: 25% 50% 25%;
+    align-items: center;
+    direction: ltr;
+}
+
+
+.site-title {
+    grid-column: 3;
+    text-align: right;
+    font-size: 30px;
+    font-weight: bold;
+    align-self: center;
+    margin-right: 30px;
+}
+
+
+nav {
+    grid-column: 2;
+}
+
+
+.header-info {
+    grid-column: 1;
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+
+.languages {
+    font-size: 13px;
+    text-align: left;
+}
+
 
 
 
