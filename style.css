@@ -410,15 +410,40 @@ nav a:hover {
 
 
 /* التاريخ واللغات */
-.date-time,
-.languages {
-    color: #d8d8d8;
-    font-size: 11px;
-    line-height: 1.2;
-    white-space: nowrap;
-}
+/* ضبط التاريخ واللغات */
 
 .header-info {
-    text-align: left;
+
+    display: flex;
+    flex-direction: column;
+
     align-items: flex-start;
+    justify-content: center;
+
+    gap: 6px;
+
+}
+
+
+.date-time {
+
+    color: #d8d8d8;
+
+    font-size: 12px;
+
+    line-height: 1.4;
+
+    white-space: nowrap;
+
+}
+
+
+.languages {
+
+    color: #d8d8d8;
+
+    font-size: 12px;
+
+    white-space: nowrap;
+
 }
