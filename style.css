@@ -487,4 +487,35 @@ nav {
 }
 
 
+/* إعادة ترتيب الهيدر */
 
+.top-header {
+    direction: rtl;
+}
+
+
+.site-title {
+    grid-column: 1;
+    text-align: right;
+    font-size: 30px;
+    align-self: center;
+}
+
+
+nav {
+    grid-column: 2;
+}
+
+
+.header-info {
+    grid-column: 3;
+    position: static;
+    transform: none;
+    align-self: center;
+}
+
+
+.languages {
+    text-align: left;
+    font-size: 13px;
+}
