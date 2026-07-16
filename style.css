@@ -33,19 +33,19 @@ box-shadow: 0 4px 15px rgba(0,0,0,0.35);
     background: #151f33;
 }
 
+
 .header-info {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    justify-content: center;
-    height: 100%;
+    grid-column: 1;
+    justify-self: start;
+    align-self: center;
+    position: static;
+    transform: none;
+    width: 100%;
 }
 
 .languages {
-    text-align: right;
-    font-size: 11px;
-    white-space: nowrap;
-    color: #d8d8d8;
+    text-align: left;
+    font-size: 13px;
 }
 
 .date-time {
