@@ -48,16 +48,12 @@ box-shadow: 0 4px 15px rgba(0,0,0,0.35);
     display: flex;
     gap: 8px;
     align-items: center;
-
+    justify-content: flex-start;
     color: #d8d8d8;
     font-size: 15px;
     font-weight: 700;
 }
 
-.languages {
-    justify-content: center;
-    text-align: center;
-}
 
 .languages span {
     padding: 5px 8px;
