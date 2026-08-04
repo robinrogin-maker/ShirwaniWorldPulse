@@ -1,17 +1,13 @@
 {
-  // Cloudflare Workers / Pages configuration for the deployed TanStack Start app.
+  // Cloudflare Pages configuration for the deployed TanStack Start app.
   // Runtime secrets (SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY, ...) are NOT listed here
   // on purpose: values added as *Secrets* in the Cloudflare dashboard are preserved
   // across deploys, while plain-text `vars` in this file would overwrite them.
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "worldspectrum",
-  "main": ".output/server/index.mjs",
+  "pages_build_output_dir": ".output/public",
   "compatibility_date": "2025-06-01",
   "compatibility_flags": ["nodejs_compat"],
-  "assets": {
-    "directory": ".output/public",
-    "binding": "SITE_ASSETS"
-  },
   "observability": {
     "enabled": true
   }
