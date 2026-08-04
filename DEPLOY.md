@@ -36,17 +36,19 @@
 
 ## 3) ملف `wrangler.jsonc`
 
-أُضيف في جذر المستودع ليصبح إعداد النشر واضحاً وثابتاً:
+أُضيف في جذر المستودع كإعداد نشر خاص بـ **Cloudflare Pages** فقط:
 
-- `main`: `.output/server/index.mjs`
-- `assets.directory`: `.output/public`
+- `pages_build_output_dir`: `.output/public`
 - `compatibility_flags`: `nodejs_compat` (مطلوب لعمل SSR ودوال الخادم)
+
+ملاحظة: لا يُستخدم المفتاح `main` أو `assets` هنا، لأنهما خاصّان بـ Cloudflare Workers، ومشاريع Pages لا تدعمهما.
 
 ## 4) إعدادات البناء في Cloudflare
 
 - Build command: `npm run build`
 - Deploy command / Output: يعتمد على `wrangler.jsonc` أعلاه
-- المشروع يحتاج **Workers / Pages Functions** لأنه SSR، وليس استضافة ملفات ثابتة فقط.
+- المشروع يحتاج **Pages Functions** لأنه SSR، وليس استضافة ملفات ثابتة فقط.
+
 
 ## 5) ملف `.env`
 
