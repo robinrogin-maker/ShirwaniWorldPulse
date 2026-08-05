@@ -7,7 +7,7 @@
   "name": "worldspectrum",
   "pages_build_output_dir": "dist",
   "compatibility_date": "2025-06-01",
-  "compatibility_flags": ["nodejs_compat"],
+  "compatibility_flags": ["nodejs_compat", "nodejs_compat_populate_process_env"],
   "observability": {
     "enabled": true
   }

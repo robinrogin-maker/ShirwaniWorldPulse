@@ -7,6 +7,14 @@ type ServerEntry = {
   fetch: (request: Request, env: unknown, ctx: unknown) => Promise<Response> | Response;
 };
 
+function exposeRuntimeEnvironment(env: unknown) {
+  if (!env || typeof env !== "object") return;
+
+  for (const [key, value] of Object.entries(env)) {
+    if (typeof value === "string") process.env[key] = value;
+  }
+}
+
 let serverEntryPromise: Promise<ServerEntry> | undefined;
 
 async function getServerEntry(): Promise<ServerEntry> {
@@ -40,6 +48,9 @@ async function normalizeCatastrophicSsrResponse(response: Response): Promise<Res
 export default {
   async fetch(request: Request, env: unknown, ctx: unknown) {
     try {
+      // Pages variables and secrets arrive through this request binding.
+      // Populate the Node-compatible environment before TanStack handles it.
+      exposeRuntimeEnvironment(env);
       const handler = await getServerEntry();
       const response = await handler.fetch(request, env, ctx);
       return await normalizeCatastrophicSsrResponse(response);

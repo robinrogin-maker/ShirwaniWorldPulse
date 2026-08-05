@@ -40,11 +40,14 @@
 أُضيف في جذر المستودع كإعداد نشر خاص بـ **Cloudflare Pages** فقط:
 
 - `pages_build_output_dir`: `dist`
-- `compatibility_flags`: `nodejs_compat` (مطلوب لعمل SSR ودوال الخادم)
+- `compatibility_flags`: `nodejs_compat` و`nodejs_compat_populate_process_env` (لعمل SSR وإتاحة bindings عبر `process.env`)
 
 كما تم ضبط Nitro صراحةً على `cloudflare-pages` داخل `vite.config.ts`. هذا هو الإصلاح الأساسي:
 الإعداد الافتراضي لحزمة Lovable يستهدف **Cloudflare Workers Module**، بينما المشروع هنا يُنشر على
 **Cloudflare Pages**. خلط محوّل Workers مع نشر Pages يمنع ربط متغيرات Pages بطلبات SSR بالشكل الصحيح.
+
+وتقوم نقطة الدخول `src/server.ts` أيضاً بتمرير قيم bindings النصية إلى `process.env` في بداية كل
+طلب، قبل تشغيل TanStack. هذا يضمن عمل المتغيرات حتى إذا لم يطبق Runtime علم التوافق تلقائياً.
 
 عند البناء، ينشئ محوّل Pages مجلد `dist` متضمناً `_worker.js` وملفات الموقع. لا تستخدم
 `.output/public` ولا تضف `main` أو `assets` إلى `wrangler.jsonc`.
