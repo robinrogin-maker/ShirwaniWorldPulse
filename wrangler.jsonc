@@ -5,9 +5,9 @@
   // across deploys, while plain-text `vars` in this file would overwrite them.
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "worldspectrum",
-  "pages_build_output_dir": ".output/public",
+  "pages_build_output_dir": "dist",
   "compatibility_date": "2025-06-01",
-  "compatibility_flags": ["nodejs_compat"],
+  "compatibility_flags": ["nodejs_compat", "nodejs_compat_populate_process_env"],
   "observability": {
     "enabled": true
   }

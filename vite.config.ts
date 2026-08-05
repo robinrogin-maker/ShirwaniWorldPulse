@@ -7,6 +7,17 @@
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
 export default defineConfig({
+  // This repository is deployed as Cloudflare Pages, not as a standalone
+  // Cloudflare Worker. The default Lovable preset targets Workers, so select
+  // the Pages adapter explicitly. It exposes Pages runtime bindings to Nitro
+  // during each request, where process.env reads are supported.
+  nitro: {
+    preset: "cloudflare-pages",
+    cloudflare: {
+      nodeCompat: true,
+      deployConfig: true,
+    },
+  },
   tanstackStart: {
     // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
     // nitro/vite builds from this
