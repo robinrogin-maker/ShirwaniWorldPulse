@@ -1,57 +1,61 @@
-# ربط الموقع بـ Cloudflare
+# دليل ربط الموقع بـ Cloudflare (خطوة بخطوة، بدون خبرة تقنية)
 
-هذا الدليل يشرح خطوات ربط موقع `ShirwaniWorldPulse` (موقع ثابت HTML/CSS/JS) بخدمة **Cloudflare Pages** للاستضافة، مع إمكانية ربط دومين مخصص عبر Cloudflare DNS.
+هذا الدليل مكتوب لشخص ما عنده خبرة برمجية. اتبع الخطوات بالترتيب، وحطّ علامة صح على كل خطوة بعد ما تخلصها. ما تحتاج تكتب أي كود، فقط ضغط أزرار.
 
-> ملاحظة أمنية: لا يمكن لأي مساعد آلي الدخول إلى حسابك في Cloudflare أو GitHub نيابةً عنك (لا صلاحية ولا بيانات اعتماد). لذلك تم تجهيز كل الإعدادات التقنية في هذا المستودع، وما تبقى هو خطوات بسيطة تنفّذها أنت بنفسك من لوحتي التحكم.
-
-## ماذا تم تجهيزه في هذا المستودع؟
-
-تمت إضافة ملف GitHub Actions:
-
-```
-.github/workflows/deploy-cloudflare-pages.yml
-```
-
-هذا الملف يقوم تلقائياً بنشر الموقع على Cloudflare Pages في كل مرة يتم فيها الدفع (push) إلى الفرع `main`. الموقع لا يحتاج أي خطوة بناء (build) لأنه ملفات ثابتة، لذلك المجلد المنشور هو جذر المستودع.
-
-## الخطوات المطلوبة منك
-
-### 1. إنشاء مشروع Cloudflare Pages
-1. سجّل الدخول إلى [dash.cloudflare.com](https://dash.cloudflare.com).
-2. من القائمة الجانبية اختر **Workers & Pages** ثم **Create application** > **Pages**.
-3. اختر **Connect to Git** وحدد المستودع `robinrogin-maker/ShirwaniWorldPulse`.
-4. عند إعداد البناء، اترك:
-   - Build command: (فارغ)
-   - Build output directory: `/`
-5. اضغط **Save and Deploy** (يمكنك حذف هذا الربط التلقائي لاحقاً واستخدام GitHub Actions بدلاً منه إذا رغبت بتحكم أدق، أو تركه كما هو — كلاهما يعمل).
-
-### 2. الحصول على المفاتيح المطلوبة لـ GitHub Actions
-1. **Account ID**: يظهر في يمين لوحة تحكم Cloudflare (أسفل أي صفحة Domain/Workers).
-2. **API Token**: من [My Profile > API Tokens](https://dash.cloudflare.com/profile/api-tokens) أنشئ Token بصلاحية **Cloudflare Pages: Edit**.
-3. **اسم مشروع Pages**: الاسم الذي اخترته عند إنشاء المشروع في الخطوة 1 (مثلاً `shirwaniworldpulse`).
-
-### 3. إضافة الأسرار (Secrets) في GitHub
-اذهب إلى: `Settings > Secrets and variables > Actions` في المستودع، وأضف:
-
-| اسم Secret | القيمة |
-|---|---|
-| `CLOUDFLARE_API_TOKEN` | الـ Token الذي أنشأته |
-| `CLOUDFLARE_ACCOUNT_ID` | Account ID |
-| `CLOUDFLARE_PAGES_PROJECT` | اسم مشروع Pages |
-
-بعد إضافتها، أي دفع جديد إلى `main` سينشر الموقع تلقائياً عبر GitHub Actions.
-
-### 4. ربط دومين مخصص
-1. في مشروع Pages، اذهب إلى **Custom domains** وأضف الدومين الخاص بك.
-2. إذا كان الدومين مسجلاً خارج Cloudflare، أضفه أولاً كموقع (Site) في Cloudflare (**Add a Site**)، ثم غيّر الـ Nameservers لدى مسجّل الدومين إلى Nameservers التي يعطيك إياها Cloudflare.
-3. بعد تفعيل الدومين في Cloudflare، ستُضاف سجلات DNS المطلوبة (CNAME) تلقائياً عند ربطه كـ Custom domain في Pages.
-4. فعّل **Always Use HTTPS** و **Auto Minify** (اختياري) من إعدادات الدومين لتحسين الأداء والأمان.
-
-## إذا كان الموقع مستضافاً حالياً على GitHub Pages وتريد فقط استخدام Cloudflare كحماية/CDN
-بدلاً من الخطوات أعلاه، يكفي:
-1. أضف الدومين كموقع في Cloudflare (**Add a Site**) وغيّر الـ Nameservers كما في الخطوة 4 أعلاه.
-2. أنشئ سجل **CNAME** باسم الدومين (أو `www`) يشير إلى `robinrogin-maker.github.io`، مع تفعيل السحابة البرتقالية (Proxy) للاستفادة من حماية Cloudflare.
-3. في إعدادات GitHub Pages بالمستودع، أضف نفس الدومين المخصص (Custom domain) واحفظ.
+> ما راح تحتاج أي "Secrets" أو GitHub Actions — راح نستخدم الطريقة المباشرة اللي توفرها Cloudflare نفسها، وهي أبسط طريقة موجودة.
 
 ---
-لأي استفسار إضافي حول أي خطوة من هذه الخطوات، تواصل من جديد وسأساعدك بالتفصيل.
+
+## الخطوة 1: سوّي حساب في Cloudflare (إذا ما عندك)
+
+1. افتح هذا الرابط في المتصفح: https://dash.cloudflare.com/sign-up
+2. اكتب بريدك الإلكتروني وكلمة مرور، واضغط **Create Account** (أو "Sign Up").
+3. راح توصلك رسالة تفعيل على البريد، افتحها واضغط على رابط التفعيل.
+4. رجّع لصفحة Cloudflare وسجّل دخول (Log in) بنفس البريد وكلمة المرور.
+
+✅ إذا خلصت هذي الخطوة وصار عندك حساب وسجلت دخول، انتقل للخطوة 2.
+
+---
+
+## الخطوة 2: اربط حسابك بـ GitHub وأنشئ مشروع Pages
+
+1. من الصفحة الرئيسية بعد تسجيل الدخول، دوّر في القائمة الجانبية (على اليسار) على كلمة **Workers & Pages**، واضغط عليها.
+2. اضغط الزر الأزرق **Create application**.
+3. راح تشوف تبويبين فوق، اختار تبويب **Pages**.
+4. اضغط **Connect to Git**.
+5. راح يطلب منك يربط حسابك مع GitHub — اضغط **Connect GitHub** ثم سجّل دخول بحساب GitHub تبعك (نفس الحساب اللي فيه المستودع `robinrogin-maker/ShirwaniWorldPulse`).
+6. بعد الربط، هيوافق يطلب منك تختار أي مستودعات يقدر يشوفها — اختر **All repositories** (أسهل) أو اختار تحديداً `ShirwaniWorldPulse`، ثم اضغط **Install & Authorize**.
+7. راح ترجع لصفحة Cloudflare وتشوف قائمة بمستودعاتك، دوّر على `ShirwaniWorldPulse` واضغط عليه، ثم اضغط **Begin setup**.
+8. في صفحة الإعدادات اللي تظهر:
+   - **Project name**: خلّه كما هو (أو غيّره لاسم بسيط زي `shirwaniworldpulse`).
+   - **Production branch**: تأكد إنه `main`.
+   - **Build command**: اتركه **فاضي تماماً** (لا تكتب فيه شي).
+   - **Build output directory**: اكتب فيه نقطة واحدة فقط: `/`
+9. اضغط الزر **Save and Deploy**.
+10. انتظر دقيقة أو دقيقتين، راح تشوف رسالة خضراء "Success" ورابط للموقع يشبه: `https://shirwaniworldpulse.pages.dev`
+
+✅ افتح هذا الرابط وتأكد إن الموقع يفتح صح. إذا فتح، معناها الموقع صار مستضاف على Cloudflare بنجاح، ومن الآن أي تعديل يصير على المستودع في فرع `main` بينشر تلقائياً بدون أي خطوة إضافية منك.
+
+---
+
+## الخطوة 3 (اختياري): ربط دومينك الخاص (مثل mywebsite.com)
+
+إذا ما عندك دومين خاص وتكتفي برابط `.pages.dev`، تقدر تتجاوز هذي الخطوة.
+
+### الحالة أ: الدومين مسجل أصلاً وتبي تربطه
+1. من نفس صفحة مشروعك في Cloudflare Pages، اضغط تبويب **Custom domains**.
+2. اضغط **Set up a custom domain**.
+3. اكتب اسم الدومين تبعك واضغط **Continue**.
+4. إذا الدومين مو مضاف أصلاً في Cloudflare كـ "Site"، راح يطلب منك تضيفه: اضغط **Add site**، اكتب اسم الدومين، اختر الخطة **Free**، واضغط **Continue**.
+5. Cloudflare راح يعطيك ٢ عناوين اسمها **Nameservers** (تشبه: `ns1.cloudflare.com` و `ns2.cloudflare.com`).
+6. روح لموقع الشركة اللي شريت منها الدومين (مثل GoDaddy، Namecheap، إلخ)، وابحث عن إعدادات **Nameservers** أو **DNS Settings**، وبدّل الـ Nameservers الموجودة بالي عطاك ياها Cloudflare.
+7. رجّع لـ Cloudflare واضغط **Done, check nameservers** (قد يأخذ التفعيل من ساعة إلى 24 ساعة).
+8. بعد ما يتفعل الدومين (يوصلك إيميل تأكيد)، رجّع لصفحة **Custom domains** في مشروع Pages وأكمل ربط الدومين — Cloudflare بيضيف كل الإعدادات تلقائياً.
+
+### الحالة ب: ما عندك دومين خاص
+تقدر تشتري واحد من داخل Cloudflare نفسه من قسم **Domain Registration**، أو من أي موقع بيع دومينات، وبعدين ترجع للحالة أ.
+
+---
+
+## إذا علقت في أي خطوة
+خبرني بالضبط في أي رقم خطوة وقفت، ووش ظهر لك على الشاشة (اسم الزر، أو رسالة الخطأ)، وراح أكمل معك من هناك خطوة بخطوة.
