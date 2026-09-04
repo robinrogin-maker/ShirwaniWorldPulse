@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Shirwani World Pulse - منصة أخبار عربية متعددة الأقسام">
+    <title>نبض شيرواني | Shirwani World Pulse</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <button class="menu-toggle" type="button" aria-label="فتح القائمة" aria-expanded="false">☰</button>
+        <a class="brand" href="#" aria-label="العودة إلى الصفحة الرئيسية">
+          <span class="brand-mark">نبض</span>
+          <span><strong>Shirwani</strong><small>WORLD PULSE</small></span>
+        </a>
+        <nav class="main-nav" aria-label="الأقسام الرئيسية">
+          <a class="active" href="#home">الرئيسية</a>
+          <a href="#world">العالم</a>
+          <a href="#local">محليات</a>
+          <a href="#business">اقتصاد</a>
+          <a href="#technology">تكنولوجيا</a>
+          <a href="#culture">ثقافة</a>
+          <a href="#sports">رياضة</a>
+        </nav>
+        <button class="search-button" type="button" aria-label="البحث">⌕</button>
+      </div>
+    </header>
+
+    <main id="home">
+      <div class="breaking">
+        <div class="container breaking-inner"><span class="breaking-label">عاجل</span><p>تابع آخر الأخبار والتطورات حول العالم لحظة بلحظة</p><span class="breaking-time">آخر تحديث: 12:45</span></div>
+      </div>
+
+      <div class="container page-content">
+        <section class="hero-grid" aria-labelledby="featured-title">
+          <article class="hero-story">
+            <img src="https://images.unsplash.com/photo-1495020689067-958852a7765e?auto=format&fit=crop&w=1200&q=80" alt="صحيفة وأخبار عالمية">
+            <div class="hero-overlay">
+              <span class="category">العالم</span>
+              <h1 id="featured-title">عالم يتغير بسرعة: قادة العالم يبحثون عن حلول مشتركة للتحديات الجديدة</h1>
+              <p>قراءة في أبرز الأحداث الدولية وتأثيرها على المنطقة.</p>
+              <time datetime="2026-09-04">منذ 30 دقيقة</time>
+            </div>
+          </article>
+          <div class="side-headlines">
+            <article class="headline-card">
+              <span class="category">اقتصاد</span>
+              <h2>أسواق المنطقة تواصل نموها وسط توقعات إيجابية</h2>
+              <time datetime="2026-09-04">منذ ساعة</time>
+            </article>
+            <article class="headline-card accent">
+              <span class="category">تكنولوجيا</span>
+              <h2>ابتكارات عربية ترسم ملامح مستقبل الذكاء الاصطناعي</h2>
+              <time datetime="2026-09-04">منذ ساعتين</time>
+            </article>
+          </div>
+        </section>
+
+        <div class="section-heading">
+          <h2 id="latest-title">أحدث الأخبار</h2>
+          <a href="#latest">عرض الكل ←</a>
+        </div>
+        <section class="news-grid" id="latest" aria-labelledby="latest-title">
+          <article class="news-card" id="local">
+            <div class="news-image city"></div>
+            <div class="news-body"><span class="category">محليات</span><h3>مشاريع تنموية جديدة تعزز جودة الحياة في المدن</h3><p>خطط طموحة تضع الإنسان في قلب التنمية.</p><time datetime="2026-09-04">منذ 3 ساعات</time></div>
+          </article>
+          <article class="news-card" id="culture">
+            <div class="news-image culture"></div>
+            <div class="news-body"><span class="category">ثقافة</span><h3>مهرجان الفنون يفتح أبوابه للمواهب الشابة</h3><p>أيام من الإبداع تجمع الفنانين والجمهور.</p><time datetime="2026-09-04">منذ 4 ساعات</time></div>
+          </article>
+          <article class="news-card" id="sports">
+            <div class="news-image sports"></div>
+            <div class="news-body"><span class="category">رياضة</span><h3>منافسة قوية في الجولة الجديدة من البطولة</h3><p>الفرق تستعد لمواجهات حاسمة ومثيرة.</p><time datetime="2026-09-04">منذ 5 ساعات</time></div>
+          </article>
+        </section>
+
+        <section class="lower-layout">
+          <div>
+            <div class="section-heading"><h2 id="world">حول العالم</h2><a href="#world">المزيد ←</a></div>
+            <div class="compact-list">
+              <article><div class="number">01</div><div><h3>تعاون دولي جديد لمواجهة تغير المناخ</h3><time>منذ 6 ساعات</time></div></article>
+              <article><div class="number">02</div><div><h3>مدن المستقبل تعتمد حلولاً ذكية للنقل والطاقة</h3><time>منذ 7 ساعات</time></div></article>
+              <article><div class="number">03</div><div><h3>خبراء: التعليم هو الاستثمار الأهم للأجيال القادمة</h3><time>منذ 8 ساعات</time></div></article>
+            </div>
+          </div>
+          <aside class="newsletter" id="business">
+            <span class="eyebrow">نبض شيرواني</span>
+            <h2>ابقَ على اطلاع</h2>
+            <p>اشترك في نشرتنا اليومية لتصلك أهم الأخبار والتحليلات.</p>
+            <form id="newsletter-form"><label class="sr-only" for="email">بريدك الإلكتروني</label><input id="email" type="email" placeholder="بريدك الإلكتروني" required><button type="submit">اشترك الآن</button></form>
+            <small id="form-message" role="status"></small>
+          </aside>
+        </section>
+      </div>
+    </main>
+
+    <footer><div class="container footer-inner"><div class="brand"><span class="brand-mark">نبض</span><span><strong>Shirwani</strong><small>WORLD PULSE</small></span></div><p>صوت الخبر، نبض العالم.</p><p>© 2026 Shirwani World Pulse</p></div></footer>
+    <script src="script.js"></script>
+  </body>
+</html>
