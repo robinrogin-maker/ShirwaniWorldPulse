@@ -1,12 +1,27 @@
 # دليل ربط الموقع بـ Cloudflare (خطوة بخطوة، بدون خبرة تقنية)
 
-هذا الدليل مكتوب لشخص ما عنده خبرة برمجية. اتبع الخطوات بالترتيب، وحطّ علامة صح على كل خطوة بعد ما تخلصها. ما تحتاج تكتب أي كود، فقط ضغط أزرار.
+## ✅ الخبر المهم: الموقع أصلاً متصل بـ Cloudflare ويشتغل تمام
 
-> ما راح تحتاج أي "Secrets" أو GitHub Actions — راح نستخدم الطريقة المباشرة اللي توفرها Cloudflare نفسها، وهي أبسط طريقة موجودة.
+بعد الفحص، تبين إن كل شي مربوط وشغّال فعلياً من قبل:
+
+| العنصر | الرابط | الحالة |
+|---|---|---|
+| استضافة الموقع (Cloudflare Pages) | `https://shirwaniworldpulse.pages.dev` | ✅ يفتح ويرجّع 200 |
+| وسيط الأخبار (Cloudflare Worker) | `https://shirwani-news-api.robinrogin.workers.dev` | ✅ يشتغل ويرجّع 200 |
+
+مشروع Pages مربوط تلقائياً بمستودع GitHub `robinrogin-maker/ShirwaniWorldPulse`، يعني أي تحديث يُدفع لفرع `main` ينشر نفسه تلقائياً على `shirwaniworldpulse.pages.dev` بدون أي تدخل يدوي. والـ Worker اللي سواه المرمم (`shirwani-news-api`) هو اللي يجيب الأخبار (RSS) بسرعة عبر الرابط الموجود في `script.js`:
+
+```js
+const SWP_PROXY_ENDPOINT = "https://shirwani-news-api.robinrogin.workers.dev/?url=";
+```
+
+يعني ما تحتاج تسوي شي من الخطوات التالية إلا إذا تبي **دومين خاص** (مثل `www.mywebsite.com`) بدل رابط `.pages.dev` الافتراضي — هذا موضح بالخطوة 3 تحت. إذا حاب تتأكد بنفسك، افتح `https://shirwaniworldpulse.pages.dev` بالمتصفح وشوف الموقع يفتح صح.
 
 ---
 
-## الخطوة 1: سوّي حساب في Cloudflare (إذا ما عندك)
+## إذا ما زلت تبي تراجع الإعداد الأساسي من الصفر (اختياري، غير مطلوب حالياً)
+
+### الخطوة 1: سوّي حساب في Cloudflare (إذا ما عندك)
 
 1. افتح هذا الرابط في المتصفح: https://dash.cloudflare.com/sign-up
 2. اكتب بريدك الإلكتروني وكلمة مرور، واضغط **Create Account** (أو "Sign Up").
