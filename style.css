@@ -1,0 +1,1470 @@
+/* =========================================================================
+   style.css — ShirwaniWorldPulse  (v2 — fully repaired)
+   -------------------------------------------------------------------------
+   CHANGES from v1:
+   - Removed .bazaar-orange class entirely
+   - Added .tech-purple, .horoscope-gold card colors
+   - Added 3-column footer layout (search+about left, copyright center, logo right)
+   - Added search overlay styles
+   - Added About Us popover styles
+   - Added live scores section styles
+   - Added goals ticker bar styles
+   - Added zodiac grid styles
+   - Improved responsive layout
+   ========================================================================= */
+
+/* ============ 1. THEME COLORS ============ */
+:root{
+  --bg:#1C140D;
+  --bg-2:#1A1209;
+  --surface:#241A12;
+  --surface-2:#2B2016;
+  --border:#3C2F22;
+  --cream:#EFE7DA;
+  --muted:#A9997F;
+
+  --amber-1:#FFC773;
+  --amber-2:#F0793A;
+  --amber-solid:#C98A3D;
+  --tab-active:#4A3720;
+
+  /* section accent colors */
+  --world-blue:#1F77B4;
+  --sport-green:#2CA02C;
+  --econ-orange:#9467BD;
+  --tech-purple:#7B68EE;
+  --travel-purple:#FFFFFF;
+  --music-red:#D62728;
+  --health-cyan:#17BECF;
+  --cars-brown:#C47A5A;
+  --horoscope-gold:#DAA520;
+
+  --font-display:"Trebuchet MS", "Segoe UI", "Noto Sans Arabic", Tahoma, Arial, sans-serif;
+  --font-body:"Segoe UI", "Noto Sans Arabic", Tahoma, Arial, sans-serif;
+
+  --gutter: 3%;
+  --content-max: 1300px;
+}
+html.lang-en, html.lang-sv{ --font-body:"Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+
+/* ============ 2. RESET & BASE ============ */
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--bg);
+  color:var(--cream);
+  font-family:var(--font-body);
+  line-height:1.6;
+  /* FIX: full footer always visible, with no empty space underneath it */
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+}
+body > *{ flex-shrink:0; width:100%; }
+/* FIX (طول القائمة المنسدلة): القاعدة أعلاه كانت تُجبر القائمة العائمة
+   على عرض الشاشة كاملاً لأنها عنصر مباشر في الصفحة، فبدت طويلة جداً
+   والنص ملتصقاً بجهة واحدة. العناصر العائمة تُستثنى وتأخذ عرض نصّها. */
+body > .music-context-menu{ width:max-content; }
+body > footer{ margin-top:auto; margin-bottom:0; }
+body > footer:last-child{ padding-bottom:34px; }
+a{color:inherit;text-decoration:none;}
+button{font-family:inherit;}
+img{display:block;max-width:100%;}
+
+/* ============ 3. LAYOUT / WRAP ============ */
+.wrap{
+  max-width:var(--content-max);
+  margin:0 auto;
+  padding:0 var(--gutter);
+}
+header.topbar .wrap{ max-width:1400px; }
+
+/* ============ 4. TOP BAR ============ */
+header.topbar{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:var(--bg-2);
+  border-bottom:1px solid var(--border);
+}
+/* FIX (ثبات الأزرار): شريط الرأس أصبح شبكة من ثلاثة أعمدة بعروض ثابتة:
+   الشعار يمين/يسار البداية، القائمة دائماً في المنتصف الهندسي للصفحة،
+   وأزرار اللغة في الطرف — فلا تتحرّك الأزرار من مكانها عند تغيير اللغة
+   مهما اختلف طول النص (عربي / إنجليزي / سويدي). */
+.topbar-inner{
+  display:grid;
+  grid-template-columns:minmax(90px, 1fr) auto minmax(90px, 1fr);
+  /* FIX (ارتفاع الهيدر): صفّ واحد فقط — الشعار والقائمة وأزرار اللغة
+     كلها في نفس السطر، فلا يعود الشريط ثلاثة أسطر مرتفعة. */
+  grid-template-rows:auto;
+  align-items:center;
+  direction:ltr;
+  gap:14px;
+  padding:8px 0;
+}
+/* FIX (مكان الشعار): الشعار يعود إلى أعلى اليمين في كل الأقسام وكل
+   اللغات — عمود ثابت في طرف الشريط الأيمن، فلا يتحرّك مع تغيير اللغة. */
+.topbar-inner .logo{ grid-column:3; grid-row:1; justify-self:end; }
+/* FIX5 (مكان أيقونة القسم): الحاوية باقية للشعار وحده — أيقونة القسم
+   انتقلت إلى جانب اسم القسم، والشريط العلوي يعرض الشعار فقط. */
+.topbar-inner .topbar-brand{
+  grid-column:3; grid-row:1; justify-self:end;
+  display:flex; align-items:center; gap:10px; direction:ltr;
+}
+.topbar-inner .topbar-brand .logo{ grid-column:auto; grid-row:auto; justify-self:auto; }
+.topbar-cat-icon{ display:none !important; }
+.topbar-inner .main-nav{
+  grid-column:2;
+  grid-row:1;
+  justify-self:center;
+  min-width:0;
+  justify-content:center;
+}
+.topbar-inner .lang-switch{ grid-column:1; grid-row:1; justify-self:start; margin-inline-start:0; }
+@media (max-width:900px){
+  /* في الشاشات الصغيرة: سطران مقصودان — الشعار واللغات في السطر الأول
+     والقائمة في السطر الثاني وسط الشاشة. */
+  .topbar-inner{ grid-template-columns:auto 1fr; row-gap:8px; }
+  .topbar-inner .logo{ grid-column:2; grid-row:1; justify-self:end; }
+  .topbar-inner .topbar-brand{ grid-column:2; grid-row:1; justify-self:end; }
+  .topbar-inner .lang-switch{ grid-column:1; grid-row:1; justify-self:start; }
+  .topbar-inner .main-nav{ grid-column:1 / -1; grid-row:2; justify-self:center; }
+}
+
+/* Logo */
+.logo{ display:flex; align-items:center; justify-content:flex-start; }
+.logo-text{
+  background:linear-gradient(90deg, var(--amber-1), var(--amber-2));
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+}
+.logo-badge{
+  width:40px;height:40px; border-radius:9px;
+  background:linear-gradient(135deg, var(--amber-1), var(--amber-2));
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--font-display); font-weight:800; font-size:15px; color:#1C140D; flex:none;
+}
+
+/* FIX: no more direction-based side swapping — المواقع ثابتة في كل لغة. */
+[dir="ltr"] .lang-switch,
+[dir="rtl"] .lang-switch{ flex-direction:row; justify-content:center; }
+[dir="ltr"] .logo,
+[dir="rtl"] .logo{ justify-content:flex-end; }
+/* the header row itself never flips, only the text inside each item does */
+[dir="rtl"] .topbar-inner,
+[dir="ltr"] .topbar-inner{ direction:ltr; }
+[dir="rtl"] .topbar-inner .nav-link,
+[dir="rtl"] .topbar-inner .logo,
+[dir="rtl"] .topbar-inner .lang-btn{ direction:rtl; }
+
+/* Language switch */
+.lang-switch{ display:flex; align-items:center; justify-content:center; gap:4px; }
+.lang-btn{
+  display:flex;align-items:center;gap:5px;
+  font-size:12px;font-weight:600; color:var(--muted);
+  background:transparent; border:1px solid transparent;
+  padding:7px 12px; border-radius:999px; cursor:pointer; white-space:nowrap;
+  transition:all .15s;
+}
+.lang-btn:hover{color:var(--cream);border-color:var(--amber-2);box-shadow:0 0 10px rgba(240,121,58,.3);}
+.lang-btn.active{ background:linear-gradient(90deg, var(--amber-1), var(--amber-solid)); color:#1C140D; font-weight:700; }
+.lang-sep{ color:var(--muted); font-size:12px; font-weight:300; opacity:.6; user-select:none; margin:0 2px; }
+
+/* Navigation */
+nav.main-nav{ display:flex; justify-content:center; align-items:center; gap:4px; flex-wrap:wrap; }
+.nav-item{ position:relative; }
+.nav-link{
+  display:inline-flex; align-items:center; gap:5px;
+  font-size:13.5px; font-weight:500; color:var(--muted);
+  padding:9px 9px; border-radius:8px; white-space:nowrap;
+  border:1px solid transparent; background:transparent;
+  transition:color .15s, box-shadow .15s, border-color .15s; cursor:pointer;
+}
+.nav-link:hover,.nav-link:focus-visible{ color:#D8D5CE; border-color:#D8D5CE; }
+.nav-link.active{ color:#D4AF37; border-color:#D4AF37; }
+.nav-caret{font-size:10px;opacity:.7;}
+
+.dropdown{
+  position:absolute; top:calc(100% + 8px); inset-inline-start:0;
+  min-width:220px; background:var(--surface); border:1px solid var(--border);
+  border-radius:10px; padding:6px; box-shadow:0 12px 28px rgba(0,0,0,.35);
+  opacity:0; visibility:hidden; transform:translateY(4px);
+  transition:opacity .15s, transform .15s, visibility .15s; z-index:50;
+}
+.nav-item:hover .dropdown,.nav-item:focus-within .dropdown{ opacity:1; visibility:visible; transform:translateY(0); }
+.dropdown a{
+  display:block; font-size:13px; color:var(--cream); padding:9px 12px;
+  border-radius:7px; border:1px solid transparent;
+  transition:color .15s, border-color .15s;
+}
+.dropdown a:hover{ color:#D8D5CE; border-color:#D8D5CE; }
+
+/* FIX (ارتفاع الهيدر): شعار أنحف قليلاً ليصبح الشريط أقل ارتفاعاً. */
+.site-logo{ display:block; height:52px; width:auto; }
+
+/* ============ 5. HERO ============ */
+.hero{ padding:34px 0 26px; text-align:center; }
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:12px;color:var(--muted); border:1px solid var(--border);
+  padding:7px 16px;border-radius:999px;margin-bottom:24px;
+}
+.hero-badge .dot{width:5px;height:5px;border-radius:50%;background:var(--amber-2);}
+/* FIX (حجم العنوان تحت الهيدر): كان 48px فيأخذ مساحة كبيرة، صار أصغر
+   مع بقاء الفوتر ملتصقاً بأسفل الصفحة (sticky footer لم يُمسّ). */
+.hero h1{
+  font-family:var(--font-display); font-weight:700; font-size:30px;
+  color:rgba(235,230,215,.88); margin-bottom:16px;
+}
+.hero p{display:none;}
+.hero-cta{
+  display:inline-flex;align-items:center;gap:8px;
+  border:1px solid var(--border); color:var(--cream);
+  padding:11px 24px;border-radius:999px; font-size:14px;font-weight:600;
+  transition:box-shadow .15s, border-color .15s;
+}
+.hero-cta:hover{border-color:var(--amber-2);box-shadow:0 0 14px rgba(240,121,58,.35);}
+
+/* ============ 6. CATEGORY CARDS ============ */
+/* Homepage grid: the icons are the only main block, so keep the gap to the
+   footer tight (no empty space between the cards and the footer). */
+.cat-grid{
+  padding:6px 0 22px;
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,280px));
+  justify-content:center;
+  gap:12px;
+}
+.cat-card{
+  display:block; background:var(--header-bg);
+  border:1px solid rgba(235,230,215,.28);
+  border-radius:10px; padding:10px 14px;
+  text-align:center;
+  transition:transform .15s, border-color .15s, box-shadow .15s; cursor:pointer;
+}
+.cat-card:hover{ transform:translateY(-2px); border-color:#D4AF37; }
+.cat-icon{
+  width:50px; height:50px; border-radius:10px;
+  display:flex; align-items:center; justify-content:center;
+  margin:0 auto 8px; background:transparent !important;
+}
+.cat-icon .icon-image{ width:50px; height:50px; object-fit:contain; display:block; }
+.icon-mask{
+  display:inline-block; width:16px; height:16px;
+  -webkit-mask-image:var(--icon-url); mask-image:var(--icon-url);
+  -webkit-mask-size:contain; mask-size:contain;
+  -webkit-mask-repeat:no-repeat; mask-repeat:no-repeat;
+  -webkit-mask-position:center; mask-position:center;
+  background-color:currentColor;
+  filter:drop-shadow(2px 3px 2px rgba(0,0,0,.45));
+  transform:translateY(-1px);
+}
+.cat-title{
+  font-size:13.5px; font-weight:700; margin-bottom:4px;
+  text-shadow:1px 1px 0 rgba(0,0,0,.55), 2px 2px 0 rgba(0,0,0,.45), 3px 3px 3px rgba(0,0,0,.28);
+}
+.cat-desc{font-size:11px;color:var(--muted);line-height:1.4;}
+
+/* Card accent colors */
+.cat-card.world-blue .cat-icon{ background:rgba(31,119,180,.14); color:var(--world-blue); }
+.cat-card.world-blue .cat-title{ color:var(--world-blue); }
+
+.cat-card.sport-green .cat-icon{ background:rgba(44,160,44,.14); color:var(--sport-green); }
+.cat-card.sport-green .cat-title{ color:var(--sport-green); }
+
+.cat-card.econ-orange .cat-icon{ background:rgba(148,103,189,.14); color:var(--econ-orange); }
+.cat-card.econ-orange .cat-title{ color:var(--econ-orange); }
+
+.cat-card.tech-purple .cat-icon{ background:rgba(123,104,238,.14); color:var(--tech-purple); }
+.cat-card.tech-purple .cat-title{ color:var(--tech-purple); }
+
+.cat-card.travel-purple .cat-icon{ background:rgba(148,103,189,.14); color:var(--travel-purple); }
+.cat-card.travel-purple .cat-title{ color:var(--travel-purple); }
+
+.cat-card.music-red .cat-icon{ background:rgba(214,39,40,.14); color:var(--music-red); }
+.cat-card.music-red .cat-title{ color:var(--music-red); }
+
+.cat-card.health-cyan .cat-icon{ background:rgba(23,190,207,.14); color:var(--health-cyan); }
+.cat-card.health-cyan .cat-title{ color:var(--health-cyan); }
+
+.cat-card.cars-brown .cat-icon{ background:rgba(196,122,90,.14); color:var(--cars-brown); }
+.cat-card.cars-brown .cat-title{ color:var(--cars-brown); }
+
+.cat-card.horoscope-gold .cat-icon{ background:rgba(218,165,32,.14); color:var(--horoscope-gold); }
+.cat-card.horoscope-gold .cat-title{ color:var(--horoscope-gold); }
+
+/* ============ 7. SECTION HEADER + NEWS GRID ============ */
+.section-head{
+  display:flex;justify-content:space-between;align-items:flex-end;
+  padding-bottom:16px;margin-bottom:22px;
+  border-bottom:1px solid var(--border); gap:14px;flex-wrap:wrap;
+}
+.section-head-title{ display:flex;align-items:center;gap:10px; font-size:19px;font-weight:700; }
+.section-head-title .icon-badge{width:26px;height:26px;border-radius:7px;display:flex;align-items:center;justify-content:center;}
+.section-head-title .icon-badge .icon-mask{width:15px;height:15px;}
+.section-head-sub{font-size:12.5px;color:var(--muted);margin-top:4px;}
+.more-link{
+  font-size:13px;color:var(--muted);font-weight:600;
+  padding:6px 10px;border-radius:7px;border:1px solid transparent;
+  transition:box-shadow .15s, border-color .15s, color .15s;
+}
+.more-link:hover{color:var(--cream);border-color:var(--amber-2);box-shadow:0 0 10px rgba(240,121,58,.3);}
+
+/* FIX (الفراغ أسفل البطاقات): كانت البطاقات تُمدّ لتتساوى مع أطول بطاقة في
+   الصف فيظهر فراغ كبير تحت النص. الآن كل بطاقة بطول محتواها فقط. */
+.news-grid{ padding-bottom:60px; display:grid; grid-template-columns:repeat(3,1fr); gap:18px; align-items:start; }
+.news-card{
+  display:block; background:var(--surface); border:1px solid var(--border);
+  border-radius:12px; overflow:hidden;
+  transition:border-color .15s, box-shadow .15s;
+  text-decoration:none; color:inherit;
+}
+.news-card:hover{ border-color:#D4AF37; cursor:pointer; }
+.news-img{ width:72%; height:110px; margin:12px auto 0; position:relative; overflow:hidden; }
+.news-img img{width:100%;height:100%;display:block;object-fit:cover;}
+.news-sub{ grid-column:1/-1; text-align:center; padding:40px 20px; font-size:14px; color:var(--muted); }
+.news-body{padding:14px 16px 14px;}
+.news-title{
+  font-size:15px;font-weight:700;line-height:1.55;margin-bottom:8px;
+  display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;
+}
+.news-desc{
+  font-size:12.5px;color:var(--muted);line-height:1.65;margin-bottom:14px;
+  display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;overflow:hidden;
+}
+.news-meta{
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding-top:10px;border-top:1px solid var(--border);
+  font-size:10.5px;color:var(--muted);
+}
+.news-date,.news-source{ max-width:48%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap; }
+.meta-label{ font-weight:600; color:var(--cream); opacity:.7; margin-inline-end:4px; }
+[dir="rtl"] .news-meta{direction:rtl;}
+[dir="ltr"] .news-meta{direction:ltr;}
+
+/* Placeholder cards — items without real images */
+.placeholder-card{ opacity:0.92; }
+.placeholder-card .news-img{
+  background:linear-gradient(135deg,var(--surface) 0%,rgba(212,175,55,.08) 100%);
+}
+.placeholder-card .news-img img.placeholder-icon{
+  object-fit:contain; width:50%; height:50%; margin:auto; opacity:.45;
+  position:relative; top:25%;
+}
+.placeholder-card .news-body .news-title{ opacity:.85; }
+
+/* FIX (بديل الصورة = أيقونة المصدر): الخبر بلا صورة يعرض شعار الموقع الناشر
+   داخل دائرة ذهبية مع اسم المصدر تحته، بدل أيقونة القسم الكبيرة. */
+.logo-card .news-img-logo{
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  gap:8px; height:110px;
+  background:radial-gradient(circle at 50% 40%, rgba(212,175,55,.10), rgba(0,0,0,0) 70%);
+  border:1px dashed rgba(212,175,55,.28); border-radius:10px;
+}
+.logo-card .news-img-logo img.source-logo{
+  width:44px; height:44px; object-fit:contain;
+  padding:6px; border-radius:999px;
+  background:rgba(255,255,255,.92);
+  border:1px solid rgba(212,175,55,.5);
+  box-shadow:0 2px 10px rgba(0,0,0,.28);
+}
+.logo-card .logo-source-name{
+  font-size:12px; font-weight:700; color:var(--amber-1);
+  max-width:88%; text-align:center;
+  overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
+}
+
+/* FIX (اختفاء الأخبار): بطاقة نصّية عند تعذّر الصورة وأيقونة المصدر —
+   نُبقي الخبر ورابطه بدل حدفه من القسم. */
+.noimg-card{ border-inline-start:3px solid rgba(212,175,55,.55); }
+.noimg-card .news-body{ padding-top:18px; }
+.noimg-card .news-title{ -webkit-line-clamp:3; min-height:0; }
+.noimg-card .news-desc{ -webkit-line-clamp:4; min-height:0; }
+
+/* "From us" label badge on catNews items */
+.from-us-label{
+  position:absolute; top:8px; left:8px; right:auto;
+  background:rgba(212,175,55,.92); color:#1a1a2e;
+  font-size:10px; font-weight:700; padding:3px 8px;
+  border-radius:4px; z-index:2; letter-spacing:.3px;
+  line-height:1.3; white-space:nowrap;
+}
+[dir="rtl"] .from-us-label{ left:auto; right:8px; }
+.placeholder-card .from-us-label{ background:rgba(212,175,55,.78); }
+
+/* Category page header */
+.cat-header{ padding:20px 0 10px; }
+.cat-head-row{ display:flex; align-items:center; gap:12px; margin-top:10px; }
+/* FIX5 (مكان أيقونة القسم): الأيقونة صارت بجانب اسم القسم بحجم واضح
+   (32px) بدل الشريط العلوي، مع خلفية دائرية خفيفة بلون القسم. */
+.cat-head-row .cat-head-icon{
+  width:46px; height:46px; border-radius:12px; flex:0 0 auto;
+  display:inline-flex; align-items:center; justify-content:center;
+}
+.cat-head-icon-img{
+  display:block; width:32px; height:32px; object-fit:contain;
+  filter:drop-shadow(1px 2px 3px rgba(0,0,0,.4));
+}
+@media (max-width:900px){
+  .cat-head-row .cat-head-icon{ width:40px; height:40px; border-radius:10px; }
+  .cat-head-icon-img{ width:27px; height:27px; }
+}
+.cat-desc-text{ font-size:13px; color:var(--muted); margin-top:6px; }
+.back-home{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:12.5px;color:var(--muted); padding:8px 4px; border-radius:6px;
+}
+.back-home:hover{color:var(--amber-1);}
+
+/* ============ 8. FOOTER (3-column layout) ============ */
+/* FIX: nicer footer — golden top line, soft background, clearer spacing,
+   rounder buttons and a slightly bigger logo. */
+footer{
+  position:relative;
+  border-top:1px solid var(--border);
+  padding:30px 0 34px;
+  margin-top:18px;
+  background:linear-gradient(180deg, rgba(0,0,0,0), rgba(0,0,0,.22));
+}
+footer::before{
+  content:""; position:absolute; inset-inline:0; top:-1px; height:2px;
+  background:linear-gradient(90deg, transparent, var(--amber-1), var(--amber-2), transparent);
+  opacity:.75;
+}
+.footer-row{
+  display:grid;
+  grid-template-columns:1fr auto 1fr;
+  align-items:center;
+  gap:18px;
+}
+.footer-left{ display:flex; align-items:center; gap:10px; }
+.footer-center{ text-align:center; }
+.footer-right{ display:flex; align-items:center; justify-content:flex-end; }
+.footer-logo{
+  height:48px; width:auto; opacity:.9;
+  transition:opacity .2s, transform .2s;
+}
+.footer-logo:hover{ opacity:1; transform:scale(1.04); }
+.footer-copyright{
+  display:inline-block;
+  font-size:12.5px;
+  line-height:1.7;
+  color:var(--muted);
+  direction:rtl;
+  text-align:center;
+  font-family:var(--font-body);
+  letter-spacing:.2px;
+}
+[dir="ltr"] .footer-copyright{ direction:ltr; }
+
+.footer-btn{
+  display:inline-flex; align-items:center; justify-content:center;
+  width:38px; height:38px; border-radius:999px;
+  border:1px solid var(--border); background:rgba(255,255,255,.03);
+  color:var(--cream); font-size:16px; cursor:pointer;
+  transition:border-color .15s, background .15s, transform .15s, box-shadow .15s;
+}
+.footer-btn:hover{
+  border-color:var(--amber-2);
+  background:rgba(240,121,58,.14);
+  transform:translateY(-2px);
+  box-shadow:0 6px 16px rgba(240,121,58,.18);
+}
+/* FIX (زر التحديث): دوران لطيف يطمئن الزائر أن التحديث جارٍ */
+.footer-btn.refreshing{
+  animation:swp-spin .9s linear infinite;
+  opacity:.75; cursor:progress;
+}
+@keyframes swp-spin{ to{ transform:rotate(360deg); } }
+@media (prefers-reduced-motion:reduce){
+  .footer-btn.refreshing{ animation:none; }
+}
+
+/* FIX (أزرار التواصل الاجتماعي بدل زر التحديث): نفس شكل أزرار الفوتر تماماً
+   مع أيقونة SVG متوسّطة ودون تسطير الروابط. */
+.footer-btn.footer-social{ text-decoration:none; }
+.footer-btn.footer-social svg{ display:block; }
+
+/* ============ 9. RTL / LTR DIRECTION OVERRIDES ============ */
+/* FIX (مكان الشعار): تم استثناء شريط الرأس من قلب الاتجاه هنا، لأن قلبه
+   كان يعيد الشعار إلى اليسار في اللغة العربية. الشريط يبقى LTR دائماً
+   بينما نصوص عناصره تُقلب وحدها في الأعلى. */
+[dir="rtl"] body,
+[dir="rtl"] .main-nav,
+[dir="rtl"] .section-head,
+[dir="rtl"] .footer-row,
+[dir="rtl"] .sub-nav,
+[dir="rtl"] .hero,
+[dir="rtl"] .back-home { direction:rtl; }
+
+[dir="ltr"] body,
+[dir="ltr"] .main-nav,
+[dir="ltr"] .section-head,
+[dir="ltr"] .footer-row,
+[dir="ltr"] .sub-nav,
+[dir="ltr"] .hero,
+[dir="ltr"] .back-home { direction:ltr; }
+
+[dir="rtl"] .news-grid,
+[dir="rtl"] .cat-grid { direction:rtl; }
+[dir="ltr"] .news-grid,
+[dir="ltr"] .cat-grid { direction:ltr; }
+
+[dir="rtl"] .news-card .news-body { text-align:right; }
+[dir="ltr"] .news-card .news-body { text-align:left; }
+
+.cat-card .cat-title, .cat-card .cat-desc { text-align:center; }
+
+/* ============ 10. SUB NAV ============ */
+.sub-nav{ display:flex; gap:10px; margin-bottom:20px; flex-wrap:wrap; }
+.sub-nav-link{
+  display:inline-flex; align-items:center; gap:6px;
+  font-size:13px; font-weight:600; color:var(--muted);
+  padding:8px 16px; border-radius:8px; border:1px solid var(--border);
+  background:transparent;
+  transition:color .15s, box-shadow .15s, border-color .15s;
+}
+.sub-nav-link:hover,.sub-nav-link:focus-visible{ color:#D8D5CE; border-color:#D8D5CE; }
+.sub-nav-link.active{ color:#D4AF37; border-color:#D4AF37; }
+
+/* ============ 11. MUSIC FAVORITES SECTION ============ */
+.music-favs-section{ padding:10px 0 40px; }
+/* FIX: the dashed "allowed zone" rectangle was removed from the page — the whole
+   favorites section is now the right-click zone, so no box styles are needed. */
+.music-fav-item[data-idx]{ cursor:context-menu; }
+.music-favs-title-frame{
+  display:inline-flex; align-items:center; gap:10px;
+  border:2px solid #D4AF37;
+  border-radius:12px;
+  padding:10px 28px;
+  background:rgba(212,175,55,.06);
+  cursor:context-menu;
+  user-select:none;
+  transition:border-color .15s, box-shadow .15s;
+}
+.music-favs-title-frame:hover{
+  border-color:#D4AF37;
+  box-shadow:0 0 14px rgba(212,175,55,.25);
+}
+.music-favs-title-frame .section-head-title{
+  display:inline-flex; align-items:center; gap:8px;
+  font-size:20px; font-weight:700; color:var(--amber-1);
+}
+
+/* Music right-click context menu */
+.music-context-menu{
+  position:fixed; z-index:3000;
+  background:var(--surface-2,#1c140d);
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:4px 0;
+  /* FIX (طول القائمة): العرض يتبع أطول نصّ فيها بحدّ أعلى لا يخرج عن الشاشة. */
+  width:max-content; min-width:0; max-width:min(78vw, 260px);
+  box-shadow:0 8px 32px rgba(0,0,0,.55);
+  animation:ctxFadeIn .12s ease;
+}
+@keyframes ctxFadeIn{ from{opacity:0;transform:scale(.95)} to{opacity:1;transform:scale(1)} }
+.music-ctx-item{
+  /* FIX (طول القائمة): حشو وخط أصغر، وسطر واحد بلا التفاف. */
+  padding:8px 12px;
+  font-size:13px; font-weight:600; color:var(--cream);
+  cursor:pointer;
+  display:flex; align-items:center; gap:6px;
+  white-space:nowrap;
+  transition:background .12s;
+}
+.music-ctx-item:hover{ background:rgba(212,175,55,.12); }
+.music-ctx-danger{ color:var(--music-red); }
+.music-ctx-danger:hover{ background:rgba(214,39,40,.12); }
+
+/* Music password modal */
+.music-password-modal{
+  position:fixed; inset:0; z-index:4000;
+  background:rgba(28,20,13,.88); backdrop-filter:blur(8px);
+  display:flex; align-items:center; justify-content:center;
+  animation:overlayFadeIn .2s ease;
+}
+.music-password-box{
+  background:var(--surface-2,#1c140d);
+  border:1px solid #D4AF37;
+  border-radius:16px;
+  padding:32px;
+  min-width:320px; max-width:90vw;
+  text-align:center;
+  box-shadow:0 0 40px rgba(212,175,55,.18);
+}
+.music-pwd-hint{ font-size:11px; color:rgba(255,255,255,.35); margin-top:2px; margin-bottom:8px; }
+.music-password-title{
+  font-size:18px; font-weight:700; color:#D4AF37;
+  margin-bottom:18px;
+}
+.music-pwd-input{
+  width:100%; padding:12px 16px;
+  border:1px solid var(--border); border-radius:10px;
+  background:var(--surface); color:var(--cream);
+  font-family:var(--font-body); font-size:15px; outline:none;
+  text-align:center;
+  margin-bottom:16px;
+  transition:border-color .15s;
+}
+.music-pwd-input:focus{ border-color:#D4AF37; }
+.music-password-actions{
+  display:flex; gap:10px; justify-content:center;
+}
+.music-pwd-submit{
+  padding:10px 24px; border:1px solid #D4AF37; border-radius:10px;
+  background:rgba(212,175,55,.15); color:#D4AF37; font-weight:700; font-size:14px;
+  cursor:pointer; transition:background .15s;
+}
+.music-pwd-submit:hover{ background:rgba(212,175,55,.3); }
+.music-pwd-cancel{
+  padding:10px 24px; border:1px solid var(--border); border-radius:10px;
+  background:transparent; color:var(--muted); font-weight:600; font-size:14px;
+  cursor:pointer; transition:background .15s;
+}
+.music-pwd-cancel:hover{ background:rgba(255,255,255,.05); }
+.music-password-error{
+  color:var(--music-red); font-size:13px; font-weight:600;
+  margin-top:10px;
+  animation:pwdShake .3s ease;
+}
+@keyframes pwdShake{ 0%,100%{transform:translateX(0)} 25%{transform:translateX(-6px)} 75%{transform:translateX(6px)} }
+.shake-anim{ animation:pwdShake .3s ease; }
+/* FIX: saved YouTube songs are now BIG cards — exactly 2 per row — that play
+   the song inside the site through a YouTube Embed player. Drag & drop
+   re-ordering is kept exactly as it was. */
+.music-fav-list{ display:grid; grid-template-columns:repeat(2,1fr); gap:22px; }
+.music-fav-item{
+  display:flex; flex-direction:column;
+  background:var(--surface); border:1px solid var(--border);
+  border-radius:16px; padding:12px;
+  overflow:hidden;
+  cursor:grab;
+  transition:border-color .15s, transform .15s, box-shadow .15s;
+}
+.music-fav-item:hover{ border-color:var(--music-red); transform:translateY(-2px); }
+.music-fav-item.dragging{ opacity:.45; cursor:grabbing; }
+.music-fav-item.drag-over{ border-color:#D4AF37; box-shadow:0 0 12px rgba(212,175,55,.35); }
+.music-fav-thumb{
+  position:relative;
+  width:78%; aspect-ratio:16/9;
+  margin:0 auto;
+  border-radius:12px; overflow:hidden;
+  background:var(--surface-2,rgba(255,255,255,.04));
+}
+.music-fav-thumb img{ width:100%; height:100%; object-fit:cover; display:block; }
+.music-fav-thumb-fallback{
+  width:100%; height:100%; display:flex; align-items:center; justify-content:center;
+  font-size:44px;
+}
+/* Play badge over the cover */
+.music-fav-play{
+  position:absolute; inset:0; width:100%; height:100%;
+  display:flex; align-items:center; justify-content:center;
+  background:rgba(0,0,0,.18); border:0; cursor:pointer;
+  transition:background .15s;
+}
+.music-fav-item:hover .music-fav-play{ background:rgba(0,0,0,.34); }
+.music-fav-play-icon{
+  display:flex; align-items:center; justify-content:center;
+  width:62px; height:62px; border-radius:50%;
+  background:var(--music-red,#c0392b); color:#fff;
+  font-size:24px; padding-inline-start:4px;
+  box-shadow:0 4px 16px rgba(0,0,0,.45);
+  transition:transform .15s;
+}
+.music-fav-item:hover .music-fav-play-icon{ transform:scale(1.08); }
+/* رابط فتح الأغنية عندما لا يمكن تشغيلها داخل البطاقة */
+.music-fav-open{ text-decoration:none; }
+/* Embedded YouTube player fills the same 16:9 area */
+.music-fav-player{ position:absolute; inset:0; }
+.music-fav-player iframe{ width:100%; height:100%; border:0; display:block; }
+.music-fav-close{
+  position:absolute; top:8px; inset-inline-end:8px;
+  width:30px; height:30px; border-radius:50%;
+  background:rgba(0,0,0,.66); color:#fff; border:1px solid rgba(255,255,255,.28);
+  font-size:14px; line-height:1; cursor:pointer; z-index:2;
+}
+.music-fav-close:hover{ background:var(--music-red,#c0392b); }
+/* FIX (favourites): previous / next song buttons overlaid on the playing card. */
+.music-fav-nav{
+  position:absolute; bottom:8px; inset-inline-start:8px;
+  display:flex; gap:6px; z-index:2;
+}
+.music-fav-nav-btn{
+  width:30px; height:30px; border-radius:50%;
+  background:rgba(0,0,0,.66); color:#fff; border:1px solid rgba(255,255,255,.28);
+  font-size:13px; line-height:1; cursor:pointer;
+  display:flex; align-items:center; justify-content:center;
+}
+.music-fav-nav-btn:hover{ background:var(--music-red,#c0392b); }
+.music-fav-info{
+  flex:none; padding-top:10px; min-width:0;
+  display:flex; align-items:center; gap:8px;
+}
+.music-fav-grip{ flex:none; color:var(--muted); font-size:14px; letter-spacing:-2px; cursor:grab; }
+.music-fav-name{
+  display:block; flex:1 1 auto; font-size:15px; font-weight:600; color:var(--cream);
+  text-decoration:none; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
+  transition:color .15s;
+}
+.music-fav-name:hover{ color:var(--music-red); }
+.music-fav-empty{ grid-column:1/-1; }
+
+/* FIX (in-card playback): the fixed bottom player bar was removed — the song
+   plays inside its own card, filling the same 16:9 cover area. */
+.music-fav-frame{
+  position:absolute; inset:0;
+  width:100%; height:100%; border:0; display:block; background:#000;
+}
+/* FIX (لا خدمات Google/YouTube): مشغل صوتي أصلي داخل البطاقة. */
+.music-fav-audio{
+  position:absolute; left:8px; right:8px; bottom:10px;
+  width:calc(100% - 16px); display:block;
+}
+.music-fav-item.playing{ border-color:var(--music-red,#c0392b); box-shadow:0 0 0 2px rgba(192,57,43,.28); }
+
+/* Song card for music category (square cover + song link) */
+.song-card{
+  display:block;
+  background:var(--surface); border:1px solid var(--border);
+  border-radius:12px; overflow:hidden;
+  text-decoration:none; color:var(--cream);
+  transition:border-color .15s, transform .15s;
+}
+.song-card:hover{ border-color:var(--music-red); transform:translateY(-2px); }
+.song-cover{
+  width:72%;
+  aspect-ratio:16/9;
+  margin:12px auto 0;
+  border-radius:10px;
+  position:relative;
+  overflow:hidden;
+  background:var(--surface-2,rgba(255,255,255,.04));
+}
+
+.song-cover img{
+  width:100%;
+  height:100%;
+  display:block;
+  object-fit:cover;
+}
+/* FIX (حذف أيقونات الموسيقى الكبيرة): عندما يكون الغلاف مجرد شعار منصة،
+   يُعرض بحجم صغير داخل دائرة وليس ممدوداً على كامل البطاقة. */
+.song-cover-logo{
+  aspect-ratio:16/9;
+  display:flex; align-items:center; justify-content:center;
+  background:radial-gradient(circle at 50% 45%, rgba(212,175,55,.10), rgba(0,0,0,0) 70%);
+  border-bottom:1px dashed rgba(212,175,55,.22);
+}
+.song-cover-logo img,
+.song-cover img.source-logo,
+.music-fav-thumb-fallback img.source-logo{
+  width:40px; height:40px; object-fit:contain;
+  padding:6px; border-radius:999px;
+  background:rgba(255,255,255,.92);
+  border:1px solid rgba(212,175,55,.45);
+  box-shadow:0 2px 8px rgba(0,0,0,.25);
+}
+.music-fav-thumb-fallback{
+  display:flex; align-items:center; justify-content:center;
+  font-size:0; /* FIX: لا رموز موسيقى عملاقة */
+}
+.music-fav-note{
+  font-size:26px; line-height:1;
+  color:var(--gold,#d4af37);
+  opacity:.85;
+}
+.song-body{ padding:12px; }
+.song-title{ font-size:14px; font-weight:700; color:var(--cream); margin-bottom:4px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.song-artist{ font-size:12px; color:var(--muted); overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.song-meta{ font-size:11px; color:var(--muted); margin-top:6px; display:flex; align-items:center; gap:4px; }
+
+/* FIX: أسفل بطاقة الأغنية — المصدر وتاريخ الصدور */
+.song-foot{
+  margin-top:8px; padding-top:6px;
+  border-top:1px solid rgba(212,175,55,.22);
+  display:flex; flex-wrap:wrap; align-items:center; gap:4px 10px;
+  font-size:11px; line-height:1.5; color:var(--muted);
+}
+.song-foot .song-src,
+.song-foot .song-date{
+  display:inline-flex; align-items:center; gap:4px;
+  max-width:100%; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
+}
+.song-foot .meta-label{ color:var(--gold,#d4af37); opacity:.9; font-weight:600; }
+
+/* ============ 13. SEARCH OVERLAY ============ */
+.search-overlay{
+  position:fixed; inset:0; z-index:2000;
+  background:rgba(28,20,13,.85); backdrop-filter:blur(8px);
+  display:flex; align-items:flex-start; justify-content:center;
+  padding-top:80px;
+  animation:overlayFadeIn .2s ease;
+}
+@keyframes overlayFadeIn{ from{opacity:0} to{opacity:1} }
+.search-overlay-inner{
+  width:90%; max-width:600px;
+  background:var(--surface); border:1px solid var(--border);
+  border-radius:14px; padding:24px;
+  box-shadow:0 20px 60px rgba(0,0,0,.5);
+}
+.search-overlay-title{
+  font-size:16px; font-weight:700; color:var(--cream); margin-bottom:14px;
+}
+.search-overlay-input{
+  width:100%; padding:12px 16px;
+  border:1px solid var(--border); border-radius:8px;
+  background:var(--bg); color:var(--cream);
+  font-family:var(--font-body); font-size:15px; outline:none;
+  transition:border-color .15s;
+}
+.search-overlay-input:focus{ border-color:var(--amber-2); }
+.search-overlay-close{
+  position:absolute; top:12px; right:12px;
+  width:32px; height:32px; border:none; background:transparent;
+  color:var(--muted); font-size:18px; cursor:pointer;
+  border-radius:50%; transition:color .15s;
+}
+[dir="rtl"] .search-overlay-close{ right:auto; left:12px; }
+.search-overlay-close:hover{ color:var(--cream); }
+.search-overlay-inner{ position:relative; }
+.search-overlay-results{
+  margin-top:14px; max-height:400px; overflow-y:auto;
+}
+.search-result-item{
+  display:flex; align-items:center; gap:12px;
+  padding:10px 8px; border-radius:8px;
+  text-decoration:none; color:var(--cream);
+  transition:background .15s;
+}
+.search-result-item:hover{ background:var(--surface-2); }
+.search-result-info{ flex:1; min-width:0; }
+.search-result-title{
+  font-size:14px; font-weight:600;
+  overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
+}
+.search-result-cat{ font-size:11px; color:var(--muted); margin-top:2px; }
+.search-no-results{ color:var(--muted); padding:20px; text-align:center; font-size:14px; }
+
+/* ============ 14. ABOUT US POPOVER ============ */
+.about-us-overlay{
+  position:fixed; inset:0; z-index:2000;
+  background:rgba(28,20,13,.85); backdrop-filter:blur(8px);
+  display:flex; align-items:center; justify-content:center;
+  animation:overlayFadeIn .2s ease;
+}
+.about-us-inner{
+  width:90%; max-width:500px;
+  background:var(--surface); border:1px solid var(--border);
+  border-radius:14px; padding:28px;
+  box-shadow:0 20px 60px rgba(0,0,0,.5);
+  position:relative;
+}
+.about-us-close{
+  position:absolute; top:12px; right:12px;
+  width:32px; height:32px; border:none; background:transparent;
+  color:var(--muted); font-size:18px; cursor:pointer;
+  border-radius:50%; transition:color .15s;
+}
+[dir="rtl"] .about-us-close{ right:auto; left:12px; }
+.about-us-close:hover{ color:var(--cream); }
+.about-us-title{
+  font-size:20px; font-weight:700; color:var(--amber-1); margin-bottom:14px;
+}
+.about-us-text{
+  font-size:14px; color:var(--cream); line-height:1.7;
+}
+
+/* ============ 15. SPORT SUB-PAGE TOGGLE ============ */
+.sport-sub-nav{
+  display:flex;
+  gap:10px;
+  margin-bottom:22px;
+  flex-wrap:wrap;
+}
+.sport-sub-btn{
+  display:inline-flex; align-items:center; gap:7px;
+  font-size:14px; font-weight:700;
+  color:var(--muted);
+  background:transparent;
+  border:1px solid var(--border);
+  padding:10px 22px;
+  border-radius:10px;
+  cursor:pointer;
+  transition:color .15s, border-color .15s, box-shadow .15s, background .15s;
+  white-space:nowrap;
+}
+.sport-sub-btn:hover{
+  color:var(--cream);
+  border-color:var(--cream);
+}
+.sport-sub-btn.active{
+  color:#fff;
+  border-color:var(--sport-green);
+  background:rgba(44,160,44,.18);
+  box-shadow:0 0 12px rgba(44,160,44,.3);
+}
+.sport-sub-btn.active .sport-sub-icon{
+  filter:drop-shadow(0 0 4px rgba(44,160,44,.5));
+}
+.sport-sub-icon{
+  font-size:16px;
+  line-height:1;
+}
+
+/* ============ 16. LIVE SCORES SECTION — Redesigned ============ */
+.sport-matches-page{
+  background:#fff;
+  border-radius:14px;
+  padding:0 0 24px 0;
+  margin:0 auto;
+  max-width:900px;
+  min-height:60vh;
+}
+/* 16a. Date carousel */
+.date-carousel{
+  display:flex;
+  gap:6px;
+  padding:14px 12px 10px 12px;
+  overflow-x:auto;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:thin;
+  border-bottom:1px solid #f0f0f0;
+}
+.date-carousel::-webkit-scrollbar{ height:3px; }
+.date-carousel::-webkit-scrollbar-thumb{ background:#e0c36a; border-radius:4px; }
+.date-btn{
+  flex-shrink:0;
+  min-width:52px;
+  padding:8px 6px 6px;
+  border:1px solid #e8e8e8;
+  border-radius:10px;
+  background:#fff;
+  cursor:pointer;
+  text-align:center;
+  transition:all .18s;
+  font-family:inherit;
+}
+.date-btn:hover{ border-color:#D4AF37; background:#fffdf3; }
+.date-btn.active{
+  background:linear-gradient(135deg,#D4AF37 0%,#f0d060 100%);
+  border-color:#D4AF37;
+  color:#fff;
+  font-weight:700;
+  box-shadow:0 2px 8px rgba(212,175,55,.25);
+}
+.date-btn .d-day{ font-size:11px; font-weight:600; line-height:1.2; }
+.date-btn .d-num{ font-size:15px; font-weight:700; line-height:1.3; }
+.date-btn .d-month{ font-size:10px; color:#888; line-height:1.2; }
+.date-btn.active .d-month{ color:#fff8dc; }
+
+/* 16b. Filter bar */
+.sport-filter-bar{
+  display:flex;
+  gap:8px;
+  padding:12px 12px 8px;
+  align-items:center;
+  flex-wrap:wrap;
+}
+.sport-search{
+  flex:1 1 200px;
+  min-width:160px;
+  padding:8px 12px;
+  border:1px solid #e0e0e0;
+  border-radius:8px;
+  font-size:13px;
+  background:#fafafa;
+  outline:none;
+  transition:border .15s;
+}
+.sport-search:focus{ border-color:#D4AF37; background:#fff; }
+.sport-search::placeholder{ color:#aaa; }
+.league-filter{
+  padding:8px 12px;
+  border:1px solid #e0e0e0;
+  border-radius:8px;
+  font-size:13px;
+  background:#fafafa;
+  cursor:pointer;
+  outline:none;
+  min-width:150px;
+  transition:border .15s;
+}
+.league-filter:focus{ border-color:#D4AF37; }
+[dir="rtl"] .league-filter{ direction:rtl; }
+
+/* 16c. Matches by league */
+.league-section{ margin:0 12px 14px; }
+.league-section-header{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  padding:10px 0 6px;
+  border-bottom:2px solid #f5f5f5;
+  margin-bottom:4px;
+}
+.league-section-header .ls-icon{
+  width:22px; height:22px;
+  border-radius:4px;
+  object-fit:contain;
+}
+.league-section-header .ls-name{
+  font-size:14px;
+  font-weight:700;
+  color:#333;
+}
+.league-section-header .ls-flag{
+  font-size:13px;
+}
+
+/* 16d. Match card */
+.match-card{
+  display:flex;
+  align-items:center;
+  padding:10px 8px;
+  border-radius:10px;
+  margin-bottom:4px;
+  transition:background .12s;
+  background:#fff;
+  gap:6px;
+}
+.match-card:hover{ background:#f9f8f0; }
+.match-team{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  flex:1;
+  min-width:0;
+}
+.match-team.home{ justify-content:flex-end; }
+.match-team.away{ justify-content:flex-start; }
+.match-team-logo{
+  width:28px; height:28px;
+  border-radius:4px;
+  object-fit:contain;
+  flex-shrink:0;
+}
+.match-team-name{
+  font-size:13px;
+  font-weight:600;
+  color:#222;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+[dir="rtl"] .match-team.home{ justify-content:flex-start; }
+[dir="rtl"] .match-team.away{ justify-content:flex-end; }
+
+.match-center{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  min-width:62px;
+  flex-shrink:0;
+  gap:2px;
+}
+.match-score-box{
+  background:#D4AF37;
+  color:#fff;
+  font-size:14px;
+  font-weight:800;
+  padding:3px 10px;
+  border-radius:6px;
+  line-height:1.3;
+  letter-spacing:.5px;
+  min-width:44px;
+  text-align:center;
+}
+.match-status{
+  font-size:9.5px;
+  font-weight:600;
+  letter-spacing:.3px;
+  padding:1px 6px;
+  border-radius:4px;
+  text-transform:uppercase;
+}
+.match-status.live{ background:#e53e3e; color:#fff; animation:pulse-live 1.2s infinite; }
+.match-status.finished{ background:#38a169; color:#fff; }
+.match-status.upcoming{ background:#e2e8f0; color:#4a5568; }
+.match-status.postponed{ background:#ed8936; color:#fff; }
+@keyframes pulse-live{ 0%,100%{opacity:1} 50%{opacity:.6} }
+
+.match-time{
+  font-size:10.5px;
+  color:#888;
+}
+.match-broadcast{
+  font-size:9.5px;
+  color:#aaa;
+  margin-top:1px;
+}
+
+/* 16e. Empty / loading states */
+.matches-empty{
+  text-align:center;
+  padding:40px 16px;
+  color:#999;
+  font-size:14px;
+}
+.matches-loading{
+  text-align:center;
+  padding:30px 16px;
+  color:#bbb;
+  font-size:13px;
+}
+.matches-loading .spinner{
+  display:inline-block;
+  width:22px; height:22px;
+  border:3px solid #eee;
+  border-top-color:#D4AF37;
+  border-radius:50%;
+  animation:spin .7s linear infinite;
+  vertical-align:middle;
+  margin-right:6px;
+}
+@keyframes spin{ to{ transform:rotate(360deg); } }
+
+/* FIX: 16f. جدول ترتيب الفرق */
+.standings-block{
+  margin-top:26px;
+  background:#fff;
+  border:1px solid #efe6c8;
+  border-radius:14px;
+  padding:14px 12px 16px;
+  box-shadow:0 2px 10px rgba(0,0,0,.04);
+}
+.standings-head{
+  display:flex; align-items:center; justify-content:space-between;
+  gap:10px; flex-wrap:wrap; margin-bottom:12px;
+}
+.standings-title{
+  margin:0; font-size:16px; font-weight:700; color:#1a1a1a;
+}
+.standings-select{
+  padding:7px 10px; border:1px solid #e0d5ad; border-radius:8px;
+  background:#fffdf5; font-size:13px; color:#333; cursor:pointer;
+  font-family:inherit; max-width:60%;
+}
+.standings-select:focus{ outline:2px solid #D4AF37; outline-offset:1px; }
+.standings-scroll{ overflow-x:auto; }
+.standings-table{
+  width:100%; border-collapse:collapse; font-size:13px; min-width:430px;
+}
+.standings-table th{
+  background:linear-gradient(180deg,#fdf8e8,#f7eecf);
+  color:#5a4a12; font-weight:700; font-size:12px;
+  padding:8px 6px; text-align:center; white-space:nowrap;
+  border-bottom:2px solid #e6d9ab;
+}
+.standings-table td{
+  padding:8px 6px; text-align:center; color:#333;
+  border-bottom:1px solid #f2f2f2; white-space:nowrap;
+}
+.standings-table tbody tr:hover{ background:#fffdf3; }
+.standings-table .st-rank{ width:34px; font-weight:700; color:#8a7327; }
+.standings-table .st-team{
+  text-align:start; min-width:150px;
+  display:flex; align-items:center; gap:7px;
+}
+.standings-table .st-pts{ font-weight:700; color:#0f7b3f; }
+.st-logo{ width:20px; height:20px; object-fit:contain; flex:none; }
+@media (max-width:520px){
+  .standings-table .st-hide-sm{ display:none; }
+  .standings-table{ min-width:0; font-size:12px; }
+  .standings-select{ max-width:100%; width:100%; }
+}
+
+/* 16f. Mobile */
+@media(max-width:600px){
+  .sport-filter-bar{ flex-direction:column; }
+  .sport-search{ min-width:0; width:100%; }
+  .league-filter{ width:100%; }
+  .match-card{ padding:8px 4px; gap:4px; }
+  .match-team-name{ font-size:11.5px; }
+  .match-team-logo{ width:22px; height:22px; }
+  .match-score-box{ font-size:12px; min-width:38px; padding:2px 7px; }
+  .date-btn{ min-width:44px; padding:6px 4px 5px; }
+  .date-btn .d-num{ font-size:13px; }
+}
+
+/* ============ 17. NEWS TICKER BAR ============ */
+.ticker-separator{
+  border-top:2px solid #D4AF37;
+  margin:0 16px;
+}
+.news-ticker{
+  background:var(--bg-2);
+  padding:8px 0;
+  overflow:hidden;
+  white-space:nowrap;
+}
+.news-ticker .wrap{
+  display:flex; align-items:center; gap:12px; justify-content:center;
+}
+/* FIX: readability — bigger, higher-contrast ticker text that no longer gets
+   clipped mid-word, and a label that keeps its own line on narrow screens. */
+.ticker-label{
+  font-size:13px; font-weight:700; color:#D4AF37;
+  flex-shrink:0; letter-spacing:.2px;
+}
+.ticker-content{
+  font-size:14px;
+  font-weight:600;
+  line-height:1.6;
+  color:var(--cream);
+  overflow:hidden;
+  text-overflow:ellipsis;
+  text-align:center;
+  animation:none;
+}
+@media (max-width:640px){
+  .news-ticker .wrap{ flex-direction:column; gap:4px; }
+  .ticker-content{ font-size:13px; white-space:normal; }
+}
+@keyframes tickerScroll{
+  0%{ transform:translateX(100%); }
+  100%{ transform:translateX(-100%); }
+}
+[dir="rtl"] .ticker-content{
+  animation-name:tickerScrollRTL;
+}
+@keyframes tickerScrollRTL{
+  0%{ transform:translateX(-100%); }
+  100%{ transform:translateX(100%); }
+}
+
+/* ============ 18. ZODIAC GRID ============ */
+/* FIX (الأبراج): ثلاث بطاقات في السطر، والشبكة بعرض ٰ٧٠٪ من الصفحة
+   وفي الوسط، مع بطاقات أكبر وأوضح من المربعات المضغوطة القديمة. */
+.zodiac-grid-inner{
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:16px;
+  width:70%;
+  margin:16px auto 22px;
+}
+.zodiac-item{
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  background:var(--surface); border:1px solid var(--border);
+  border-radius:12px; padding:18px 12px;
+  cursor:pointer; transition:border-color .15s, transform .15s;
+}
+.zodiac-item:hover{ border-color:var(--horoscope-gold); transform:translateY(-2px); }
+.zodiac-emoji{
+  font-size:34px; margin-bottom:8px; line-height:1;
+}
+.zodiac-name{
+  font-size:15px; font-weight:700; color:var(--horoscope-gold); text-align:center;
+}
+/* FIX: the tiles are now clickable buttons that open a daily reading panel. */
+.zodiac-item{ font-family:inherit; }
+.zodiac-item:focus-visible{
+  outline:2px solid var(--horoscope-gold); outline-offset:2px;
+}
+.zodiac-item.active{
+  border-color:var(--horoscope-gold);
+  background:var(--surface-2);
+  box-shadow:0 0 0 1px var(--horoscope-gold) inset;
+}
+.zodiac-range{
+  font-size:11.5px; color:var(--muted); text-align:center; margin-top:5px;
+  white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:100%;
+}
+.zodiac-pick-hint{
+  font-size:12px; color:var(--muted); margin-top:4px;
+}
+/* FIX (الأبراج): خط ذهبي فاصل يفصل بطاقات الأبراج عن الأخبار أسفلها. */
+.zodiac-divider{
+  width:70%; height:2px; margin:6px auto 4px;
+  border:0; border-radius:2px;
+  background:linear-gradient(90deg, rgba(218,165,32,0) 0%, var(--horoscope-gold) 18%, #F5D77A 50%, var(--horoscope-gold) 82%, rgba(218,165,32,0) 100%);
+  box-shadow:0 0 10px rgba(218,165,32,.35);
+}
+/* FIX (الأبراج): أخبار الأبراج تحت الخط الذهبي بحجم أصغر وبعرض ٰ٧٠٪ متوسّط. */
+.news-grid.horoscope-news{
+  width:70%; margin:0 auto; gap:12px; padding-bottom:48px;
+}
+.news-grid.horoscope-news .news-img,
+.news-grid.horoscope-news .news-img-logo,
+.news-grid.horoscope-news .logo-card .news-img-logo{ height:110px; margin-top:10px; }
+.news-grid.horoscope-news .logo-card .news-img-logo img.source-logo{ width:44px; height:44px; padding:6px; }
+.news-grid.horoscope-news .news-body{ padding:10px 12px 13px; }
+.news-grid.horoscope-news .news-title{ font-size:12.5px; line-height:1.5; min-height:38px; margin-bottom:6px; }
+.news-grid.horoscope-news .news-desc{ font-size:11px; line-height:1.55; min-height:51px; margin-bottom:10px; -webkit-line-clamp:3; }
+.news-grid.horoscope-news .news-meta{ font-size:9.5px; padding-top:8px; }
+/* FIX (فراغ بطاقات الأبراج): البطاقات بلا صورة لا تُلزَم بارتفاع أدنى
+   للعنوان والوصف، فيختفي الفراغ الأبيض أسفل النص. */
+.news-grid.horoscope-news .noimg-card .news-title,
+.news-grid.horoscope-news .noimg-card .news-desc{ min-height:0; }
+.news-grid.horoscope-news .noimg-card .news-body{ padding-top:14px; }
+.zodiac-reading{
+  background:var(--surface); border:1px solid var(--border);
+  border-inline-start:3px solid var(--horoscope-gold);
+  border-radius:10px; padding:14px 16px; margin:0 0 18px;
+}
+.zodiac-reading-head{
+  display:flex; align-items:center; gap:8px; flex-wrap:wrap;
+  padding-bottom:8px; margin-bottom:8px;
+  border-bottom:1px solid var(--border);
+}
+.zodiac-reading-emoji{ font-size:22px; line-height:1; }
+.zodiac-reading-name{
+  font-size:15px; font-weight:700; color:var(--horoscope-gold);
+}
+.zodiac-reading-range{ font-size:11.5px; color:var(--muted); }
+.zodiac-reading-close{
+  margin-inline-start:auto;
+  background:transparent; border:1px solid var(--border); color:var(--muted);
+  border-radius:6px; width:26px; height:26px; line-height:1;
+  cursor:pointer; font-size:13px;
+  transition:border-color .15s, color .15s;
+}
+.zodiac-reading-close:hover{ border-color:var(--horoscope-gold); color:var(--horoscope-gold); }
+.zodiac-reading-text{
+  margin:0; font-size:14px; line-height:1.85; color:var(--cream);
+}
+.zodiac-reading-text.is-loading,
+.zodiac-reading-text.is-error{ color:var(--muted); font-size:13px; }
+.zodiac-reading-meta{
+  margin-top:8px; font-size:11.5px; color:var(--muted);
+}
+.zodiac-reading-link{
+  display:inline-block; margin-top:8px; font-size:12.5px;
+  color:var(--horoscope-gold); text-decoration:none;
+}
+.zodiac-reading-link:hover{ text-decoration:underline; }
+/* FIX (بطاقات الأبراج): أسطر المزاج/اللون/الرقم + قائمة المصادر داخل اللوحة. */
+.zodiac-reading-facts{
+  display:flex; flex-wrap:wrap; gap:8px; margin-top:10px;
+}
+.zodiac-reading-facts span{
+  font-size:12px; color:var(--cream);
+  padding:4px 9px; border-radius:999px;
+  border:1px solid rgba(218,165,32,.28); background:rgba(218,165,32,.08);
+}
+.zodiac-reading-sources{
+  display:flex; flex-wrap:wrap; align-items:center; gap:10px;
+  margin-top:12px; padding-top:10px;
+  border-top:1px solid rgba(218,165,32,.18);
+}
+.zodiac-reading-sources-label{ font-size:11.5px; color:var(--muted); }
+.zodiac-reading-sources .zodiac-reading-link{ margin-top:0; }
+
+/* ============ 18b. NEWS PAGER ============ */
+/* FIX: long category feeds are split into pages instead of one endless column. */
+.news-pager{
+  display:flex; align-items:center; justify-content:center;
+  gap:14px; flex-wrap:wrap;
+  margin:22px 0 6px;
+}
+.news-pager-btn{
+  min-width:104px;
+  padding:9px 18px;
+  font:inherit; font-size:13px; font-weight:600;
+  color:var(--cream);
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:10px;
+  cursor:pointer;
+  transition:border-color .15s, background .15s, transform .15s;
+}
+.news-pager-btn:hover:not(:disabled){
+  border-color:var(--amber-solid);
+  background:var(--surface-2);
+  transform:translateY(-1px);
+}
+.news-pager-btn:focus-visible{
+  outline:2px solid var(--amber-solid);
+  outline-offset:2px;
+}
+.news-pager-btn:disabled{
+  opacity:.42; cursor:not-allowed;
+}
+.news-pager-info{
+  font-size:12.5px; font-weight:600; letter-spacing:.02em;
+  color:var(--muted);
+  min-width:96px; text-align:center;
+}
+@media (max-width:560px){
+  .news-pager{ gap:10px; }
+  .news-pager-btn{ min-width:84px; padding:8px 14px; font-size:12px; }
+  .news-pager-info{ order:3; width:100%; }
+}
+
+/* ============ 19. RESPONSIVE ============ */
+@media (max-width:900px){
+  :root{ --gutter:6%; }
+  /* FIX (مكان الشعار): على الشاشات الصغيرة نحافظ على نفس التوزيع —
+     الشعار يميناً وأزرار اللغة يساراً والقائمة وسطاً — دون أي خصائص
+     flex قديمة تتعارض مع شبكة الشريط. */
+  .topbar-inner{ gap:10px; }
+  .logo{ justify-content:flex-end; }
+  .lang-switch{ justify-content:flex-start; }
+  nav.main-nav{ justify-content:center; flex-wrap:wrap; }
+  .dropdown{ inset-inline-start:50%; transform:translate(-50%,4px); }
+  .nav-item:hover .dropdown, .nav-item:focus-within .dropdown{ transform:translate(-50%,0); }
+  .hero h1{font-size:24px;}
+  .cat-grid{grid-template-columns:repeat(2,1fr);}
+  .news-grid{grid-template-columns:1fr;}
+  .music-fav-item{ width:100%; }
+  .music-fav-list{ grid-template-columns:repeat(2,1fr); gap:14px; }
+  .music-fav-play-icon{ width:50px; height:50px; font-size:20px; }
+  .live-scores-grid{ grid-template-columns:repeat(2,1fr); }
+  /* FIX (الأبراج): على الشاشات المتوسطة تمتد الشبكة لكامل العرض مع بقاء ٰ٣ بطاقات. */
+  .zodiac-grid-inner{ grid-template-columns:repeat(3,1fr); width:100%; gap:12px; }
+  .zodiac-divider{ width:100%; }
+  .news-grid.horoscope-news{ width:100%; grid-template-columns:1fr; }
+  .footer-row{ grid-template-columns:1fr; text-align:center; }
+  .footer-left{ justify-content:center; }
+  .footer-right{ justify-content:center; }
+}
+@media (max-width:560px){
+  :root{ --gutter:5%; }
+  .cat-grid{grid-template-columns:1fr 1fr;gap:8px;}
+  .cat-card{padding:12px 8px;}
+  .lang-btn{font-size:11px;padding:6px 8px;}
+  .lang-sep{font-size:11px;}
+  .live-scores-grid{ grid-template-columns:1fr; }
+  /* FIX (الأبراج): على الهواتف بطاقتان في السطر لبقاء الأسماء مقروءة. */
+  .zodiac-grid-inner{ grid-template-columns:repeat(2,1fr); }
+  .zodiac-emoji{ font-size:28px; }
+  .zodiac-name{ font-size:13.5px; }
+  /* phones: one big card per row so the in-card player stays readable */
+  .music-fav-list{ grid-template-columns:1fr; }
+  .music-fav-name{ font-size:14px; }
+  .sport-sub-btn{ padding:8px 16px; font-size:13px; }
+}
+/* ============ FIX6: المشغّل المصغّر لاستمرار الأغنية بين الأقسام ============ */
+/* بطاقة صغيرة في زاوية الصفحة (ليست شريطاً سفلياً عريضاً)، تظهر فقط أثناء
+   تشغيل أغنية مفضلة وأنت في قسم آخر، ويمكن إغلاقها بزر ✕. */
+.swp-mini-player{
+  position:fixed; bottom:14px; inset-inline-end:14px; z-index:2500;
+  width:224px; max-width:calc(100% - 28px);
+  background:var(--card,#fff); color:var(--text,#111);
+  border:1px solid var(--music-red,#d62728);
+  border-radius:12px; padding:8px;
+  box-shadow:0 8px 22px rgba(0,0,0,.22);
+  font-size:12px;
+}
+.swp-mini-head{ display:flex; align-items:center; gap:6px; margin-bottom:6px; }
+.swp-mini-dot{ color:var(--music-red,#d62728); font-size:14px; line-height:1; }
+.swp-mini-title{
+  flex:1; min-width:0; color:inherit; text-decoration:none; font-weight:600;
+  font-size:12px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+}
+.swp-mini-title:hover{ color:var(--music-red,#d62728); }
+.swp-mini-close{
+  flex:0 0 auto; width:20px; height:20px; border:0; cursor:pointer;
+  border-radius:50%; background:rgba(0,0,0,.08); color:inherit;
+  font-size:11px; line-height:1; display:flex; align-items:center; justify-content:center;
+}
+.swp-mini-close:hover{ background:var(--music-red,#d62728); color:#fff; }
+.swp-mini-media{ border-radius:8px; overflow:hidden; background:#000; }
+.swp-mini-frame{ display:block; width:100%; height:126px; border:0; }
+.swp-mini-audio{ display:block; width:100%; height:34px; }
+.swp-mini-player.is-audio .swp-mini-media{ background:transparent; }
+.swp-mini-note{ margin-top:5px; font-size:10.5px; color:var(--muted,#777); text-align:center; }
+@media (max-width:560px){
+  .swp-mini-player{ width:186px; bottom:10px; inset-inline-end:10px; padding:7px; }
+  .swp-mini-frame{ height:104px; }
+}
