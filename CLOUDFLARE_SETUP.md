@@ -1,6 +1,14 @@
 # دليل ربط الموقع بـ Cloudflare (خطوة بخطوة، بدون خبرة تقنية)
 
-## 🔴 مشكلة مكتشفة (٥ سبتمبر): الموقع المنشور يعرض مشروعاً مختلفاً بالكامل!
+## ✅ محلولة (٥ سبتمبر): تم نقل الدومين للمشروع الجديد `shirwaniworldpulse-v2`
+
+- تم حذف الدومينين من المشروع القديم `shirwaniworldpulse`.
+- تم إضافتهما وتفعيلهما في المشروع الجديد `shirwaniworldpulse-v2` (المربوط بشكل صحيح بمستودع GitHub).
+- تم التأكد عبر `curl` أن `https://shirwaniworldpulse.com` يعرض المحتوى الصحيح (`<title>ShirwaniWorldPulse</title>`).
+- `www.shirwaniworldpulse.com` قيد التفعيل (Initializing)، يفترض يشتغل خلال دقائق.
+- ملاحظة: ظهر تحذير "The repository cannot be accessed" بالمشروع الجديد أيضاً، يجب متابعته عبر GitHub → Settings → Applications → Cloudflare Workers and Pages → Repositories للتأكد من استمرار صلاحية الوصول لتفادي تكرار نفس المشكلة القديمة مستقبلاً.
+
+## 🔴 مشكلة مكتشفة سابقاً (٥ سبتمبر): الموقع المنشور كان يعرض مشروعاً مختلفاً بالكامل!
 
 تم اكتشاف أن مشروع Cloudflare Pages الحالي (`shirwaniworldpulse`) يعرض موقعاً آخر تماماً اسمه **"World Spectrum"**، وليس ملفات هذا المستودع (ShirwaniWorldPulse). السبب: رابط Git بين GitHub و Cloudflare معطّل (الرسالة البرتقالية "internal issue with your Cloudflare Workers & Pages Git installation" الظاهرة بالصفحة)، فآخر نشر فعلي (Production) يعود لمشروع قديم منفصل رُفع مباشرة قبل ربط المستودع، وأي تحديث جديد يُدفع لـ GitHub الآن لا يصل للموقع المباشر بسبب عطل الربط.
 
