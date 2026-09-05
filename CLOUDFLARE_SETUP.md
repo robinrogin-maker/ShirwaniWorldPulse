@@ -1,6 +1,33 @@
 # دليل ربط الموقع بـ Cloudflare (خطوة بخطوة، بدون خبرة تقنية)
 
-## ✅ الخبر المهم: الموقع أصلاً متصل بـ Cloudflare ويشتغل تمام
+## 🔴 مشكلة مكتشفة (٥ سبتمبر): الموقع المنشور يعرض مشروعاً مختلفاً بالكامل!
+
+تم اكتشاف أن مشروع Cloudflare Pages الحالي (`shirwaniworldpulse`) يعرض موقعاً آخر تماماً اسمه **"World Spectrum"**، وليس ملفات هذا المستودع (ShirwaniWorldPulse). السبب: رابط Git بين GitHub و Cloudflare معطّل (الرسالة البرتقالية "internal issue with your Cloudflare Workers & Pages Git installation" الظاهرة بالصفحة)، فآخر نشر فعلي (Production) يعود لمشروع قديم منفصل رُفع مباشرة قبل ربط المستودع، وأي تحديث جديد يُدفع لـ GitHub الآن لا يصل للموقع المباشر بسبب عطل الربط.
+
+### ✅ الحل: إنشاء مشروع Pages جديد ونظيف، ثم نقل الدومين إليه
+
+1. سجّل دخول في https://dash.cloudflare.com
+2. من القائمة اليسار اضغط **Workers & Pages**
+3. اضغط **Create application** > تبويب **Pages** > **Connect to Git**
+4. اختر مستودع `ShirwaniWorldPulse` واضغط **Begin setup**
+5. أعطه اسماً مختلفاً عن القديم، مثلاً: `shirwaniworldpulse-v2`
+6. **Production branch**: تأكد إنه `main`
+7. **Build command**: اتركه فاضي تماماً
+8. **Build output directory**: اكتب `/`
+9. اضغط **Save and Deploy** وانتظر دقيقة حتى يظهر "Success"
+10. افتح الرابط الجديد اللي يعطيك ياه (مثل `shirwaniworldpulse-v2.pages.dev`) وتأكد إنه يعرض موقعك الصحيح (الاسم يجب يكون ShirwaniWorldPulse وليس World Spectrum)
+
+### نقل الدومين للمشروع الجديد
+11. روح للمشروع **القديم** (`shirwaniworldpulse`) > تبويب **Custom domains**
+12. احذف الدومينين `shirwaniworldpulse.com` و `www.shirwaniworldpulse.com` من هناك (زر **...** بجانب كل واحد > **Remove domain**)
+13. روح للمشروع **الجديد** (`shirwaniworldpulse-v2`) > تبويب **Custom domains**
+14. أضف نفس الدومينين بنفس الطريقة السابقة (**Set up a custom domain**)
+
+بعد هذي الخطوات، الدومين الخاص بك بيعرض موقعك الصحيح فقط، وأي تحديث مستقبلي يُدفع لمستودع GitHub بينشر تلقائياً وبشكل صحيح على المشروع الجديد. للتأكد: افتح `https://shirwaniworldpulse.com` ويجب يظهر اسم "ShirwaniWorldPulse" وليس "World Spectrum" بعنوان الصفحة والهيدر.
+
+---
+
+## ✅ الخبر المهم (سابقاً، عند الفحص الأول): الموقع أصلاً متصل بـ Cloudflare ويشتغل تمام
 
 بعد الفحص، تبين إن كل شي مربوط وشغّال فعلياً من قبل:
 
