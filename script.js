@@ -2453,17 +2453,23 @@ function renderZodiacGrid(lang){
 // ---- Music Favorites Section -------------------------------------------
 const MUSIC_FAVS_KEY = "swp-music-favs";
 
+// FIX: DEFAULT_MUSIC_FAVS (data.js) uses {title, url}, but the rest of this
+// file reads fav.name — normalize so defaults display their real song titles
+// instead of falling back to the raw URL.
+function normalizeMusicFavs(list){
+  return (list || []).map(f => ({ name: f.name || f.title || f.url, url: f.url }));
+}
 function getMusicFavs(){
   try {
     const stored = JSON.parse(localStorage.getItem(MUSIC_FAVS_KEY));
     if (stored && stored.length > 0) return stored;
     // إذا كان localStorage فارغاً، استخدم القائمة الافتراضية من data.js
     if (typeof DEFAULT_MUSIC_FAVS !== "undefined" && DEFAULT_MUSIC_FAVS.length > 0) {
-      return DEFAULT_MUSIC_FAVS;
+      return normalizeMusicFavs(DEFAULT_MUSIC_FAVS);
     }
     return [];
   } catch(e) {
-    if (typeof DEFAULT_MUSIC_FAVS !== "undefined") return DEFAULT_MUSIC_FAVS;
+    if (typeof DEFAULT_MUSIC_FAVS !== "undefined") return normalizeMusicFavs(DEFAULT_MUSIC_FAVS);
     return [];
   }
 }
