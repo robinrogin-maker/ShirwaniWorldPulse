@@ -2454,8 +2454,18 @@ function renderZodiacGrid(lang){
 const MUSIC_FAVS_KEY = "swp-music-favs";
 
 function getMusicFavs(){
-  try { return JSON.parse(localStorage.getItem(MUSIC_FAVS_KEY)) || []; }
-  catch(e) { return []; }
+  try {
+    const stored = JSON.parse(localStorage.getItem(MUSIC_FAVS_KEY));
+    if (stored && stored.length > 0) return stored;
+    // إذا كان localStorage فارغاً، استخدم القائمة الافتراضية من data.js
+    if (typeof DEFAULT_MUSIC_FAVS !== "undefined" && DEFAULT_MUSIC_FAVS.length > 0) {
+      return DEFAULT_MUSIC_FAVS;
+    }
+    return [];
+  } catch(e) {
+    if (typeof DEFAULT_MUSIC_FAVS !== "undefined") return DEFAULT_MUSIC_FAVS;
+    return [];
+  }
 }
 function saveMusicFavs(list){
   try { localStorage.setItem(MUSIC_FAVS_KEY, JSON.stringify(list)); }
