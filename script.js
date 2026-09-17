@@ -4094,4 +4094,35 @@ window.showMusicPasswordModal = showMusicPasswordModal;
 // FIX (in-card playback): no floating bar any more — songs play inside cards.
 window.closeMusicPlayer = closeMusicPlayer;
 
+
+// ✅ FIX: إظهار القائمة المنسدلة على الموبايل عند الضغط
+document.querySelectorAll('.nav-item').forEach(function(item) {
+  item.addEventListener('click', function(e) {
+    if (window.innerWidth <= 768) {
+      e.preventDefault();
+      document.querySelectorAll('.nav-item').forEach(function(other) {
+        if (other !== item) other.classList.remove('active');
+      });
+      item.classList.toggle('active');
+    }
+  });
+});
+
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('.nav-item')) {
+    document.querySelectorAll('.nav-item').forEach(function(item) {
+      item.classList.remove('active');
+    });
+  }
+});
+// ✅ نهاية الكود الجديد
+
+renderAll(currentLang); 
+
+
+
+
+
+
+
 renderAll(currentLang);
