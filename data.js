@@ -1353,17 +1353,53 @@ const SPORTS_LEAGUES = {
 
 // ✅ FIX: قائمة الأغاني المفضلة الافتراضية (تظهر على كل الأجهزة)
 const DEFAULT_MUSIC_FAVS = [
-  {
-    title: "اسم الأغنية الأولى",
-    url: "https://www.youtube.com/watch?v=xxxxxxxxxxx"
-  },
-  {
-    title: "اسم الأغنية الثانية",
-    url: "https://www.youtube.com/watch?v=yyyyyyyyyyy"
-  },
-  {
-    title: "اسم الأغنية الثالثة",
-    url: "https://www.youtube.com/watch?v=zzzzzzzzzzz"
-  }
-  // أضف باقي الأغاني هنا بنفس الطريقة
+  { title: "Ya Lili - ELSEN PRO", url: "https://www.youtube.com/watch?v=svdbirjDOAc" },
+  { title: "Cubano Deep House - Corazón Bajo El Atardecer", url: "https://www.youtube.com/watch?v=rgA8xwX2biA" },
+  { title: "Bee Gees Remixes Like You've Never Heard", url: "https://www.youtube.com/watch?v=2RiAksOVD0Q" },
+  { title: "Michael Jackson Reggae Remix 2026", url: "https://www.youtube.com/watch?v=4zgQtd6y96Y" },
+  { title: "Rhythms of Havana - Son Cubano & Salsa for Dancing Souls", url: "https://www.youtube.com/watch?v=zJYltgvL7Ks" },
+  { title: "Barry White, Sade & Diana Ross", url: "https://www.youtube.com/watch?v=vypFtL2JFwI" },
+  { title: "LET ME BE - Afro Soul House Mix", url: "https://www.youtube.com/watch?v=oVBWoMXaiOY" },
+  { title: "AFROBEAT 2026 MIXTAPE - Best & Latest Afrobeat Jams", url: "https://www.youtube.com/watch?v=1Sflfz3zhXo" },
+  { title: "Spanish Afro House 2026", url: "https://www.youtube.com/watch?v=zU2GqpuixI0" },
+  { title: "60s & 70s Blues Romance - Late Night Soulful & Romantic Blues", url: "https://www.youtube.com/watch?v=6DiT4e3WE0I" },
+  { title: "90s Afro House - Summer Mix 2026", url: "https://www.youtube.com/watch?v=VjzRVMMM8wg" },
+  { title: "Michael Jackson - Billie Jean - Afro House Remix - Golden Safari", url: "https://www.youtube.com/watch?v=-t_3huuJZhM" },
+  { title: "Bolero en la Madrugada - Susurros de La Habana", url: "https://www.youtube.com/watch?v=z35DsBeFZ1E" },
+  { title: "Afro House 80s 90s - Tribal Sunset 2026", url: "https://www.youtube.com/watch?v=ihHC0rHVV5g" },
+  { title: "Hawaiian Reggae - Island Vibes & Tropical Soul", url: "https://www.youtube.com/watch?v=1gc2b4487CI" },
+  { title: "Bob Marley × Rihanna - Wild Mirage (Reggae Pop Fusion 2026)", url: "https://www.youtube.com/watch?v=2wMklv8JHwg" },
+  { title: "Ultimate Afro & Latin House Mix - Best 80s Pop Icons Reborn", url: "https://www.youtube.com/watch?v=tNPzmvjOhpM" },
+  { title: "Best Afro & Latin House Remixes - Summer Beach Party", url: "https://www.youtube.com/watch?v=6W3yOW-xSh4" },
+  { title: "BAMBOLEO - Afro House Remix - AFRO DANCE 2026", url: "https://www.youtube.com/watch?v=GBjyXxQx9eY" },
+  { title: "Blue Soul - Bob Marley x Rihanna", url: "https://www.youtube.com/watch?v=eBdHeG2qTlA" },
+  { title: "Julio Iglesias, Eros, Enrique, Bocelli - Pausini Style", url: "https://www.youtube.com/watch?v=iPnjJEb0Xa4" },
+  { title: "خلّيها تولّع - Arabic Party Song 2026 - Arabic EDM Dance Music", url: "https://www.youtube.com/watch?v=beG5LpuLmxc" },
+  { title: "ADELE Remixes Like You've Never Heard - Deep House Mix", url: "https://www.youtube.com/watch?v=IiPEban0qA8" },
+  { title: "UMOYA - African Spiritual Soul", url: "https://www.youtube.com/watch?v=2kF89JaHJN0" },
+  { title: "Havana Golden Memories - Café Cubano", url: "https://www.youtube.com/watch?v=nI9z5uhlnjs" },
+  { title: "Pitbull × Shakira × Gipsy Kings - New Latin EDM 2026", url: "https://www.youtube.com/watch?v=TVYE8hrxUlo" },
+  { title: "MICHAEL JACKSON Remixes Like You've Never Heard - Deep House Mix", url: "https://www.youtube.com/watch?v=OF6_oEpRnhU" },
+  { title: "Bob Marley, Peter Tosh, Burning Spear - Reggae Roots & Culture", url: "https://www.youtube.com/watch?v=yp8_To8a-S4" },
+  { title: "ISLA VIVA - Cumbia Tropical", url: "https://www.youtube.com/watch?v=vBj-XD83BRI" },
+  { title: "Les Plus Belles Chansons d'Amour - Charles Aznavour, Joe Dassin", url: "https://www.youtube.com/watch?v=li_NWke7GeQ" },
+  { title: "Bolero en la Madrugada - Entre Sombras de La Habana", url: "https://www.youtube.com/watch?v=4VrdEXtL-AU" },
+  { title: "Kürtçe Hareketli Halay Şarkısı - Kurdish Dance Song", url: "https://www.youtube.com/watch?v=kfGU8gN-6Ow" },
+  { title: "The Dark Side of Flamenco - Smoky Sax, Banjo & Cha Cha Cha Swing", url: "https://www.youtube.com/watch?v=887ypuBgu4A" },
+  { title: "Best Popular Songs 2025 Faded, Supergirl, A Sky Full Of Star, Perfect Cover", url: "https://www.youtube.com/watch?v=8wZLRqs_cs8" },
+  { title: "You've Never Heard Flamenco Like This - Afro Arabic Cha Cha", url: "https://www.youtube.com/watch?v=gemPuhJhfwo" },
+  { title: "Bob Marley × Rihanna Style - Ocean Bloom (Reggae Pop Fusion 2026)", url: "https://www.youtube.com/watch?v=w74EcdvLL6M" },
+  { title: "Arabic Chill Reggae 2026 - Relaxing Music for Good Vibes", url: "https://www.youtube.com/watch?v=VGC-YIkhmO8" },
+  { title: "AFRO HOUSE 80s 90s - Madonna, Boney M, Modern Talking, Disco, ABBA, Michael Jackson, Corona", url: "https://www.youtube.com/watch?v=RMrHjFPC9Xs" },
+  { title: "من أين لهذه الموسيقى بكل هذا الجمال والروعة", url: "https://www.youtube.com/watch?v=CcjB3eAyao4" },
+  { title: "Party Mix 2026 (Boney M, Cher, Ace of Base, Madonna)", url: "https://www.youtube.com/watch?v=wZeYgqb37Wc" },
+  { title: "Persian & Italian Fusion Relaxing Music", url: "https://www.youtube.com/watch?v=KAOVOVIkba8" },
+  { title: "Strauss x Melodic House - Deep Focus & Work Mix", url: "https://www.youtube.com/watch?v=Qk-lxrAypxU" },
+  { title: "Mejores canciones - Disco en Español para Conducir", url: "https://www.youtube.com/watch?v=0hHR_hty9XQ" },
+  { title: "Barry White The Great Soul Voice - Deep Soul Love & Romantic Disco Collection", url: "https://www.youtube.com/watch?v=sh6AJlH8HaI" },
+  { title: "Latin Mambo Blues - Smoky kvinnlig sång, het Mambo Groove", url: "https://www.youtube.com/watch?v=q6I2fTgxg7Q" },
+  { title: "Demis Roussos Music MegaMix", url: "https://www.youtube.com/watch?v=F8sg7Qdp-tI" },
+  { title: "Boney M. Greatest Hits Full Album", url: "https://www.youtube.com/watch?v=AClOh_Aznxk" },
+  { title: "Flamenco Cha-Cha in Dubai - Exclusive Desert Dance Show", url: "https://www.youtube.com/watch?v=pCTGJleyNrs" },
+  { title: "Les 30 Plus Belles Chansons Françaises - F François, Dalida, Joe Dassin, Mireille Mathieu", url: "https://www.youtube.com/watch?v=XZFElXgRo40" }
 ];
