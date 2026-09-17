@@ -1475,6 +1475,9 @@ footer::before{
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
+    max-height: 80vh;        /* ارتفاع كافي لعرض كل الأغاني */
+    overflow-y: auto;         /* يسمح بالتمرير إذا كانت القائمة طويلة */
+    -webkit-overflow-scrolling: touch;  /* تمرير سلس على الموبايل */
   }
 }
 
