@@ -1349,4 +1349,21 @@ const SPORTS_LEAGUES = {
     { id: "confederations_cup", name: "Confederations Cup" },
     { id: "international", name: "Internationella matcher" }
   ]
-};
+}; 
+
+// ✅ FIX: قائمة الأغاني المفضلة الافتراضية (تظهر على كل الأجهزة)
+const DEFAULT_MUSIC_FAVS = [
+  {
+    title: "اسم الأغنية الأولى",
+    url: "https://www.youtube.com/watch?v=xxxxxxxxxxx"
+  },
+  {
+    title: "اسم الأغنية الثانية",
+    url: "https://www.youtube.com/watch?v=yyyyyyyyyyy"
+  },
+  {
+    title: "اسم الأغنية الثالثة",
+    url: "https://www.youtube.com/watch?v=zzzzzzzzzzz"
+  }
+  // أضف باقي الأغاني هنا بنفس الطريقة
+];
