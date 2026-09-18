@@ -8,8 +8,8 @@
 const SITE = {
   name: "ShirwaniWorldPulse",
   defaultLang: "ar",
-  logoWidth: 240,
-  logoHeight: 72,
+  logoWidth: 200,
+  logoHeight: 60,
   // FIX (أزرار التواصل الاجتماعي بدل زر التحديث): عدّل الروابط أدناه
   // إلى حسابات الموقع الحقيقية. الزر الذي رابطه فارغ لا يظهر إطلاقاً.
   social: {
