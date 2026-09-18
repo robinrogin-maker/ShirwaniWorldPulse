@@ -1493,3 +1493,11 @@ footer::before{
     height: auto;    /* ← خلي الارتفاع تلقائي عشان ما يتشوه */
   }
 }
+
+/* FIX: حجم شعار الفوتر على الموبايل */
+@media screen and (max-width: 768px) {
+  .footer-logo {
+    height: 45px;      /* ← نفس ارتفاع شعار الهيدر على الموبايل */
+    width: auto;
+  }
+}
