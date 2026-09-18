@@ -1486,17 +1486,10 @@ footer::before{
    
 }
 
-/* FIX: تصغير الشعار على الموبايل */
-@media screen and (max-width: 768px) {
-  .site-logo {
-    width: 150px;   /* ← عرض أصغر على الموبايل */
-    height: auto;
-  }
-}
-
 /* FIX: حجم الشعار على الموبايل */
 @media screen and (max-width: 768px) {
   .site-logo {
-    height: 50px;    /* ← كبّرناها من 40 إلى 50 */
+    width: 150px;
+    height: auto;    /* ← خلي الارتفاع تلقائي عشان ما يتشوه */
   }
 }
