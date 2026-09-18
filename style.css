@@ -199,7 +199,12 @@ nav.main-nav{ display:flex; justify-content:center; align-items:center; gap:4px;
 .dropdown a:hover{ color:#D8D5CE; border-color:#D8D5CE; }
 
 /* FIX (ارتفاع الهيدر): شعار أنحف قليلاً ليصبح الشريط أقل ارتفاعاً. */
-.site-logo{ display:block; height:90px; width:auto; }
+.site-logo{
+  display: block;
+  height: 60px;
+  width: 200px;         /* ← حددنا العرض */
+  object-fit: contain;  /* ← يحافظ على تناسب الصورة */
+}
 
 /* ============ 5. HERO ============ */
 .hero{ padding:34px 0 26px; text-align:center; }
@@ -1479,5 +1484,13 @@ footer::before{
     overflow-y: auto;         /* يسمح بالتمرير إذا كانت القائمة طويلة */
     -webkit-overflow-scrolling: touch;  /* تمرير سلس على الموبايل */
   }
+   
 }
 
+/* FIX: تصغير الشعار على الموبايل */
+@media screen and (max-width: 768px) {
+  .site-logo {
+    width: 150px;   /* ← عرض أصغر على الموبايل */
+    height: auto;
+  }
+}
