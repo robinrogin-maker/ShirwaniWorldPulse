@@ -1489,7 +1489,7 @@ footer::before{
 /* FIX: حجم الشعار على الموبايل */
 @media screen and (max-width: 768px) {
   .site-logo {
-    width: 180px;
+    width: 200px;
     height: auto;    /* ← خلي الارتفاع تلقائي عشان ما يتشوه */
   }
 }
