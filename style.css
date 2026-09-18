@@ -201,9 +201,8 @@ nav.main-nav{ display:flex; justify-content:center; align-items:center; gap:4px;
 /* FIX (ارتفاع الهيدر): شعار أنحف قليلاً ليصبح الشريط أقل ارتفاعاً. */
 .site-logo{
   display: block;
-  height: 60px;
-  width: 200px;         /* ← حددنا العرض */
-  object-fit: contain;  /* ← يحافظ على تناسب الصورة */
+  height: 75px;       /* ← كبّرناها من 60 إلى 75 */
+  width: auto;
 }
 
 /* ============ 5. HERO ============ */
