@@ -1493,3 +1493,10 @@ footer::before{
     height: auto;
   }
 }
+
+/* FIX: حجم الشعار على الموبايل */
+@media screen and (max-width: 768px) {
+  .site-logo {
+    height: 50px;    /* ← كبّرناها من 40 إلى 50 */
+  }
+}
