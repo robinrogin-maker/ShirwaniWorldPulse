@@ -1401,5 +1401,5 @@ const DEFAULT_MUSIC_FAVS = [
   { title: "Demis Roussos Music MegaMix", url: "https://www.youtube.com/watch?v=F8sg7Qdp-tI" },
   { title: "Boney M. Greatest Hits Full Album", url: "https://www.youtube.com/watch?v=AClOh_Aznxk" },
   { title: "Flamenco Cha-Cha in Dubai - Exclusive Desert Dance Show", url: "https://www.youtube.com/watch?v=pCTGJleyNrs" },
-  { title: "Les 30 Plus Belles Chansons Françaises - F François, Dalida, Joe Dassin, Mireille Mathieu", url: "https://www.youtube.com/watch?v=XZFElXgRo40" }
+  
 ];
