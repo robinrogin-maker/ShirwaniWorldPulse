@@ -1402,6 +1402,7 @@ const DEFAULT_MUSIC_FAVS = [
   { title: "Boney M. Greatest Hits Full Album", url: "https://www.youtube.com/watch?v=AClOh_Aznxk" },
   { title: "Flamenco Cha-Cha in Dubai - Exclusive Desert Dance Show", url: "https://www.youtube.com/watch?v=pCTGJleyNrs" },
    { title: "Bad Bunny | Afro House mix | NUEVAYoL, DTMF, EoO, PIToRRO DE COCO | DJ set | Steve Cortez", url: "https://www.youtube.com/watch?v=RyUx1sztt_I" },
-   { title: "Bad Bunny Mix 2025 | BEST OF BAD BUNNY REGGAETON MIX", url: "https://www.youtube.com/watch?v=0GDs7j54nHU" },
+   { title: "Bad Bunny Mix 2025 | BEST OF BAD BUNNY REGGAETON MIX", url: "https://www.youtube.com/watch?v=0GDs7j54nHU" }, 
+   { title: "Cuban Music Mix 🎵 Buena Vista , Cha Cha & Latin Jazz - Rhythms of Havana", url: "https://www.youtube.com/watch?v=y8pPKZTIKLQ&list=RDy8pPKZTIKLQ&start_radio=1" },
   
 ];
