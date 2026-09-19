@@ -1403,5 +1403,6 @@ const DEFAULT_MUSIC_FAVS = [
   { title: "Flamenco Cha-Cha in Dubai - Exclusive Desert Dance Show", url: "https://www.youtube.com/watch?v=pCTGJleyNrs" },
   { title: "Bad Bunny Mix 2025 | BEST OF BAD BUNNY REGGAETON MIX", url: "https://www.youtube.com/watch?v=0GDs7j54nHU" }, 
   { title: "Cuban Music Mix 🎵 Buena Vista , Cha Cha & Latin Jazz - Rhythms of Havana", url: "https://www.youtube.com/watch?v=y8pPKZTIKLQ&list=RDy8pPKZTIKLQ&start_radio=1" },
+  { title: "BAD BUNNY MIX 2026 - 25 Las mejores canciones de Bad Bunny 2026 - BAD BUNNY BEST HITS IN 2026", url: "https://www.youtube.com/watch?v=PboonSTC1xE&list=RDPboonSTC1xE&start_radio=1" },
   
 ];
