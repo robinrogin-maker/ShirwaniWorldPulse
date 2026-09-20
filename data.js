@@ -1368,6 +1368,7 @@ const DEFAULT_MUSIC_FAVS = [
   { title: "Bolero en la Madrugada - Susurros de La Habana", url: "https://www.youtube.com/watch?v=z35DsBeFZ1E" },
   { title: "Afro House 80s 90s - Tribal Sunset 2026", url: "https://www.youtube.com/watch?v=ihHC0rHVV5g" },
   { title: "Hawaiian Reggae - Island Vibes & Tropical Soul", url: "https://www.youtube.com/watch?v=1gc2b4487CI" },
+  { title: "ABBA Remixes Like You’ve Never Heard 🔥 Deep House Piano Mix", url: "https://www.youtube.com/watch?v=Gm-33KbyF1c&list=RDGm-33KbyF1c&start_radio=1&t=127s" },
   { title: "Bob Marley × Rihanna - Wild Mirage (Reggae Pop Fusion 2026)", url: "https://www.youtube.com/watch?v=2wMklv8JHwg" },
   { title: "Ultimate Afro & Latin House Mix - Best 80s Pop Icons Reborn", url: "https://www.youtube.com/watch?v=tNPzmvjOhpM" },
   { title: "Best Afro & Latin House Remixes - Summer Beach Party", url: "https://www.youtube.com/watch?v=6W3yOW-xSh4" },
