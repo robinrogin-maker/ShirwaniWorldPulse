@@ -1406,5 +1406,5 @@ const DEFAULT_MUSIC_FAVS = [
   { title: "Cuban Music Mix 🎵 Buena Vista , Cha Cha & Latin Jazz - Rhythms of Havana", url: "https://www.youtube.com/watch?v=y8pPKZTIKLQ&list=RDy8pPKZTIKLQ&start_radio=1" },
   { title: "BAD BUNNY MIX 2026 - 25 Las mejores canciones de Bad Bunny 2026 - BAD BUNNY BEST HITS IN 2026", url: "https://www.youtube.com/watch?v=PboonSTC1xE&list=RDPboonSTC1xE&start_radio=1" },
   { title: "🌴 Tropical Sunset Reggae 🌊 Hawaiian Beach Vibes & Endless Summer Chill", url: "https://www.youtube.com/watch?v=cPeJGZPVipk&list=RDcPeJGZPVipk&start_radio=1" },
-  
+  { title: "Enrique Iglesias Feat. Shakira - Bailando | Sunset Beach Dance & Latin Moombahton Vibes", url: "https://www.youtube.com/watch?v=iqPF7THBIf0&list=RDiqPF7THBIf0&start_radio=1" },
 ];
