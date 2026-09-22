@@ -1409,4 +1409,6 @@ const DEFAULT_MUSIC_FAVS = [
   { title: "Enrique Iglesias Feat. Shakira - Bailando | Sunset Beach Dance & Latin Moombahton Vibes", url: "https://www.youtube.com/watch?v=iqPF7THBIf0&list=RDiqPF7THBIf0&start_radio=1" },
   { title: "BRAZIL AFRO HOUSE 2026 | Deep Afro House × Samba Vibes | 4K", url: "https://www.youtube.com/watch?v=51vzi2U7T60&list=RD51vzi2U7T60&start_radio=1" },
   { title: "Canciones Variadas del Momento 2026 🎧 Mejores Éxitos Latinos 2026 💖", url: "https://www.youtube.com/watch?v=C2vqxCx3OK4" },
+  { title: "MADONNA Remixes Like You’ve Never Heard 🔥 Deep House Mix", url: "https://www.youtube.com/watch?v=lns7b_PXXGc" },
+  { title: "موسیقی آرام ایرانی با غزلیات مولانا برای آرامش و تمرکز | Persian Music | Café Shiraz", url: "https://www.youtube.com/watch?v=xdD9FKqELiA&list=RDxdD9FKqELiA&start_radio=1" },
 ];
