@@ -1411,4 +1411,6 @@ const DEFAULT_MUSIC_FAVS = [
   { title: "Canciones Variadas del Momento 2026 🎧 Mejores Éxitos Latinos 2026 💖", url: "https://www.youtube.com/watch?v=C2vqxCx3OK4" },
   { title: "MADONNA Remixes Like You’ve Never Heard 🔥 Deep House Mix", url: "https://www.youtube.com/watch?v=lns7b_PXXGc" },
   { title: "موسیقی آرام ایرانی با غزلیات مولانا برای آرامش و تمرکز | Persian Music | Café Shiraz", url: "https://www.youtube.com/watch?v=xdD9FKqELiA&list=RDxdD9FKqELiA&start_radio=1" },
+  { title: "GREASE Remixes Like You’ve Never Heard 🔥 Deep House Mix", url: "https://www.youtube.com/watch?v=oOXNE5QTHU8&list=RDoOXNE5QTHU8&start_radio=1" },
+  { title: "Elvis Presley & Adele - Broken Silence 🖤 | Soulful Rockabilly Rock Ballads Mix 2026", url: "https://www.youtube.com/watch?v=PVz5gQH7D10&list=RDPVz5gQH7D10&start_radio=1" },
 ];
