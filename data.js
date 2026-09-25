@@ -1413,4 +1413,6 @@ const DEFAULT_MUSIC_FAVS = [
   { title: "Afro-Cuban Salsa Mix for Dancing – Tribal Percussion, Congas & Tambores", url: "https://www.youtube.com/watch?v=I9q64U4t6jw&list=RDI9q64U4t6jw&start_radio=1" },
   { title: "GREASE Remixes Like You’ve Never Heard 🔥 Deep House Mix", url: "https://www.youtube.com/watch?v=oOXNE5QTHU8&list=RDoOXNE5QTHU8&start_radio=1" },
   { title: "Elvis Presley & Adele - Broken Silence 🖤 | Soulful Rockabilly Rock Ballads Mix 2026", url: "https://www.youtube.com/watch?v=PVz5gQH7D10&list=RDPVz5gQH7D10&start_radio=1" },
+  { title: "Classic Radio Aesthetic 🔥 Relaxing Oldies 50s 💖 Vintage Sunday", url: "https://www.youtube.com/watch?v=hbbijDnzYRU&list=RDhbbijDnzYRU&start_radio=1" },
+  { title: "LIVE 24/7 🔥 HABIBI AFRO HOUSE 2026 🖤 Egyptian Desert Festival 💖 Afro House Mix", url: "https://www.youtube.com/watch?v=7L5PQDFg41c" },
 ];
