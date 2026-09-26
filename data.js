@@ -1384,7 +1384,6 @@ const DEFAULT_MUSIC_FAVS = [
   { title: "Bob Marley, Peter Tosh, Burning Spear - Reggae Roots & Culture", url: "https://www.youtube.com/watch?v=yp8_To8a-S4" },
   { title: "ISLA VIVA - Cumbia Tropical", url: "https://www.youtube.com/watch?v=vBj-XD83BRI" },
   { title: "Les Plus Belles Chansons d'Amour - Charles Aznavour, Joe Dassin", url: "https://www.youtube.com/watch?v=li_NWke7GeQ" },
-  { title: "Bolero en la Madrugada - Entre Sombras de La Habana", url: "https://www.youtube.com/watch?v=4VrdEXtL-AU" },
   { title: "EARTH, WIND & FIRE Remixes Like You’ve Never Heard 🔥 Deep House Mix", url: "https://www.youtube.com/watch?v=OlVv9Y6l9eY&list=RDOlVv9Y6l9eY&start_radio=1" },
   { title: "The Dark Side of Flamenco - Smoky Sax, Banjo & Cha Cha Cha Swing", url: "https://www.youtube.com/watch?v=887ypuBgu4A" },
   { title: "Best Popular Songs 2025 Faded, Supergirl, A Sky Full Of Star, Perfect Cover", url: "https://www.youtube.com/watch?v=8wZLRqs_cs8" },
