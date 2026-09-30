@@ -1413,10 +1413,10 @@ const DEFAULT_MUSIC_FAVS = [
   { title: "GREASE Remixes Like You’ve Never Heard 🔥 Deep House Mix", url: "https://www.youtube.com/watch?v=oOXNE5QTHU8&list=RDoOXNE5QTHU8&start_radio=1" },
   { title: "Elvis Presley & Adele - Broken Silence 🖤 | Soulful Rockabilly Rock Ballads Mix 2026", url: "https://www.youtube.com/watch?v=PVz5gQH7D10&list=RDPVz5gQH7D10&start_radio=1" },
   { title: "Classic Radio Aesthetic 🔥 Relaxing Oldies 50s 💖 Vintage Sunday", url: "https://www.youtube.com/watch?v=hbbijDnzYRU&list=RDhbbijDnzYRU&start_radio=1" },
-  { title: "LIVE 24/7 🔥 HABIBI AFRO HOUSE 2026 🖤 Egyptian Desert Festival 💖 Afro House Mix", url: "https://www.youtube.com/watch?v=7L5PQDFg41c" },
-  { title: "Tori Levett 🔥 Yona Beach Club Phuket 💖 Afro house DJ set", url: "https://www.youtube.com/watch?v=GDK97mfNObo&list=RDGDK97mfNObo&start_radio=1" },
   { title: "Doo Wop-kärlekssånger från 1950-talet 💖 De sötaste leendena från första kärleken", url: "https://www.youtube.com/watch?v=lfnHRT6uT4c&list=RDlfnHRT6uT4c&start_radio=1" },
   { title: "50s Rock 'n' Roll 🔥 Sweethearts at the Soda Fountain 💖 Bright '50s Feel-Good Vibes", url: "https://www.youtube.com/watch?v=mTL-VGFj4eA&list=RDmTL-VGFj4eA&start_radio=1" },
   { title: "A Romantic 1950s 🖤 Café Boat Ride Among the Flowers 🔥 Pavolira’s Vintage Songs💖", url: "https://www.youtube.com/watch?v=wyK5pAPkBKA&list=RDwyK5pAPkBKA&start_radio=1" },
   { title: "Doo-wop love songs Back then, 💖 I was the star of the fashion show. 🔥 vol.53", url: "https://www.youtube.com/watch?v=H9IQyfDOUC8&list=RDH9IQyfDOUC8&start_radio=1" },
-];
+  { title: "LIVE 24/7 🔥 HABIBI AFRO HOUSE 2026 🖤 Egyptian Desert Festival 💖 Afro House Mix", url: "https://www.youtube.com/watch?v=7L5PQDFg41c" },
+  { title: "Tori Levett 🔥 Yona Beach Club Phuket 💖 Afro house DJ set", url: "https://www.youtube.com/watch?v=GDK97mfNObo&list=RDGDK97mfNObo&start_radio=1" },
+  ];
