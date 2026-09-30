@@ -1418,5 +1418,5 @@ const DEFAULT_MUSIC_FAVS = [
   { title: "Doo Wop-kärlekssånger från 1950-talet 💖 De sötaste leendena från första kärleken", url: "https://www.youtube.com/watch?v=lfnHRT6uT4c&list=RDlfnHRT6uT4c&start_radio=1" },
   { title: "50s Rock 'n' Roll 🔥 Sweethearts at the Soda Fountain 💖 Bright '50s Feel-Good Vibes", url: "https://www.youtube.com/watch?v=mTL-VGFj4eA&list=RDmTL-VGFj4eA&start_radio=1" },
   { title: "A Romantic 1950s 🖤 Café Boat Ride Among the Flowers 🔥 Pavolira’s Vintage Songs💖", url: "https://www.youtube.com/watch?v=wyK5pAPkBKA&list=RDwyK5pAPkBKA&start_radio=1" },
-  { title: "Doo Wop-kärlekssånger 💖 Då var jag modevisningens stjärna 🔥 vol.53", url: "https://www.youtube.com/watch?v=H9IQyfDOUC8&list=RDH9IQyfDOUC8&start_radio=1" },
+  { title: "Doo-wop love songs Back then, 💖 I was the star of the fashion show. 🔥 vol.53", url: "https://www.youtube.com/watch?v=H9IQyfDOUC8&list=RDH9IQyfDOUC8&start_radio=1" },
 ];
